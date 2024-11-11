@@ -1,0 +1,170 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ApunteService } from '../../../service/apunte.service';
+import { IApunte } from '../../../model/apunte.interface';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
+declare let bootstrap: any;
+
+@Component({
+  selector: 'app-apunte-admin-edit-routed',
+  templateUrl: './apunte.admin.edit.routed.component.html',
+  styleUrls: ['./apunte.admin.edit.routed.component.css'],
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    RouterModule,
+  ],
+})
+export class ApunteAdminEditRoutedComponent implements OnInit {
+  id: number = 0;
+  oApunteForm: FormGroup | undefined = undefined;
+  oApunte: IApunte | null = null;
+  message: string = '';
+  myModal: any;
+
+  constructor(
+    private oActivatedRoute: ActivatedRoute,
+    private oApunteService: ApunteService,
+    private oRouter: Router
+  ) {
+    this.oActivatedRoute.params.subscribe((params) => {
+      this.id = params['id'];
+    });
+  }
+
+  ngOnInit() {
+    this.createForm();
+    this.get();
+    this.oApunteForm?.markAllAsTouched();
+  }
+
+  createForm() {
+    this.oApunteForm = new FormGroup({
+      id: new FormControl('', [Validators.required]),
+      debe: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^\\d{1,4}(\\.\\d{1,4})?$'),
+      ]),
+      haber: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^\\d{1,4}(\\.\\d{1,4})?$'),
+      ]),
+      descripcion: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ]),
+      comentarios: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(255),
+      ]),
+      momentstamp: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          '^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
+        ),
+      ]),
+      orden: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(?:-?(?:[0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-7]|128)|127)$'),
+      ]),
+      id_asiento: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^\\d+$'),
+      ]),
+      id_subcuenta: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^\\d+$'),
+      ]),
+      id_tipoapunte: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^\\d+$'),
+      ]),
+    });
+  }
+
+  
+
+  onReset() {
+    this.oApunteService.get(this.id).subscribe({
+      next: (oApunte: IApunte) => {
+        this.oApunte = oApunte;
+        this.updateForm();
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+    return false;
+  }
+
+  updateForm() {
+    this.oApunteForm?.controls['id'].setValue(this.oApunte?.id);
+    this.oApunteForm?.controls['debe'].setValue(this.oApunte?.debe);
+    this.oApunteForm?.controls['haber'].setValue(this.oApunte?.haber);
+    this.oApunteForm?.controls['descripcion'].setValue(this.oApunte?.descripcion);
+    this.oApunteForm?.controls['comentarios'].setValue(this.oApunte?.comentarios);
+    this.oApunteForm?.controls['momentstamp'].setValue(this.oApunte?.momentstamp);
+    this.oApunteForm?.controls['orden'].setValue(this.oApunte?.orden);
+    this.oApunteForm?.controls['id_asiento'].setValue(this.oApunte?.id_asiento);
+    this.oApunteForm?.controls['id_subcuenta'].setValue(this.oApunte?.id_subcuenta);
+    this.oApunteForm?.controls['id_tipoapunte'].setValue(this.oApunte?.id_tipoapunte);
+  }
+
+  get() {
+    this.oApunteService.get(this.id).subscribe({
+      next: (oApunte: IApunte
+      ) => {
+        this.oApunte = oApunte;
+        this.updateForm();
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+
+  showModal(mensaje: string) {
+    this.message = mensaje;
+    this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), {
+      keyboard: false,
+    });
+    this.myModal.show();
+  }
+
+  hideModal = () => {
+    this.myModal.hide();
+    this.oRouter.navigate(['/admin/apunte/view/' + this.oApunte?.id]);
+  };
+
+  onSubmit() {
+    if (!this.oApunteForm?.valid) {
+      this.showModal('Formulario no válido');
+      return;
+    } else {
+      this.oApunteService.update(this.oApunteForm?.value).subscribe({
+        next: (oApunte: IApunte) => {
+          this.oApunte = oApunte;
+          this.updateForm();
+          this.showModal('Apunte ' + this.oApunte.id + ' actualizado');
+        },
+        error: (error) => {
+          this.showModal('Error al actualizar el apunte');
+          console.error(error);
+        },
+      });
+    }
+  }
+}

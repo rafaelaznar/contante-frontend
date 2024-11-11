@@ -1,0 +1,94 @@
+<div class="row justify-content-center m-3">
+  <div class="col-lg-7 col-md-10 col-sm-12">
+    <h1 class="my-5 text-center">
+      <i class="bi bi-card-list"></i>
+      Ver apunte
+      <i class="bi bi-newspaper"></i>
+    </h1>
+    <br />
+    <table class="table table-striped table-bordered my-5 text-center">
+      <tbody>
+        <tr class="text-center">
+          <th scope="row" class="bg-danger text-white text-end pe-5">Id</th>
+          <td class="text-start ps-5">{{ oApunte.id }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">Debe</th>
+          <td class="text-start ps-5">{{ oApunte.debe }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">Haber</th>
+          <td class="text-start ps-5">{{ oApunte.haber }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Descripcion
+          </th>
+          <td class="text-start ps-5">{{ oApunte.descripcion }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Comentarios
+          </th>
+          <td class="text-start ps-5">{{ oApunte.comentarios }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Momentstamp
+          </th>
+          <td class="text-start ps-5">{{ oApunte.momentstamp }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">Orden</th>
+          <td class="text-start ps-5">{{ oApunte.orden }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id Asiento
+          </th>
+          <td class="text-start ps-5">{{ oApunte.id_asiento }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id Subcuenta
+          </th>
+          <td class="text-start ps-5">{{ oApunte.id_subcuenta }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id Tipo Apunte
+          </th>
+          <td class="text-start ps-5">{{ oApunte.id_tipoapunte }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-warning mt-4 mx-1" href="admin/apunte/plist">
+      <i class="bi bi-list"></i>
+      Ir a listado de Apuntes
+    </a>
+    <a
+      class="btn btn-primary mt-4 mx-1"
+      href="admin/apunte/edit/{{ oApunte.id }}"
+    >
+      <i class="bi bi-pencil"></i>
+      Editar
+    </a>
+    <a
+      class="btn btn-danger mt-4 mx-1"
+      href="admin/apunte/delete/{{ oApunte.id }}"
+    >
+      <i class="bi bi-trash"></i>
+      Borrar
+    </a>
+  </div>
+</div>
