@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { IApunte } from '../../../model/apunte.interface';
+import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
 import { ApunteService } from '../../../service/apunte.service';
 
 declare let bootstrap: any;
