@@ -12,9 +12,9 @@ import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
 import { TipoCuentaAdminCreateRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.create.routed/tipoCuenta.admin.create.routed.component';
 import { TipoCuentaAdminPlistRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.plist.routed/tipoCuenta.admin.plist.routed.component';
-import { TipoCuentaAdminEditRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.edit.routed/tipoCuenta.admin.edit.routed.component';
-import { TipoCuentaAdminDeleteRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.delete.routed/tipoCuenta.admin.delete.routed.component';
-import { TipoCuentaAdminViewRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.view.routed/tipoCuenta.admin.view.routed.component';
+
+
+
 
 
 export const routes: Routes = [
