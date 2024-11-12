@@ -8,16 +8,18 @@ import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
 import { IApunte } from '../../../model/apunte.interface';
 import { ApunteService } from '../../../service/apunte.service';
+import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
+import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 @Component({
-  selector: 'app-apunte.admin.routed',
-  templateUrl: './apunte.admin.plist.routed.component.html',
-  styleUrls: ['./apunte.admin.plist.routed.component.css'],
+  selector: 'app-tipoCuenta.admin.routed',
+  templateUrl: './tipoCuenta.admin.plist.routed.component.html',
+  styleUrls: ['./tipoCuenta.admin.plist.routed.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
-export class ApunteAdminPlistRoutedComponent implements OnInit {
-  oPage: IPage<IApunte> | null = null;
+export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
+  oPage: IPage<ITipoCuenta> | null = null;
   //
   nPage: number = 0; // 0-based server count
   nRpp: number = 10;
@@ -32,7 +34,7 @@ export class ApunteAdminPlistRoutedComponent implements OnInit {
   private debounceSubject = new Subject<string>();
 
   constructor(
-    private oApunteService: ApunteService,
+    private oTipoCuentaService: TipoCuentaService,
     private oBotoneraService: BotoneraService,
     private oRouter: Router
   ) {
@@ -46,7 +48,7 @@ export class ApunteAdminPlistRoutedComponent implements OnInit {
   }
 
   getPage() {
-    this.oApunteService
+    this.oTipoCuentaService
       .getPage(
         this.nPage,
         this.nRpp,
@@ -55,7 +57,7 @@ export class ApunteAdminPlistRoutedComponent implements OnInit {
         this.strFiltro
       )
       .subscribe({
-        next: (oPageFromServer: IPage<IApunte>) => {
+        next: (oPageFromServer: IPage<ITipoCuenta>) => {
           this.oPage = oPageFromServer;
           this.arrBotonera = this.oBotoneraService.getBotonera(
             this.nPage,
@@ -68,18 +70,18 @@ export class ApunteAdminPlistRoutedComponent implements OnInit {
       });
   }
 
-  edit(oApunte: IApunte) {
+  edit(oTipoCuenta: ITipoCuenta) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/apunte/edit', oApunte.id]);
+    this.oRouter.navigate(['admin/tipoCuenta/edit', oTipoCuenta.id]);
   }
 
-  view(oApunte: IApunte) {
+  view(oTipoCuenta: ITipoCuenta) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/apunte/view', oApunte.id]);
+    this.oRouter.navigate(['admin/tipoCuenta/view', oTipoCuenta.id]);
   }
 
-  remove(oApunte: IApunte) {
-    this.oRouter.navigate(['admin/apunte/delete/', oApunte.id]);
+  remove(oTipoCuenta: ITipoCuenta) {
+    this.oRouter.navigate(['admin/tipoCuenta/delete/', oTipoCuenta.id]);
   }
 
   goToPage(p: number) {
