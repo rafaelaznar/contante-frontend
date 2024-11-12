@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ApunteService } from '../../../service/apunte.service';
-import { IApunte } from '../../../model/apunte.interface';
+import { TipoCuentaService } from '../../../service/tipoCuenta.service';
+import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
 import {
   FormControl,
   FormGroup,
@@ -15,9 +15,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-apunte-admin-edit-routed',
-  templateUrl: './apunte.admin.edit.routed.component.html',
-  styleUrls: ['./apunte.admin.edit.routed.component.css'],
+  selector: 'app-tipoCuenta-admin-edit-routed',
+  templateUrl: './tipoCuenta.admin.edit.routed.component.html',
+  styleUrls: ['./tipoCuenta.admin.edit.routed.component.css'],
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -28,14 +28,14 @@ declare let bootstrap: any;
 })
 export class ApunteAdminEditRoutedComponent implements OnInit {
   id: number = 0;
-  oApunteForm: FormGroup | undefined = undefined;
-  oApunte: IApunte | null = null;
+  oTipoCuentaForm: FormGroup | undefined = undefined;
+  oTipoCuenta: ITipoCuenta | null = null;
   message: string = '';
   myModal: any;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oApunteService: ApunteService,
+    private oTipoCuentaService: TipoCuentaService,
     private oRouter: Router
   ) {
     this.oActivatedRoute.params.subscribe((params) => {
@@ -46,51 +46,28 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.get();
-    this.oApunteForm?.markAllAsTouched();
+    this.oTipoCuentaForm?.markAllAsTouched();
   }
 
   createForm() {
-    this.oApunteForm = new FormGroup({
-      id: new FormControl('', [Validators.required]),
-      debe: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^\\d{1,4}(\\.\\d{1,4})?$'),
-      ]),
-      haber: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^\\d{1,4}(\\.\\d{1,4})?$'),
-      ]),
+    this.oTipoCuentaForm = new FormGroup({
       descripcion: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
+      ]),
+      credito_o_debito: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[01]$'),
       ]),
       comentarios: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
       ]),
-      momentstamp: new FormControl('', [
+      real_o_nominal: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          '^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
-        ),
-      ]),
-      orden: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^(?:-?(?:[0-9]|[1-9][0-9]|1[0-1][0-9]|12[0-7]|128)|127)$'),
-      ]),
-      id_asiento: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^\\d+$'),
-      ]),
-      id_subcuenta: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^\\d+$'),
-      ]),
-      id_tipoapunte: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^\\d+$'),
+        Validators.pattern('^[01]$'),
       ]),
     });
   }
@@ -98,9 +75,9 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
   
 
   onReset() {
-    this.oApunteService.get(this.id).subscribe({
-      next: (oApunte: IApunte) => {
-        this.oApunte = oApunte;
+    this.oTipoCuentaService.get(this.id).subscribe({
+      next: (oTipoCuenta: ITipoCuenta) => {
+        this.oTipoCuenta = oTipoCuenta;
         this.updateForm();
       },
       error: (error) => {
@@ -111,23 +88,18 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
   }
 
   updateForm() {
-    this.oApunteForm?.controls['id'].setValue(this.oApunte?.id);
-    this.oApunteForm?.controls['debe'].setValue(this.oApunte?.debe);
-    this.oApunteForm?.controls['haber'].setValue(this.oApunte?.haber);
-    this.oApunteForm?.controls['descripcion'].setValue(this.oApunte?.descripcion);
-    this.oApunteForm?.controls['comentarios'].setValue(this.oApunte?.comentarios);
-    this.oApunteForm?.controls['momentstamp'].setValue(this.oApunte?.momentstamp);
-    this.oApunteForm?.controls['orden'].setValue(this.oApunte?.orden);
-    this.oApunteForm?.controls['id_asiento'].setValue(this.oApunte?.id_asiento);
-    this.oApunteForm?.controls['id_subcuenta'].setValue(this.oApunte?.id_subcuenta);
-    this.oApunteForm?.controls['id_tipoapunte'].setValue(this.oApunte?.id_tipoapunte);
+    this.oTipoCuentaForm?.controls['id'].setValue(this.oTipoCuenta?.id);
+    this.oTipoCuentaForm?.controls['debe'].setValue(this.oTipoCuenta?.descripcion);
+    this.oTipoCuentaForm?.controls['haber'].setValue(this.oTipoCuenta?.credito_o_debito);
+    this.oTipoCuentaForm?.controls['descripcion'].setValue(this.oTipoCuenta?.comentarios);
+    this.oTipoCuentaForm?.controls['comentarios'].setValue(this.oTipoCuenta?.real_o_nominal);
   }
 
   get() {
-    this.oApunteService.get(this.id).subscribe({
-      next: (oApunte: IApunte
+    this.oTipoCuentaService.get(this.id).subscribe({
+      next: (oTipoCuenta: ITipoCuenta
       ) => {
-        this.oApunte = oApunte;
+        this.oTipoCuenta = oTipoCuenta;
         this.updateForm();
       },
       error: (error) => {
@@ -146,22 +118,22 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
 
   hideModal = () => {
     this.myModal.hide();
-    this.oRouter.navigate(['/admin/apunte/view/' + this.oApunte?.id]);
+    this.oRouter.navigate(['/admin/tipoCuenta/view/' + this.oTipoCuenta?.id]);
   };
 
   onSubmit() {
-    if (!this.oApunteForm?.valid) {
+    if (!this.oTipoCuentaForm?.valid) {
       this.showModal('Formulario no válido');
       return;
     } else {
-      this.oApunteService.update(this.oApunteForm?.value).subscribe({
-        next: (oApunte: IApunte) => {
-          this.oApunte = oApunte;
+      this.oTipoCuentaService.update(this.oTipoCuentaForm?.value).subscribe({
+        next: (oTipoCuenta: ITipoCuenta) => {
+          this.oTipoCuenta = oTipoCuenta;
           this.updateForm();
-          this.showModal('Apunte ' + this.oApunte.id + ' actualizado');
+          this.showModal('TipoCuenta ' + this.oTipoCuenta.id + ' actualizado');
         },
         error: (error) => {
-          this.showModal('Error al actualizar el apunte');
+          this.showModal('Error al actualizar el TipoCuenta');
           console.error(error);
         },
       });

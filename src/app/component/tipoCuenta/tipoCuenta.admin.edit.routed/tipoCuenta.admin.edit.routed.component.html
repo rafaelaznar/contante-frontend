@@ -3,10 +3,10 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-pencil"></i>
-        Creación de Apunte
+        Creación de TipoCuenta
         <i class="bi bi-newspaper"></i>
       </h2>
-      <form [formGroup]="oApunteForm!" (ngSubmit)="onSubmit()" novalidate>
+      <form [formGroup]="oTipoCuentaForm!" (ngSubmit)="onSubmit()" novalidate>
         <div class="row mt-4">
           <mat-form-field>
             <mat-label>Id</mat-label>
@@ -16,147 +16,65 @@
         </div>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Debe</mat-label>
-            <input
-              matInput
-              formControlName="debe"
-              placeholder="Cuanto debe"
-            />
-            <mat-hint align="start">De ser un numero decimal 4 enteros max y 4 decimales max y el punto como separador</mat-hint>
-            @if (oApunteForm?.get('debe')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('debe')?.hasError('pattern')){
-            <mat-error> El debe debe ser un numero decimal 4 enteros max y  4 decimales max y el punto como separador </mat-error>
-            }
-          </mat-form-field>
-        </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Haber</mat-label>
-            <input
-              matInput
-              formControlName="haber"
-              placeholder="Cuanto hay"
-            />
-            <mat-hint align="start">De ser un numero decimal 4 enteros max y 4 decimales max y el punto como separador</mat-hint>
-            @if (oApunteForm?.get('haber')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('haber')?.hasError('pattern')){
-            <mat-error> El debe debe ser un numero decimal 4 enteros max y  4 decimales max y el punto como separador </mat-error>
-            }
-          </mat-form-field>
-        </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Descripción</mat-label>
+            <mat-label>Descripcion</mat-label>
             <input
               matInput
               formControlName="descripcion"
-              placeholder="Escribe una descripción"
+              placeholder="Describe"
             />
-            <mat-hint align="start">De 3 caracteres a 255 caracteres</mat-hint>
-            @if (oApunteForm?.get('descripcion')?.hasError('required')){
-            <mat-error> El campo nombre es obligatorio </mat-error>
-            } @if (oApunteForm?.get('descripcion')?.hasError('minlength')){
-            <mat-error> El nombre debe ser mas largo </mat-error>
-            } @if (oApunteForm?.get('descripcion')?.hasError('maxlength')){
-            <mat-error> El nombre debe ser mas corto </mat-error>
+            <mat-hint align="start">Debe contener entre 3 y 255 caracteres</mat-hint>
+            @if (oTipoCuentaForm?.get('descripcion')?.hasError('required')){
+            <mat-error> El campo debe es obligatorio </mat-error>
+            } @if (oTipoCuentaForm?.get('descripcion')?.hasError('pattern')){
+            <mat-error> Debe contener entre 3 y 255 caracteres </mat-error>
             }
           </mat-form-field>
         </div>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Comentarios</mat-label>
+            <mat-label>Credito o debito</mat-label>
+            <input
+              matInput
+              formControlName="cedeito_o_debito"
+              placeholder="Credito o debito"
+            />
+            <mat-hint align="start">escribe 1 si es con credito o 0 si es con debito</mat-hint>
+            @if (oTipoCuentaForm?.get('credito_o_debito')?.hasError('required')){
+            <mat-error> El campo credito o debito es obligatorio </mat-error>
+            } @if (oTipoCuentaForm?.get('credito_o_debito')?.hasError('pattern')){
+            <mat-error> escribe 1 si es con credito o 0 si es con debito </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>comentarios</mat-label>
             <input
               matInput
               formControlName="comentarios"
-              placeholder="Escribe comentarios"
+              placeholder="Escribe un comentario"
             />
             <mat-hint align="start">De 3 caracteres a 255 caracteres</mat-hint>
-            @if (oApunteForm?.get('comentarios')?.hasError('required')){
-            <mat-error> El campo nombre es obligatorio </mat-error>
-            } @if (oApunteForm?.get('comentarios')?.hasError('minlength')){
-            <mat-error> El nombre debe ser mas largo </mat-error>
-            } @if (oApunteForm?.get('comentarios')?.hasError('maxlength')){
-            <mat-error> El nombre debe ser mas corto </mat-error>
+            @if (oTipoCuentaForm?.get('comentarios')?.hasError('required')){
+            <mat-error> El campo comentarios es obligatorio </mat-error>
+            } @if (oTipoCuentaForm?.get('comentarios')?.hasError('minlength')){
+            <mat-error> El comentario debe ser mas largo </mat-error>
+            } @if (oTipoCuentaForm?.get('comentarios')?.hasError('maxlength')){
+            <mat-error> El comentario debe ser mas corto </mat-error>
             }
           </mat-form-field>
         </div>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Momentstamp</mat-label>
+            <mat-label>real o nominal</mat-label>
             <input
               matInput
-              formControlName="momentstamp"
-              placeholder="Escribe momentstamp"
+              formControlName="real_o_nominal"
+              placeholder="Di si es real o nominal"
             />
-            <mat-hint align="start">Ejemplo: 2024-11-06 13:00:00</mat-hint>
-            @if (oApunteForm?.get('momentstamp')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('momentstamp')?.hasError('pattern')){
-            <mat-error> El debe debe tener formato: 2024-11-06 13:00:00 </mat-error>
-            }
-          </mat-form-field>
-        </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Orden</mat-label>
-            <input
-              matInput
-              formControlName="orden"
-              placeholder="Escribe la orden"
-            />
-            <mat-hint align="start">Un numero entre -128 y 127</mat-hint>
-            @if (oApunteForm?.get('orden')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('orden')?.hasError('pattern')){
-            <mat-error> Debe ser un numero entre -128 y 127 </mat-error>
-            }
-          </mat-form-field>
-        </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Id  Asiento</mat-label>
-            <input
-              matInput
-              formControlName="id_asiento"
-              placeholder="Escribe la id tipo asiento"
-            />
-            <mat-hint align="start">Un numero entero</mat-hint>
-            @if (oApunteForm?.get('id_asiento')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('id_asiento')?.hasError('pattern')){
-            <mat-error> Debe ser un numero entero </mat-error>
-            }
-          </mat-form-field>
-        </div><div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Id Subcuenta</mat-label>
-            <input
-              matInput
-              formControlName="id_subcuenta"
-              placeholder="Escribe la id subcuenta"
-            />
-            <mat-hint align="start">Un numero entero</mat-hint>
-            @if (oApunteForm?.get('id_subcuenta')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('id_subcuenta')?.hasError('pattern')){
-            <mat-error> Debe ser un numero entero </mat-error>
-            }
-          </mat-form-field>
-        </div><div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Id Tipo Apunte</mat-label>
-            <input
-              matInput
-              formControlName="id_tipoapunte"
-              placeholder="Escribe la id tipo apunte"
-            />
-            <mat-hint align="start">Un numero entero</mat-hint>
-            @if (oApunteForm?.get('id_tipoapunte')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('id_tipoapunte')?.hasError('pattern')){
-            <mat-error> Debe ser un numero entero </mat-error>
+            <mat-hint align="start">Escribe 1 si es real o 0 si es nominal.</mat-hint>
+            @if (oTipoCuentaForm?.get('real_o_nominal')?.hasError('required')){
+            <mat-error> El campo real o nominal es obligatorio </mat-error>
             }
           </mat-form-field>
         </div>
@@ -165,10 +83,10 @@
         <br />
         <button
           class="btn btn-warning mt-4 mx-1"
-          [routerLink]="['/admin', 'apunte', 'plist']"
+          [routerLink]="['/admin', 'tipoCuenta', 'plist']"
         >
           <i class="bi bi-list"></i>
-          Ir a listado de Apuntes
+          Ir a listado de TipoCuenta
         </button>
 
         <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
@@ -179,7 +97,7 @@
         <button
           class="btn btn-primary mt-4 mx-1"
           type="submit"
-          [disabled]="!oApunteForm?.valid"
+          [disabled]="!oTipoCuentaForm?.valid"
         >
         <i class="bi bi-floppy"></i>
           Guardar

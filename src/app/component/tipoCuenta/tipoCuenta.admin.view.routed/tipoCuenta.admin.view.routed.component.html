@@ -10,82 +10,51 @@
       <tbody>
         <tr class="text-center">
           <th scope="row" class="bg-danger text-white text-end pe-5">Id</th>
-          <td class="text-start ps-5">{{ oApunte.id }}</td>
+          <td class="text-start ps-5">{{ oTipoCuenta.id }}</td>
         </tr>
         <tr class="text-center">
-          <th scope="row" class="bg-primary text-white text-end pe-5">Debe</th>
-          <td class="text-start ps-5">{{ oApunte.debe }}</td>
+          <th scope="row" class="bg-primary text-white text-end pe-5">Descripcion</th>
+          <td class="text-start ps-5">{{ oTipoCuenta.descripcion }}</td>
         </tr>
         <tr class="text-center">
-          <th scope="row" class="bg-primary text-white text-end pe-5">Haber</th>
-          <td class="text-start ps-5">{{ oApunte.haber }}</td>
-        </tr>
-
-        <tr class="text-center">
-          <th scope="row" class="bg-primary text-white text-end pe-5">
-            Descripcion
-          </th>
-          <td class="text-start ps-5">{{ oApunte.descripcion }}</td>
+          <th scope="row" class="bg-primary text-white text-end pe-5">Credito o debito</th>
+          <td class="text-start ps-5">{{ oTipoCuenta.credito_o_debito }}</td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Comentarios
           </th>
-          <td class="text-start ps-5">{{ oApunte.comentarios }}</td>
+          <td class="text-start ps-5">{{ oTipoCuenta.comentarios }}</td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Momentstamp
+            Real o nominal
           </th>
-          <td class="text-start ps-5">{{ oApunte.momentstamp }}</td>
+          <td class="text-start ps-5">{{ oTipoCuenta.real_o_nominal }}</td>
         </tr>
 
-        <tr class="text-center">
-          <th scope="row" class="bg-primary text-white text-end pe-5">Orden</th>
-          <td class="text-start ps-5">{{ oApunte.orden }}</td>
-        </tr>
-
-        <tr class="text-center">
-          <th scope="row" class="bg-primary text-white text-end pe-5">
-            Id Asiento
-          </th>
-          <td class="text-start ps-5">{{ oApunte.id_asiento }}</td>
-        </tr>
-
-        <tr class="text-center">
-          <th scope="row" class="bg-primary text-white text-end pe-5">
-            Id Subcuenta
-          </th>
-          <td class="text-start ps-5">{{ oApunte.id_subcuenta }}</td>
-        </tr>
-
-        <tr class="text-center">
-          <th scope="row" class="bg-primary text-white text-end pe-5">
-            Id Tipo Apunte
-          </th>
-          <td class="text-start ps-5">{{ oApunte.id_tipoapunte }}</td>
-        </tr>
+        
       </tbody>
     </table>
   </div>
 
   <div class="d-flex justify-content-center mt-4">
-    <a class="btn btn-warning mt-4 mx-1" href="admin/apunte/plist">
+    <a class="btn btn-warning mt-4 mx-1" href="admin/tipoCuenta/plist">
       <i class="bi bi-list"></i>
-      Ir a listado de Apuntes
+      Ir a listado de TipoCuenta
     </a>
     <a
       class="btn btn-primary mt-4 mx-1"
-      href="admin/apunte/edit/{{ oApunte.id }}"
+      href="admin/tipoCuenta/edit/{{ oTipoCuenta.id }}"
     >
       <i class="bi bi-pencil"></i>
       Editar
     </a>
     <a
       class="btn btn-danger mt-4 mx-1"
-      href="admin/apunte/delete/{{ oApunte.id }}"
+      href="admin/tipoCuenta/delete/{{ oTipoCuenta.id }}"
     >
       <i class="bi bi-trash"></i>
       Borrar

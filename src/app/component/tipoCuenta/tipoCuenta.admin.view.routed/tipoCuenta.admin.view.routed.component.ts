@@ -1,31 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IApunte } from '../../../model/apunte.interface';
-import { ApunteService } from '../../../service/apunte.service';
+import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
+import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 @Component({
-  selector: 'app-apunte.admin.view.routed',
-  templateUrl: './apunte.admin.view.routed.component.html',
-  styleUrls: ['./apunte.admin.view.routed.component.css'],
+  selector: 'app-tipoCuenta.admin.view.routed',
+  templateUrl: './tipoCuenta.admin.view.routed.component.html',
+  styleUrls: ['./tipoCuenta.admin.view.routed.component.css'],
 })
 export class ApunteAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oApunte: IApunte = {
+  oTipoCuenta: ITipoCuenta = {
     id: 0,
-    debe: 0,
-    haber: 0,
     descripcion: '',
+    credito_o_debito: 0,
     comentarios: '',
-    momentstamp: '',
-    orden: 0,
-    id_asiento: 0,
-    id_subcuenta: 0,
-    id_tipoapunte: 0,
+    real_o_nominal: 0,
   };
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oApunteService: ApunteService
+    private oTipoCuentaService: TipoCuentaService
   ) {}
 
   ngOnInit() {
@@ -33,9 +28,9 @@ export class ApunteAdminViewRoutedComponent implements OnInit {
     this.getOne();
   }
 getOne() {
-    this.oApunteService.getOne(this.id).subscribe({
-      next: (data: IApunte) => {
-        this.oApunte = data;
+    this.oTipoCuentaService.getOne(this.id).subscribe({
+      next: (data: ITipoCuenta) => {
+        this.oTipoCuenta = data;
       },
     });
   }
