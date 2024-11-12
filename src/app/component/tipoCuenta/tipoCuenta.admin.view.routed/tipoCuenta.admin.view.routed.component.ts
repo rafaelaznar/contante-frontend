@@ -8,7 +8,7 @@ import { TipoCuentaService } from '../../../service/tipoCuenta.service';
   templateUrl: './tipoCuenta.admin.view.routed.component.html',
   styleUrls: ['./tipoCuenta.admin.view.routed.component.css'],
 })
-export class ApunteAdminViewRoutedComponent implements OnInit {
+export class TipoCuentaAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
   oTipoCuenta: ITipoCuenta = {
