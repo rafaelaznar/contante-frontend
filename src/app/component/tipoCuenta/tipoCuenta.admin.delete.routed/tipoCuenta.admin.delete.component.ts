@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
-import { ApunteService } from '../../../service/apunte.service';
+import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 declare let bootstrap: any;
 
@@ -9,28 +9,28 @@ declare let bootstrap: any;
   selector: 'app-apunte-admin-delete-routed',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './apunte.admin.delete.component.html',
-  styleUrl: './apunte.admin.delete.component.css',
+  templateUrl: './tipoCuenta.admin.delete.component.html',
+  styleUrl: './tipoCuenta.admin.delete.component.css',
 })
 export class ApunteAdminDeleteRoutedComponent implements OnInit {
-  oApunte: IApunte | null = null;
+  oTipoCuenta: ITipoCuenta | null = null;
   strMessage: string = '';
   myModal: any;
 
   constructor(
-    private oApunteService: ApunteService,
+    private oTipoCuentaService: TipoCuentaService,
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router
   ) {}
 
   ngOnInit(): void {
     let id = this.oActivatedRoute.snapshot.params['id'];
-    this.oApunteService.get(id).subscribe({
-      next: (oApunte: IApunte) => {
-        this.oApunte = oApunte;
+    this.oTipoCuentaService.get(id).subscribe({
+      next: (oTipoCuenta: ITipoCuenta) => {
+        this.oTipoCuenta = oTipoCuenta;
       },
       error: (err) => {
-        this.showModal('Error al cargar el Apunte');
+        this.showModal('Error al cargar el TipoCuenta');
       },
     });
   }
@@ -44,24 +44,24 @@ export class ApunteAdminDeleteRoutedComponent implements OnInit {
   }
 
   delete(): void {
-    this.oApunteService.delete(this.oApunte!.id).subscribe({
+    this.oTipoCuentaService.delete(this.oTipoCuenta!.id).subscribe({
       next: (data) => {
         this.showModal(
-          'Apunte con id ' + this.oApunte!.id + ' ha sido borrado'
+          'ATipoCuenta con id ' + this.oTipoCuenta!.id + ' ha sido borrado'
         );
       },
       error: (error) => {
-        this.showModal('Error al borrar el Apunte');
+        this.showModal('Error al borrar el TipoCuenta');
       },
     });
   }
 
   cancel(): void {
-    this.oRouter.navigate(['/admin/apunte/plist']);
+    this.oRouter.navigate(['/admin/tipoCuenta/plist']);
   }
 
   hideModal = () => {
     this.myModal.hide();
-    this.oRouter.navigate(['/admin/apunte/plist']);
+    this.oRouter.navigate(['/admin/tipoCuenta/plist']);
   };
 }
