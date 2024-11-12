@@ -1,0 +1,142 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-2">
+        <i class="bi bi-plus-square"></i>
+        Creación de Periodo
+        <i class="bi bi-r-square"></i>
+      </h2>
+      <form [formGroup]="oPeriodoForm!" (ngSubmit)="onSubmit()" novalidate>
+        
+        <!-- Campo Año -->
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Año</mat-label>
+            <input
+              matInput
+              formControlName="anyo"
+              placeholder="Introduce el año"
+              type="number"
+              required
+            />
+            <mat-hint align="start">Introduce un año válido</mat-hint>
+
+            @if(oPeriodoForm?.get('anyo')?.hasError('required')){
+            <mat-error>
+              El campo año es obligatorio.
+            </mat-error>
+          }
+          </mat-form-field>
+        </div>
+
+        <!-- Campo Descripción -->
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <input
+              matInput
+              formControlName="descripcion"
+              placeholder="Introduce una descripción"
+              maxlength="255"
+              required
+            />
+            <mat-hint align="start">Máximo 255 caracteres</mat-hint>
+            @if(oPeriodoForm?.get('descripcion')?.hasError('required')){
+            <mat-error>
+              El campo descripción es obligatorio.
+            </mat-error>
+          }
+          </mat-form-field>
+        </div>
+
+        <!-- Campo Comentarios -->
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Comentarios</mat-label>
+            <input
+              matInput
+              formControlName="comentarios"
+              placeholder="Introduce tus comentarios"
+              maxlength="255"
+              required
+            />
+            <mat-hint align="start">Máximo 255 caracteres</mat-hint>
+            @if(oPeriodoForm?.get('comentarios')?.hasError('required')){
+              <mat-error>
+                El campo comentarios es obligatorio.
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        
+
+        <!-- Campo Cerrado (Checkbox) -->
+        <div class="row mt-4">
+          <mat-checkbox formControlName="cerrado">Cerrado</mat-checkbox>
+          
+        </div>
+
+        <br />
+        <div class="mt-4">
+          <button
+            class="btn btn-warning mt-4 mx-1"
+            [routerLink]="['/admin', 'periodo', 'plist']"
+          >
+            <i class="bi bi-list"></i>
+            Ir a listado de Periodos
+          </button>
+
+          <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+            <i class="bi bi-x-lg"></i>
+            Reset
+          </button>
+
+          <button
+            class="btn btn-primary mt-4 mx-1"
+            type="submit"
+            [disabled]="!oPeriodoForm?.valid"
+          >
+            <i class="bi bi-floppy"></i>
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ strMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

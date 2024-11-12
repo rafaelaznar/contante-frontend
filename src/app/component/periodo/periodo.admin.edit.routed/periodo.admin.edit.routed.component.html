@@ -1,0 +1,159 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-5">
+        <i class="bi bi-pencil"></i>
+        Edición de periodo
+        <i class="bi bi-r-square"></i>
+      </h2>
+
+      <form [formGroup]="oPeriodoForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput formControlName="id" placeholder="Id" readonly />
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>anyo</mat-label>
+            <input
+              matInput
+              formControlName="anyo"
+              placeholder="anyo"
+              required
+            />
+            <mat-hint align="end">De 0 a 4 caracteres</mat-hint>
+            @if(oPeriodoForm?.get('anyo')?.hasError('required')){
+            <mat-error>
+              Debes introducir un año
+            </mat-error>}
+            @if(oPeriodoForm?.get('anyo')?.hasError('minlength')){
+            <mat-error >
+              Debes introducir un año más largo
+            </mat-error>
+          }
+        </mat-form-field>
+      </div>
+      @if(oPeriodoForm?.get('anyo')?.hasError('maxlength')){
+      <mat-error >
+              Debes introducir un año más corto
+      </mat-error>
+      }
+      
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Descripcion</mat-label>
+            <input
+              matInput
+              formControlName="descripcion"
+              placeholder="descripcion"
+              required
+            />
+            <mat-hint align="end">De 3 a 50 caracteres</mat-hint>
+
+            @if(oPeriodoForm?.get('descripcion')?.hasError('required')){
+            <mat-error >
+              Debes introducir una descripción
+            </mat-error>
+          }
+          @if(oPeriodoForm?.get('descripcion')?.hasError('minlength')){
+            <mat-error >
+              Debes introducir una descripción más larga
+            </mat-error>
+          }
+          @if(oPeriodoForm?.get('descripcion')?.hasError('maxlength')){
+            <mat-error >
+              Debes introducir una descripción más corta
+            </mat-error>
+          }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Comentarios</mat-label>
+            <input
+              matInput
+              formControlName="comentarios"
+              placeholder="comentarios"
+              required
+            />
+            @if(oPeriodoForm?.get('comentarios')?.hasError('required')){
+            <mat-error >
+              Debes introducir comentarios
+            </mat-error>
+          }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-checkbox formControlName="cerrado">Cerrado</mat-checkbox>
+        </div>
+
+        <div class="mt-4">
+          <button
+            class="btn btn-warning mt-4 mx-1"
+            [routerLink]="['/admin', 'periodo', 'plist']"
+          >
+            <i class="bi bi-list"></i>
+            Ir a listado de periodos
+          </button>
+
+          <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+            <i class="bi bi-x-lg"></i>
+            Reset
+          </button>
+
+          <button
+            class="btn btn-primary mt-4 mx-1"
+            type="submit"
+            [disabled]="!oPeriodoForm?.valid"
+          >
+            <i class="bi bi-save"></i>
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

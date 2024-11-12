@@ -29,6 +29,12 @@ import { TipoAsientoAdminViewRoutedComponent } from './component/tipoAsiento/tip
 import { TipoAsientoAdminCreateRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.create.routed/tipoAsiento.admin.create.routed.component';
 import { TipoAsientoAdminDeleteRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.delete.routed/tipoAsiento.admin.delete.routed.component';
 
+import { PeriodoAdminPlistRoutedComponent } from './component/periodo/periodo.admin.plist.routed/periodo.admin.plist.routed.component';
+import { PeriodoAdminEditRoutedComponent } from './component/periodo/periodo.admin.edit.routed/periodo.admin.edit.routed.component';
+import { PeriodoAdminViewRoutedComponent } from './component/periodo/periodo.admin.view.routed/periodo.admin.view.routed.component';
+import { PeriodoAdminCreateRoutedComponent } from './component/periodo/periodo.admin.create.routed/periodo.admin.create.routed.component';
+import { PeriodoAdminDeleteRoutedComponent } from './component/periodo/periodo.admin.delete.routed/periodo.admin.delete.component';
+
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
   { path: 'home', component: SharedHomeRoutedComponent },
@@ -62,5 +68,9 @@ export const routes: Routes = [
   { path: 'admin/tipoAsiento/create', component: TipoAsientoAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/tipoAsiento/delete/:id', component: TipoAsientoAdminDeleteRoutedComponent },
   
-
+  { path: 'admin/periodo/plist', component: PeriodoAdminPlistRoutedComponent },
+  { path: 'admin/periodo/edit/:id', component: PeriodoAdminEditRoutedComponent },
+  { path: 'admin/periodo/view/:id', component: PeriodoAdminViewRoutedComponent },
+  { path: 'admin/periodo/create', component: PeriodoAdminCreateRoutedComponent, pathMatch: 'full' },
+  { path: 'admin/periodo/delete/:id', component: PeriodoAdminDeleteRoutedComponent },
 ];
