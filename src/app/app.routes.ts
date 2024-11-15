@@ -14,6 +14,7 @@ import { TipoCuentaAdminEditRoutedComponent } from './component/tipoCuenta/tipoC
 import { TipoCuentaAdminViewRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.view.routed/tipoCuenta.admin.view.routed.component';
 import { TipoCuentaAdminCreateRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.create.routed/tipoCuenta.admin.create.routed.component';
 import { TipoCuentaAdminDeleteRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.delete.routed/tipoCuenta.admin.delete.component';
+import { TipoCuentaAdminPlistRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.plist.routed/tipoCuenta.admin.plist.routed.component';
 
 
 

@@ -49,27 +49,27 @@ export class TipoCuentaAdminCreateRoutedComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(255),
       ]),
-      credito_o_debito: new FormControl('', [
+      creditoOdebito: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[01]$'),
+        Validators.pattern(''),
       ]),
       comentarios: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
       ]),
-      real_o_nominal: new FormControl('', [
+      realOnominal: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[01]$'),
+        Validators.pattern(''),
       ]),
     });
   }
 
   updateForm() {
     this.oTipoCuentaForm?.controls['descripcion'].setValue('');
-    this.oTipoCuentaForm?.controls['credito_o_debito'].setValue('');
+    this.oTipoCuentaForm?.controls['creditoOdebito'].setValue('');
     this.oTipoCuentaForm?.controls['comentarios'].setValue('');
-    this.oTipoCuentaForm?.controls['real_o_nominal'].setValue('');
+    this.oTipoCuentaForm?.controls['realOnominal'].setValue('');
   }
 
   showModal(mensaje: string) {

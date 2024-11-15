@@ -6,8 +6,6 @@ import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, Subject } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
-import { IApunte } from '../../../model/apunte.interface';
-import { ApunteService } from '../../../service/apunte.service';
 import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 

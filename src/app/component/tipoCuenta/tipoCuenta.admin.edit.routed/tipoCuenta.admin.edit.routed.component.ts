@@ -51,12 +51,13 @@ export class TipoCuentaAdminEditRoutedComponent implements OnInit {
 
   createForm() {
     this.oTipoCuentaForm = new FormGroup({
+      id: new FormControl('', [Validators.required]),
       descripcion: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(255),
       ]),
-      credito_o_debito: new FormControl('', [
+      creditoOdebito: new FormControl('', [
         Validators.required,
         Validators.pattern('^[01]$'),
       ]),
@@ -65,7 +66,7 @@ export class TipoCuentaAdminEditRoutedComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(255),
       ]),
-      real_o_nominal: new FormControl('', [
+      realOnominal: new FormControl('', [
         Validators.required,
         Validators.pattern('^[01]$'),
       ]),
@@ -89,10 +90,10 @@ export class TipoCuentaAdminEditRoutedComponent implements OnInit {
 
   updateForm() {
     this.oTipoCuentaForm?.controls['id'].setValue(this.oTipoCuenta?.id);
-    this.oTipoCuentaForm?.controls['debe'].setValue(this.oTipoCuenta?.descripcion);
-    this.oTipoCuentaForm?.controls['haber'].setValue(this.oTipoCuenta?.credito_o_debito);
-    this.oTipoCuentaForm?.controls['descripcion'].setValue(this.oTipoCuenta?.comentarios);
-    this.oTipoCuentaForm?.controls['comentarios'].setValue(this.oTipoCuenta?.real_o_nominal);
+    this.oTipoCuentaForm?.controls['descripcion'].setValue(this.oTipoCuenta?.descripcion);
+    this.oTipoCuentaForm?.controls['creditoOdebito'].setValue(this.oTipoCuenta?.creditoOdebito);
+    this.oTipoCuentaForm?.controls['comentarios'].setValue(this.oTipoCuenta?.comentarios);
+    this.oTipoCuentaForm?.controls['realOnominal'].setValue(this.oTipoCuenta?.realOnominal);
   }
 
   get() {

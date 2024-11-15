@@ -115,8 +115,8 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('credito_o_debito')" class="bg-primary text-white">
-                Crédito o débito @if (strField === 'credito_o_debito') { @if (strDir === 'desc') {
+              <th (click)="sort('creditoOdebito')" class="bg-primary text-white">
+                Crédito o débito @if (strField === 'creditoOdebito') { @if (strDir === 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
@@ -128,8 +128,8 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('real_o_nominal')" class="bg-primary text-white">
-                Real o nominal @if (strField === 'real_o_nominal') { @if (strDir ===
+              <th (click)="sort('realOnominal')" class="bg-primary text-white">
+                Real o nominal @if (strField === 'realOnominal') { @if (strDir ===
                 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
@@ -146,9 +146,9 @@
             <tr>
               <td class="text-center">{{ tipoCuenta.id }}</td>
               <td class="text-start">{{ tipoCuenta.descripcion | trim : 10 }}</td>
-              <td class="text-start">{{ tipoCuenta.credito_o_debito }}</td>
+              <td class="text-start">{{ tipoCuenta.creditoOdebito }}</td>
               <td class="text-start">{{ tipoCuenta.comentarios | trim : 10 }}</td>
-              <td class="text-start">{{ tipoCuenta.real_o_nominal }}</td>
+              <td class="text-start">{{ tipoCuenta.realOnominal }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button

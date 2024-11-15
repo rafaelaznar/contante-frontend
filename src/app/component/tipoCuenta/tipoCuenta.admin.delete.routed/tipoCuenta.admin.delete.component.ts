@@ -6,14 +6,14 @@ import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-apunte-admin-delete-routed',
+  selector: 'app-tipoCuenta-admin-delete-routed',
   standalone: true,
   imports: [RouterModule],
   templateUrl: './tipoCuenta.admin.delete.component.html',
   styleUrl: './tipoCuenta.admin.delete.component.css',
 })
 export class TipoCuentaAdminDeleteRoutedComponent implements OnInit {
-  oTipoCuenta: ITipoCuenta | null = null;
+  oTipoCuenta: ITipoCuenta
   strMessage: string = '';
   myModal: any;
 
@@ -21,7 +21,9 @@ export class TipoCuentaAdminDeleteRoutedComponent implements OnInit {
     private oTipoCuentaService: TipoCuentaService,
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router
-  ) {}
+  ) {
+    this.oTipoCuenta = {} as ITipoCuenta;
+  }
 
   ngOnInit(): void {
     let id = this.oActivatedRoute.snapshot.params['id'];
@@ -47,7 +49,7 @@ export class TipoCuentaAdminDeleteRoutedComponent implements OnInit {
     this.oTipoCuentaService.delete(this.oTipoCuenta!.id).subscribe({
       next: (data) => {
         this.showModal(
-          'ATipoCuenta con id ' + this.oTipoCuenta!.id + ' ha sido borrado'
+          'TipoCuenta con id ' + this.oTipoCuenta!.id + ' ha sido borrado'
         );
       },
       error: (error) => {
