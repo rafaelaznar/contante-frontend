@@ -18,6 +18,7 @@ export class UsuarioAdminViewRoutedComponent implements OnInit {
     apellido1: '',
     apellido2: '',
     email: '',
+    id_tipousuario: 0,
   };
   constructor(private oActivatedRoute: ActivatedRoute, private oUsuarioService: UsuarioService) { }
 

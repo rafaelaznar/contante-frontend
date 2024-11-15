@@ -5,15 +5,18 @@ import { IApunte } from '../../../model/apunte.interface';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CalendarModule } from 'primeng/calendar';
+import { CALENDAR_ES } from '../../../environment/environment';
+import { PrimeNGConfig } from 'primeng/api';
 
 
 declare let bootstrap: any;
-
 @Component({
   selector: 'app-apunte-admin-edit-routed',
   templateUrl: './apunte.admin.edit.routed.component.html',
@@ -23,20 +26,24 @@ declare let bootstrap: any;
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule,
+    CalendarModule
   ],
 })
 export class ApunteAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oApunteForm: FormGroup | undefined = undefined;
-  oApunte: IApunte | null = null;
+  oApunte: IApunte = {} as IApunte;
   message: string = '';
   myModal: any;
+
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oApunteService: ApunteService,
-    private oRouter: Router
+    private oRouter: Router,
+    private oPrimeconfig: PrimeNGConfig
   ) {
     this.oActivatedRoute.params.subscribe((params) => {
       this.id = params['id'];
@@ -47,6 +54,7 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
     this.createForm();
     this.get();
     this.oApunteForm?.markAllAsTouched();
+    this.oPrimeconfig.setTranslation(CALENDAR_ES);
   }
 
   createForm() {
@@ -70,11 +78,9 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(255),
       ]),
-      momentstamp: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
-        ),
+      momentstamp: new FormControl(new Date(), [
+        Validators.required
+      ,
       ]),
       orden: new FormControl('', [
         Validators.required,
@@ -111,12 +117,13 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
   }
 
   updateForm() {
+    console.log(this.oApunte);
     this.oApunteForm?.controls['id'].setValue(this.oApunte?.id);
     this.oApunteForm?.controls['debe'].setValue(this.oApunte?.debe);
     this.oApunteForm?.controls['haber'].setValue(this.oApunte?.haber);
     this.oApunteForm?.controls['descripcion'].setValue(this.oApunte?.descripcion);
     this.oApunteForm?.controls['comentarios'].setValue(this.oApunte?.comentarios);
-    this.oApunteForm?.controls['momentstamp'].setValue(this.oApunte?.momentstamp);
+    this.oApunteForm?.controls['momentstamp'].setValue(new Date(this.oApunte?.momentstamp));
     this.oApunteForm?.controls['orden'].setValue(this.oApunte?.orden);
     this.oApunteForm?.controls['id_asiento'].setValue(this.oApunte?.id_asiento);
     this.oApunteForm?.controls['id_subcuenta'].setValue(this.oApunte?.id_subcuenta);

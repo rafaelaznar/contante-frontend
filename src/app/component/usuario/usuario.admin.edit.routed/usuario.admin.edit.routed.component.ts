@@ -30,6 +30,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   oUsuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
   message: string = '';
+
   myModal: any;
 
   constructor(
@@ -63,6 +64,10 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
       ]),
       apellido2: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
+      id_tipousuario: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+      ]),
     });
   }
 
@@ -85,6 +90,9 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     this.oUsuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
     this.oUsuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
     this.oUsuarioForm?.controls['email'].setValue(this.oUsuario?.email);
+    this.oUsuarioForm?.controls['id_tipousuario'].setValue(
+      this.oUsuario?.id_tipousuario
+    );
   }
 
   get() {

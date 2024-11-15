@@ -96,6 +96,8 @@
           Mostrando {{ oPage?.numberOfElements | number : "1.0-0" }} de
           {{ oPage?.totalElements | number : "1.0-0" }}
         </h5>
+
+
       </div>
 
       <div class="d-flex flex-column">
@@ -137,6 +139,15 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
+
+              <th (click)="sort('id_tipousuario')" class="bg-primary text-white">
+                Tipo de usuario @if (strField === 'id_tipousuario') { @if (strDir === 'desc') {
+                <i class="bi bi-caret-down-fill"></i>
+                } @else {
+                <i class="bi bi-caret-up-fill"></i>} }
+              </th>
+
+
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -147,10 +158,11 @@
               <td class="text-center">{{ usuario.id }}</td>
               <td class="text-start">{{ usuario.nombre | trim : 10 }}</td>
               <td class="text-start">{{ usuario.apellido1 }}</td>
-              <td class="text-start">{{ usuario.apellido2 }}</td>
+              <td class="text-start">{{ usuario.apellido2 }}</td>                            
               <td class="text-start" style="font-size: small">
                 {{ usuario.email }}
               </td>
+              <td class="text-start">{{ usuario.id_tipousuario }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button

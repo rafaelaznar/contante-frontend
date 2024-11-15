@@ -1,9 +1,9 @@
 <div class="container mt-5 d-flex align-items-center justify-content-center">
   <div class="row">
-    <div class="col text-center">
+    <div class="col-12 text-center">
       <h2 class="my-2">
         <i class="bi bi-pencil"></i>
-        Creación de Apunte
+        Edición de Apunte
         <i class="bi bi-newspaper"></i>
       </h2>
       <form [formGroup]="oApunteForm!" (ngSubmit)="onSubmit()" novalidate>
@@ -17,32 +17,36 @@
         <div class="row mt-4">
           <mat-form-field>
             <mat-label>Debe</mat-label>
-            <input
-              matInput
-              formControlName="debe"
-              placeholder="Cuanto debe"
-            />
-            <mat-hint align="start">De ser un numero decimal 4 enteros max y 4 decimales max y el punto como separador</mat-hint>
+            <input matInput formControlName="debe" placeholder="Cuanto debe" />
+            <mat-hint align="start"
+              >De ser un numero decimal 4 enteros max y 4 decimales max y el
+              punto como separador</mat-hint
+            >
             @if (oApunteForm?.get('debe')?.hasError('required')){
             <mat-error> El campo debe es obligatorio </mat-error>
             } @if (oApunteForm?.get('debe')?.hasError('pattern')){
-            <mat-error> El debe debe ser un numero decimal 4 enteros max y  4 decimales max y el punto como separador </mat-error>
+            <mat-error>
+              El debe debe ser un numero decimal 4 enteros max y 4 decimales max
+              y el punto como separador
+            </mat-error>
             }
           </mat-form-field>
         </div>
         <div class="row mt-4">
           <mat-form-field>
             <mat-label>Haber</mat-label>
-            <input
-              matInput
-              formControlName="haber"
-              placeholder="Cuanto hay"
-            />
-            <mat-hint align="start">De ser un numero decimal 4 enteros max y 4 decimales max y el punto como separador</mat-hint>
+            <input matInput formControlName="haber" placeholder="Cuanto hay" />
+            <mat-hint align="start"
+              >De ser un numero decimal 4 enteros max y 4 decimales max y el
+              punto como separador</mat-hint
+            >
             @if (oApunteForm?.get('haber')?.hasError('required')){
             <mat-error> El campo debe es obligatorio </mat-error>
             } @if (oApunteForm?.get('haber')?.hasError('pattern')){
-            <mat-error> El debe debe ser un numero decimal 4 enteros max y  4 decimales max y el punto como separador </mat-error>
+            <mat-error>
+              El debe debe ser un numero decimal 4 enteros max y 4 decimales max
+              y el punto como separador
+            </mat-error>
             }
           </mat-form-field>
         </div>
@@ -82,22 +86,25 @@
             }
           </mat-form-field>
         </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Momentstamp</mat-label>
-            <input
-              matInput
-              formControlName="momentstamp"
-              placeholder="Escribe momentstamp"
-            />
-            <mat-hint align="start">Ejemplo: 2024-11-06 13:00:00</mat-hint>
-            @if (oApunteForm?.get('momentstamp')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oApunteForm?.get('momentstamp')?.hasError('pattern')){
-            <mat-error> El debe debe tener formato: 2024-11-06 13:00:00 </mat-error>
-            }
-          </mat-form-field>
-        </div>
+
+        <div class="row mb-4">
+          <label for="momentstamp" class="form-label">Momentstamp</label>
+          <div class="col-12">
+            <p-calendar class=" d-block"
+              formControlName="momentstamp"              
+              inputId="spanish"
+              [showIcon]="true"
+              [showTime]="true"
+              [showSeconds]="true"
+              [showButtonBar]="true"
+            ></p-calendar>
+            @if (oApunteForm?.get('momentstamp')?.hasError('required')) {
+              <mat-error  >El campo debe es obligatorio</mat-error> 
+              } 
+          </div>
+                 </div>
+
+
         <div class="row mt-4">
           <mat-form-field>
             <mat-label>Orden</mat-label>
@@ -116,7 +123,7 @@
         </div>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Id  Asiento</mat-label>
+            <mat-label>Id Asiento</mat-label>
             <input
               matInput
               formControlName="id_asiento"
@@ -129,7 +136,8 @@
             <mat-error> Debe ser un numero entero </mat-error>
             }
           </mat-form-field>
-        </div><div class="row mt-4">
+        </div>
+        <div class="row mt-4">
           <mat-form-field>
             <mat-label>Id Subcuenta</mat-label>
             <input
@@ -144,7 +152,8 @@
             <mat-error> Debe ser un numero entero </mat-error>
             }
           </mat-form-field>
-        </div><div class="row mt-4">
+        </div>
+        <div class="row mt-4">
           <mat-form-field>
             <mat-label>Id Tipo Apunte</mat-label>
             <input
@@ -160,7 +169,6 @@
             }
           </mat-form-field>
         </div>
-
 
         <br />
         <button
@@ -181,7 +189,7 @@
           type="submit"
           [disabled]="!oApunteForm?.valid"
         >
-        <i class="bi bi-floppy"></i>
+          <i class="bi bi-floppy"></i>
           Guardar
         </button>
       </form>

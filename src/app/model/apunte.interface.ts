@@ -5,7 +5,7 @@ export interface IApunte {
      haber : number;
      descripcion : string;
      comentarios : string; 
-     momentstamp:   string;
+     momentstamp:   Date;
      orden:  number ;
      id_asiento : number ;
      id_subcuenta : number ;

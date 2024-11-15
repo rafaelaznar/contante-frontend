@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IApunte } from '../../../model/apunte.interface';
 import { ApunteService } from '../../../service/apunte.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-apunte.admin.view.routed',
   templateUrl: './apunte.admin.view.routed.component.html',
   styleUrls: ['./apunte.admin.view.routed.component.css'],
+  standalone: true,
+  imports: [CommonModule]
 })
 export class ApunteAdminViewRoutedComponent implements OnInit {
   id: number = 0;
@@ -17,7 +20,7 @@ export class ApunteAdminViewRoutedComponent implements OnInit {
     haber: 0,
     descripcion: '',
     comentarios: '',
-    momentstamp: '',
+    momentstamp: new Date(),
     orden: 0,
     id_asiento: 0,
     id_subcuenta: 0,

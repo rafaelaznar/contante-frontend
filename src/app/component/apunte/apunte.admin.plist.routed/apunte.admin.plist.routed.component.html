@@ -181,8 +181,8 @@
               <td class="text-start">{{ apunte.debe }}</td>
               <td class="text-start">{{ apunte.haber }}</td>
               <td class="text-start">{{ apunte.descripcion | trim : 10 }}</td>
-              <td class="text-start">{{ apunte.comentarios | trim : 10 }}</td>
-              <td class="text-start">{{ apunte.momentstamp | trim : 10 }}</td>
+              <td class="text-start ">{{ apunte.comentarios | trim : 10 }}</td>
+              <td class="text-start">{{ apunte.momentstamp | date: "dd/MM/yyyy ..."  }}</td>
               <td class="text-start">{{ apunte.orden }}</td>
               <td class="text-start">{{ apunte.id_asiento }}</td>
               <td class="text-start">{{ apunte.id_subcuenta }}</td>

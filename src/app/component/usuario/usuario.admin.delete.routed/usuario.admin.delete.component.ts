@@ -56,12 +56,9 @@ export class UsuarioAdminDeleteRoutedComponent implements OnInit {
     });
   }
 
-  cancel(): void {
-    this.oRouter.navigate(['/admin/usuario/plist']);
-  }
-
   hideModal = () => {
     this.myModal.hide();
     this.oRouter.navigate(['/admin/usuario/plist']);
-  };
+  }
+  
 }

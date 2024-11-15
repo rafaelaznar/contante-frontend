@@ -1,0 +1,80 @@
+<div class="row justify-content-center m-3">
+  <div class="col-lg-7 col-md-10 col-sm-12">
+    <h1 class="my-5 text-center">
+      <i class="bi bi-card-list"></i>
+      Ver asiento
+      <i class="bi bi-journal-text"></i>    </h1>
+    <br />
+    <table class="table table-striped table-bordered my-5 text-center">
+      <tbody>
+        <tr class="text-center">
+          <th scope="row" class="bg-danger text-white text-end pe-5">Id</th>
+          <td class="text-start ps-5">{{ oAsiento.id }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Descripcion
+          </th>
+          <td class="text-start ps-5">{{ oAsiento.descripcion }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Comentarios
+          </th>
+          <td class="text-start ps-5">{{ oAsiento.comentarios }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Inventariable
+          </th>
+          <td class="text-start ps-5">{{ oAsiento.inventariable }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Momentstamp
+          </th>
+          <td class="text-start ps-5">{{ oAsiento.momentstamp| date: "dd/MM/yyyy hh:mm:ss" }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id Tipo de Asiento
+          </th>
+          <td class="text-start ps-5">{{ oAsiento.id_tipoasiento }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id de Usuario
+          </th>
+          <td class="text-start ps-5">{{ oAsiento.id_usuario }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id de Periodo 	
+          </th>
+          <td class="text-start ps-5">{{ oAsiento.id_periodo }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-warning mt-4 mx-1" href="admin/asiento/plist">
+      <i class="bi bi-list"></i>
+      Ir a listado de asientos
+    </a>
+    <a
+      class="btn btn-primary mt-4 mx-1"
+      href="admin/asiento/edit/{{ oAsiento.id }}"
+    >
+      <i class="bi bi-pencil"></i>
+      Editar
+    </a>
+    <a
+      class="btn btn-danger mt-4 mx-1"
+      href="admin/asiento/delete/{{ oAsiento.id }}"
+    >
+      <i class="bi bi-trash"></i>
+      Borrar
+    </a>
+  </div>
+</div>

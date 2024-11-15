@@ -1,0 +1,117 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-2">
+        <i class="bi bi-pencil"></i>
+        Edición Tipo de Apunte
+        <i class="bi bi-newspaper"></i>
+      </h2>
+      <form [formGroup]="oTipoApunteForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput formControlName="id" placeholder="Id" readonly [value]="oTipoApunte?.id" />
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <input
+              matInput
+              formControlName="descripcion"
+              placeholder="Escribe una descripción"
+            />
+            <mat-hint align="start">De 3 caracteres a 255 caracteres</mat-hint>
+            @if (oTipoApunteForm?.get('descripcion')?.hasError('required')){
+            <mat-error> El campo nombre es obligatorio </mat-error>
+            } @if (oTipoApunteForm?.get('descripcion')?.hasError('minlength')){
+            <mat-error> El nombre debe ser mas largo </mat-error>
+            } @if (oTipoApunteForm?.get('descripcion')?.hasError('maxlength')){
+            <mat-error> El nombre debe ser mas corto </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Comentarios</mat-label>
+            <input
+              matInput
+              formControlName="comentarios"
+              placeholder="Escribe comentarios"
+            />
+            <mat-hint align="start">De 3 caracteres a 255 caracteres</mat-hint>
+            @if (oTipoApunteForm?.get('comentarios')?.hasError('required')){
+            <mat-error> El campo nombre es obligatorio </mat-error>
+            } @if (oTipoApunteForm?.get('comentarios')?.hasError('minlength')){
+            <mat-error> El nombre debe ser mas largo </mat-error>
+            } @if (oTipoApunteForm?.get('comentarios')?.hasError('maxlength')){
+            <mat-error> El nombre debe ser mas corto </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        
+
+        <br />
+        <button
+          class="btn btn-warning mt-4 mx-1"
+          [routerLink]="['/admin', 'tipoapunte', 'plist']"
+        >
+          <i class="bi bi-list"></i>
+          Ir a listado de Tipo de Apuntes
+        </button>
+
+        <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+          <i class="bi bi-x-lg"></i>
+          Reset
+        </button>
+
+        <button
+          class="btn btn-primary mt-4 mx-1"
+          type="submit"
+          [disabled]="!oTipoApunteForm?.valid"
+        >
+        <i class="bi bi-floppy"></i>
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

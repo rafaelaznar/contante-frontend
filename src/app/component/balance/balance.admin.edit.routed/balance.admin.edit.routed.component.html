@@ -1,0 +1,115 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-5">
+        <i class="bi bi-pencil"></i>
+        Edición de Balance
+        <i class="bi bi-journal-check"></i>
+      </h2>
+
+      <form [formGroup]="oBalanceForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput formControlName="id" placeholder="Id" readonly />
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>titulo</mat-label>
+            <input matInput formControlName="titulo" placeholder="titulo" />
+            <mat-hint align="end">De 3 a 255 caracteres</mat-hint>
+            @if (oBalanceForm?.get('titulo')?.hasError('required')) {
+            <mat-error>Debes introducir un titulo</mat-error>
+            } @if (oBalanceForm?.get('titulo')?.hasError('minlength')) {
+            <mat-error>Debes introducir un titulo más largo</mat-error>
+            } @if (oBalanceForm?.get('titulo')?.hasError('maxlength')) {
+            <mat-error>Debes introducir un titulo más corto</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <input
+              matInput
+              formControlName="descripcion"
+              placeholder="descripcion"
+            />
+            <mat-hint align="end">De 3 a 255 caracteres</mat-hint>
+            @if (oBalanceForm?.get('descripcion')?.hasError('required')) {
+            <mat-error>Debes introducir una descripcion</mat-error>
+            } @if (oBalanceForm?.get('descripcion')?.hasError('minlength')) {
+            <mat-error>Debes introducir un descripcion más larga</mat-error>
+            } @if (oBalanceForm?.get('descripcion')?.hasError('maxlength')) {
+            <mat-error>Debes introducir un descripcion más corta</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="mt-4">
+          <button
+            class="btn btn-warning mt-4 mx-1"
+            [routerLink]="['/admin', 'balance', 'plist']"
+          >
+            <i class="bi bi-list"></i>
+            Ir a listado de Balances
+          </button>
+
+          <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+            <i class="bi bi-x-lg"></i>
+            Reset
+          </button>
+
+          <button
+            class="btn btn-primary mt-4 mx-1"
+            type="submit"
+            [disabled]="!oBalanceForm?.valid"
+          >
+            <i class="bi bi-save"></i>
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -24,14 +24,13 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
   nRpp: number = 10;
   //
   strField: string = '';
-  strDir: string = 'desc';
+  strDir: string = '';
   //
   strFiltro: string = '';
   //
   arrBotonera: string[] = [];
   //
   private debounceSubject = new Subject<string>();
-
   constructor(
     private oUsuarioService: UsuarioService,
     private oBotoneraService: BotoneraService,

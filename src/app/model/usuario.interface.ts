@@ -4,6 +4,7 @@ export interface IUsuario {
   apellido1: string;
   apellido2: string;
   email: string;
+  id_tipousuario: number;
 }
 
 

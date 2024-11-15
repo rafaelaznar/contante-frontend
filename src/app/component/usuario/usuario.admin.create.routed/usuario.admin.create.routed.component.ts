@@ -36,6 +36,8 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   myModal: any;
 
+  form: FormGroup = new FormGroup({});
+
   constructor(
     private oUsuarioService: UsuarioService,
     private oRouter: Router
@@ -60,6 +62,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       ]),
       apellido2: new FormControl(''),
       email: new FormControl('', [Validators.required, Validators.email]),
+      id_tipousuario: new FormControl('', [Validators.required, Validators.min(1)]),
     });
   }
 
@@ -68,6 +71,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
     this.oUsuarioForm?.controls['apellido1'].setValue('');
     this.oUsuarioForm?.controls['apellido2'].setValue('');
     this.oUsuarioForm?.controls['email'].setValue('');
+    this.oUsuarioForm?.controls['id_tipousuario'].setValue('');
   }
 
   showModal(mensaje: string) {
@@ -86,7 +90,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
   hideModal = () => {
     this.myModal.hide();
     this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
-  };
+  }
 
   onSubmit() {
     if (this.oUsuarioForm?.invalid) {
@@ -105,4 +109,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       });
     }
   }
+
+
+
 }

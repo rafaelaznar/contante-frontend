@@ -11,6 +11,9 @@ import {
 } from '@angular/forms';
 import { IApunte } from '../../../model/apunte.interface';
 import { ApunteService } from '../../../service/apunte.service';
+import { CalendarModule } from 'primeng/calendar';
+import { CALENDAR_ES } from '../../../environment/environment';
+import { PrimeNGConfig } from 'primeng/api';
 
 declare let bootstrap: any;
 
@@ -24,6 +27,7 @@ declare let bootstrap: any;
     MatSelectModule,
     ReactiveFormsModule,
     RouterModule,
+    CalendarModule
   ],
   styleUrls: ['./apunte.admin.create.routed.component.css'],
 })
@@ -35,11 +39,12 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
 
   myModal: any;
 
-  constructor(private oApunteService: ApunteService, private oRouter: Router) {}
+  constructor(private oApunteService: ApunteService, private oRouter: Router,private oPrimeconfig: PrimeNGConfig) {}
 
   ngOnInit() {
     this.createForm();
     this.oApunteForm?.markAllAsTouched();
+    this.oPrimeconfig.setTranslation(CALENDAR_ES);
   }
 
   createForm() {
@@ -63,10 +68,7 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
         Validators.maxLength(255),
       ]),
       momentstamp: new FormControl('', [
-        Validators.required,
-        Validators.pattern(
-          '^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
-        ),
+        Validators.required
       ]),
       orden: new FormControl('', [
         Validators.required,
@@ -97,6 +99,7 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
     this.oApunteForm?.controls['id_asiento'].setValue('');
     this.oApunteForm?.controls['id_subcuenta'].setValue('');
     this.oApunteForm?.controls['id_tipoapunte'].setValue('');
+    console.log(this.oApunte);
   }
 
   showModal(mensaje: string) {
