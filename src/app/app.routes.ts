@@ -45,7 +45,7 @@ export const routes: Routes = [
   { path: 'admin/usuario/create', component: UsuarioAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/usuario/delete/:id', component: UsuarioAdminDeleteRoutedComponent },
 
-  { path: 'admin/asiento/plist', component: AsientoAdminPlistRoutedComponent },
+    { path: 'admin/asiento/plist', component: AsientoAdminPlistRoutedComponent },
   { path: 'admin/asiento/edit/:id', component: AsientoAdminEditRoutedComponent },
   { path: 'admin/asiento/view/:id', component: AsientoAdminViewRoutedComponent },
   { path: 'admin/asiento/create', component: AsientoAdminCreateRoutedComponent, pathMatch: 'full' },
@@ -62,8 +62,8 @@ export const routes: Routes = [
   { path: 'admin/subcuenta/view/:id', component: SubcuentaAdminViewRoutedComponent },
   { path: 'admin/subcuenta/create', component: SubcuentaAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/subcuenta/delete/:id', component: SubcuentaAdminDeleteRoutedComponent },
-
-   { path: 'admin/tipoAsiento/plist', component: TipoAsientoAdminPlistRoutedComponent },
+  
+  { path: 'admin/tipoAsiento/plist', component: TipoAsientoAdminPlistRoutedComponent },
   { path: 'admin/tipoAsiento/edit/:id', component: TipoAsientoAdminEditRoutedComponent },
   { path: 'admin/tipoAsiento/view/:id', component: TipoAsientoAdminViewRoutedComponent },
   { path: 'admin/tipoAsiento/create', component: TipoAsientoAdminCreateRoutedComponent, pathMatch: 'full' },
