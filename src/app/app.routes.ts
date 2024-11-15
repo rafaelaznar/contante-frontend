@@ -62,8 +62,8 @@ export const routes: Routes = [
   { path: 'admin/subcuenta/view/:id', component: SubcuentaAdminViewRoutedComponent },
   { path: 'admin/subcuenta/create', component: SubcuentaAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/subcuenta/delete/:id', component: SubcuentaAdminDeleteRoutedComponent },
-  
-  { path: 'admin/tipoAsiento/plist', component: TipoAsientoAdminPlistRoutedComponent },
+
+   { path: 'admin/tipoAsiento/plist', component: TipoAsientoAdminPlistRoutedComponent },
   { path: 'admin/tipoAsiento/edit/:id', component: TipoAsientoAdminEditRoutedComponent },
   { path: 'admin/tipoAsiento/view/:id', component: TipoAsientoAdminViewRoutedComponent },
   { path: 'admin/tipoAsiento/create', component: TipoAsientoAdminCreateRoutedComponent, pathMatch: 'full' },
