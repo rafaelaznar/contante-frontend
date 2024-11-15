@@ -69,7 +69,6 @@ export const routes: Routes = [
   { path: 'admin/tipoAsiento/view/:id', component: TipoAsientoAdminViewRoutedComponent },
   { path: 'admin/tipoAsiento/create', component: TipoAsientoAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/tipoAsiento/delete/:id', component: TipoAsientoAdminDeleteRoutedComponent },
-  
   { path: 'admin/periodo/plist', component: PeriodoAdminPlistRoutedComponent },
   { path: 'admin/periodo/edit/:id', component: PeriodoAdminEditRoutedComponent },
   { path: 'admin/periodo/view/:id', component: PeriodoAdminViewRoutedComponent },
