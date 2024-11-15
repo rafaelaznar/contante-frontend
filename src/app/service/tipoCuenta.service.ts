@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class TipoCuentaService {
 
-serverURL: string = serverURL + '/apunte';
+serverURL: string = serverURL + '/tipoCuenta';
 
   constructor(private oHttp: HttpClient) {}
 
@@ -67,7 +67,7 @@ serverURL: string = serverURL + '/apunte';
   getOne(id: number): Observable<ITipoCuenta> {
     let URL: string = '';
     URL += 'http://localhost:8085';
-    URL += '/apunte';
+    URL += '/tipoCuenta';
     URL += '/' + id;
     return this.oHttp.get<ITipoCuenta>(URL);
   }

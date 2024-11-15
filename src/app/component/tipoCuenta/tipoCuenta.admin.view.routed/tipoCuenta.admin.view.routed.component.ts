@@ -14,9 +14,9 @@ export class TipoCuentaAdminViewRoutedComponent implements OnInit {
   oTipoCuenta: ITipoCuenta = {
     id: 0,
     descripcion: '',
-    credito_o_debito: 0,
+    creditoOdebito: 0,
     comentarios: '',
-    real_o_nominal: 0,
+    realOnominal: 0,
   };
   constructor(
     private oActivatedRoute: ActivatedRoute,

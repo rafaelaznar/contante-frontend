@@ -3,13 +3,13 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-file-earmark-spreadsheet"></i>
-        Lista de Apuntes
+        Lista de tipoCuentas
         <i class="bi bi-newspaper"></i>
       </h2>
-      <a href="admin/apunte/create"
+      <a href="admin/tipoCuenta/create"
         ><button class="btn btn-primary my-2 mx-2">
           <i class="bi bi-plus-square"></i>
-          Crear nuevo apunte
+          Crear nuevo tipoCuenta
         </button></a
       >
 
@@ -109,21 +109,14 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('debe')" class="bg-primary text-white">
-                Debe @if (strField === 'debe') { @if (strDir === 'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
-              <th (click)="sort('haber')" class="bg-primary text-white">
-                Haber @if (strField === 'haber') { @if (strDir === 'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
               <th (click)="sort('descripcion')" class="bg-primary text-white">
-                Descripción @if (strField === 'descripcion') { @if (strDir ===
-                'desc') {
+                Descripcion @if (strField === 'descripcion') { @if (strDir === 'desc') {
+                <i class="bi bi-caret-down-fill"></i>
+                } @else {
+                <i class="bi bi-caret-up-fill"></i>} }
+              </th>
+              <th (click)="sort('creditoOdebito')" class="bg-primary text-white">
+                Crédito o débito @if (strField === 'creditoOdebito') { @if (strDir === 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
@@ -135,78 +128,47 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('momentstamp')" class="bg-primary text-white">
-                Momentstamp @if (strField === 'momentstamp') { @if (strDir ===
+              <th (click)="sort('realOnominal')" class="bg-primary text-white">
+                Real o nominal @if (strField === 'realOnominal') { @if (strDir ===
                 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('orden')" class="bg-primary text-white">
-                Orden @if (strField === 'orden') { @if (strDir === 'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
-              <th (click)="sort('id_asiento')" class="bg-primary text-white">
-                Id Asiento @if (strField === 'id_asiento') { @if (strDir ===
-                'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
-              <th (click)="sort('id_subcuenta')" class="bg-primary text-white">
-                Id Subcuenta @if (strField === 'id_subcuenta') { @if (strDir ===
-                'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
-              <th (click)="sort('id_tipoapunte')" class="bg-primary text-white">
-                Id Tipo Apunte @if (strField === 'id_tipoapunte') { @if (strDir
-                === 'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
+              
 
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            @for (apunte of oPage?.content; track apunte.id) {
+            @for (tipoCuenta of oPage?.content; track tipoCuenta.id) {
             <tr>
-              <td class="text-center">{{ apunte.id }}</td>
-              <td class="text-start">{{ apunte.debe }}</td>
-              <td class="text-start">{{ apunte.haber }}</td>
-              <td class="text-start">{{ apunte.descripcion | trim : 10 }}</td>
-              <td class="text-start">{{ apunte.comentarios | trim : 10 }}</td>
-              <td class="text-start">{{ apunte.momentstamp | trim : 10 }}</td>
-              <td class="text-start">{{ apunte.orden }}</td>
-              <td class="text-start">{{ apunte.id_asiento }}</td>
-              <td class="text-start">{{ apunte.id_subcuenta }}</td>
-              <td class="text-start">{{ apunte.id_tipoapunte }}</td>
+              <td class="text-center">{{ tipoCuenta.id }}</td>
+              <td class="text-start">{{ tipoCuenta.descripcion | trim : 10 }}</td>
+              <td class="text-start">{{ tipoCuenta.creditoOdebito }}</td>
+              <td class="text-start">{{ tipoCuenta.comentarios | trim : 10 }}</td>
+              <td class="text-start">{{ tipoCuenta.realOnominal }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button
                     type="button"
                     class="btn btn-success"
-                    (click)="view(apunte)"
+                    (click)="view(tipoCuenta)"
                   >
                     <i class="bi bi-eye icon-15"></i>
                   </button>
                   <button
                     type="button"
                     class="btn btn-warning icon-15"
-                    (click)="edit(apunte)"
+                    (click)="edit(tipoCuenta)"
                   >
                     <i class="bi bi-pen"></i>
                   </button>
                   <button
                     type="button"
                     class="btn btn-danger icon-15"
-                    (click)="remove(apunte)"
+                    (click)="remove(tipoCuenta)"
                   >
                     <i class="bi bi-trash"></i>
                   </button>
@@ -215,7 +177,7 @@
             </tr>
             } @empty {
             <tr>
-              <td colspan="11">No hay apuntes</td>
+              <td colspan="11">No hay tipoCuentas</td>
             </tr>
             }
           </tbody>
