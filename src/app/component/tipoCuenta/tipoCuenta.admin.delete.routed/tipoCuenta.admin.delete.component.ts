@@ -12,7 +12,7 @@ declare let bootstrap: any;
   templateUrl: './tipoCuenta.admin.delete.component.html',
   styleUrl: './tipoCuenta.admin.delete.component.css',
 })
-export class ApunteAdminDeleteRoutedComponent implements OnInit {
+export class TipoCuentaAdminDeleteRoutedComponent implements OnInit {
   oTipoCuenta: ITipoCuenta | null = null;
   strMessage: string = '';
   myModal: any;

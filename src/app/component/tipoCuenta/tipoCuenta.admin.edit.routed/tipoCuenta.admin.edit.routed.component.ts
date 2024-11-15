@@ -26,7 +26,7 @@ declare let bootstrap: any;
     RouterModule,
   ],
 })
-export class ApunteAdminEditRoutedComponent implements OnInit {
+export class TipoCuentaAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oTipoCuentaForm: FormGroup | undefined = undefined;
   oTipoCuenta: ITipoCuenta | null = null;
