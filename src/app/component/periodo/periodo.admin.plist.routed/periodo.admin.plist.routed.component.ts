@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, Subject } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
-import { TrimPipe } from '../../../pipe/trim.pipe';
 import { PeriodoService } from '../../../service/periodo.service';
 
 @Component({
