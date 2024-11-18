@@ -32,6 +32,7 @@ export class TipoCuentaAdminCreateRoutedComponent implements OnInit {
   oTipoCuentaForm: FormGroup | undefined = undefined;
   oTipoCuenta: ITipoCuenta | null = null;
   strMessage: string = '';
+  
 
   myModal: any;
 
