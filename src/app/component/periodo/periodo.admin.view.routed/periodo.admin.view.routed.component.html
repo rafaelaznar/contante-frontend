@@ -34,8 +34,17 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             cerrado
           </th>
-          <td class="text-start ps-5">{{ oPeriodo.cerrado }}</td>
-        </tr>
+          <td class="text-start ps-5">
+            @if (oPeriodo.cerrado) 
+            {
+              <i class="bi bi-check"></i>
+            } 
+            @else 
+            {
+              <i class="bi bi-x"></i>
+            }
+          </td>
+        </tr>       
       </tbody>
     </table>
   </div>
