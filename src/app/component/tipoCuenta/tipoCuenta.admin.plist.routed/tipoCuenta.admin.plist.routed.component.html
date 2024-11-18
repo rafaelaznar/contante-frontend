@@ -3,13 +3,13 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-list"></i>
-        Listado de Tipo de Apuntes
-        <i class="bi bi-file-text"></i>
+        Lista de tipoCuentas
+        <i class="bi bi-credit-card-fill"></i>
       </h2>
-      <a href="admin/tipoapunte/create"
+      <a href="admin/tipoCuenta/create"
         ><button class="btn btn-primary my-2 mx-2">
           <i class="bi bi-plus-square"></i>
-          Crear nuevo tipo de apunte
+          Crear nuevo tipoCuenta
         </button></a
       >
 
@@ -110,8 +110,13 @@
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
               <th (click)="sort('descripcion')" class="bg-primary text-white">
-                Descripción @if (strField === 'descripcion') { @if (strDir ===
-                'desc') {
+                Descripcion @if (strField === 'descripcion') { @if (strDir === 'desc') {
+                <i class="bi bi-caret-down-fill"></i>
+                } @else {
+                <i class="bi bi-caret-up-fill"></i>} }
+              </th>
+              <th (click)="sort('creditoOdebito')" class="bg-primary text-white">
+                Crédito o débito @if (strField === 'creditoOdebito') { @if (strDir === 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
@@ -123,38 +128,47 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
+              <th (click)="sort('realOnominal')" class="bg-primary text-white">
+                Real o nominal @if (strField === 'realOnominal') { @if (strDir ===
+                'desc') {
+                <i class="bi bi-caret-down-fill"></i>
+                } @else {
+                <i class="bi bi-caret-up-fill"></i>} }
+              </th>
               
+
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            @for (tipoapunte of oPage?.content; track tipoapunte.id) {
+            @for (tipoCuenta of oPage?.content; track tipoCuenta.id) {
             <tr>
-              <td class="text-center">{{ tipoapunte.id }}</td>
-              <td class="text-start">{{ tipoapunte.descripcion | trim : 10 }}</td>
-              <td class="text-start">{{ tipoapunte.comentarios | trim : 10 }}</td>
-
+              <td class="text-center">{{ tipoCuenta.id }}</td>
+              <td class="text-start">{{ tipoCuenta.descripcion | trim : 10 }}</td>
+              <td class="text-start">{{ tipoCuenta.creditoOdebito }}</td>
+              <td class="text-start">{{ tipoCuenta.comentarios | trim : 10 }}</td>
+              <td class="text-start">{{ tipoCuenta.realOnominal }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button
                     type="button"
                     class="btn btn-success"
-                    (click)="view(tipoapunte)"
+                    (click)="view(tipoCuenta)"
                   >
                     <i class="bi bi-eye icon-15"></i>
                   </button>
                   <button
                     type="button"
                     class="btn btn-warning icon-15"
-                    (click)="edit(tipoapunte)"
+                    (click)="edit(tipoCuenta)"
                   >
                     <i class="bi bi-pen"></i>
                   </button>
                   <button
                     type="button"
                     class="btn btn-danger icon-15"
-                    (click)="remove(tipoapunte)"
+                    (click)="remove(tipoCuenta)"
                   >
                     <i class="bi bi-trash"></i>
                   </button>
@@ -163,7 +177,7 @@
             </tr>
             } @empty {
             <tr>
-              <td>No hay tipos de apunte</td>
+              <td colspan="11">No hay tipoCuentas</td>
             </tr>
             }
           </tbody>
@@ -172,4 +186,3 @@
     </div>
   </div>
 </div>
-
