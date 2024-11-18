@@ -13,13 +13,13 @@ import { PeriodoService } from '../../../service/periodo.service';
   selector: 'app-periodo.admin.plist.routed',
   templateUrl: './periodo.admin.plist.routed.component.html',
   styleUrls: ['./periodo.admin.plist.routed.component.css'],
-  imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
 })
 export class  PeriodoAdminPlistRoutedComponent implements OnInit {
 
   oPage: IPage<IPeriodo> | null = null;
   //
-  nPage: number = 0; // 0-based server count
+  nPage: number = 0;
   nRpp: number = 10;
   //
   strField: string = '';

@@ -29,7 +29,7 @@ declare let bootstrap: any;
 })
 export class PeriodoAdminEditRoutedComponent implements OnInit {
   id: number = 0;
-  oPeriodoForm!: FormGroup;  // Usamos `!` para asegurar que no sea undefined
+  oPeriodoForm!: FormGroup; 
   oPeriodo: IPeriodo | null = null;
   message: string = '';
 
