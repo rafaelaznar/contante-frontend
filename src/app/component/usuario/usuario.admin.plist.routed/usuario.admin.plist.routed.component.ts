@@ -19,18 +19,14 @@ import { TrimPipe } from '../../../pipe/trim.pipe';
 export class UsuarioAdminPlistRoutedComponent implements OnInit {
   
   oPage: IPage<IUsuario> | null = null;
-  //
-  nPage: number = 0; // 0-based server count
+  nPage: number = 0;
   nRpp: number = 10;
-  //
   strField: string = '';
   strDir: string = '';
-  //
   strFiltro: string = '';
-  //
   arrBotonera: string[] = [];
-  //
   private debounceSubject = new Subject<string>();
+
   constructor(
     private oUsuarioService: UsuarioService,
     private oBotoneraService: BotoneraService,
@@ -62,13 +58,24 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
       });
   }
 
+  deleteEvenIds() {
+    this.oUsuarioService.deleteEvenIds().subscribe(
+      (deletedCount: number) => {
+        console.log(`${deletedCount} registros pares eliminados.`);
+        // Recargar la lista de usuarios o hacer alguna otra acción.
+        this.getPage();  // Recarga la lista después de eliminar los registros
+      },
+      (error) => {
+        console.error('Error al eliminar registros pares:', error);
+      }
+    );
+  }
+
   edit(oUsuario: IUsuario) {
-    //navegar a la página de edición
     this.oRouter.navigate(['admin/usuario/edit', oUsuario.id]);
   }
 
   view(oUsuario: IUsuario) {
-    //navegar a la página de edición
     this.oRouter.navigate(['admin/usuario/view', oUsuario.id]);
   }
 

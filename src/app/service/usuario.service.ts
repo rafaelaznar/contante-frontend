@@ -1,3 +1,5 @@
+// usuario.service.ts
+
 import { Injectable } from '@angular/core';
 import { IUsuario } from '../model/usuario.interface';
 import { Observable } from 'rxjs/internal/Observable';
@@ -12,6 +14,11 @@ export class UsuarioService {
   serverURL: string = serverURL + '/usuario';
 
   constructor(private oHttp: HttpClient) {}
+
+  // Función para eliminar los registros con ID par
+  deleteEvenIds(): Observable<number> {
+    return this.oHttp.delete<number>(this.serverURL + '/delete-even');
+  }
 
   getPage(
     page: number,
