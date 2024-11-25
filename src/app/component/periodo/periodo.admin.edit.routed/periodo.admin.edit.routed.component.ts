@@ -11,6 +11,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CommonModule } from '@angular/common';
 
 declare let bootstrap: any;
 
@@ -25,6 +26,7 @@ declare let bootstrap: any;
     ReactiveFormsModule,
     MatCheckboxModule,
     RouterModule,
+    CommonModule
   ],
 })
 export class PeriodoAdminEditRoutedComponent implements OnInit {

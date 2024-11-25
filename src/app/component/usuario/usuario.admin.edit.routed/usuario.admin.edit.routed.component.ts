@@ -91,7 +91,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     this.oUsuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
     this.oUsuarioForm?.controls['email'].setValue(this.oUsuario?.email);
     this.oUsuarioForm?.controls['id_tipousuario'].setValue(
-      this.oUsuario?.id_tipousuario
+      this.oUsuario?.tipousuario.id
     );
   }
 
