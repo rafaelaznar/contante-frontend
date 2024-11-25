@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ITipoAsiento } from '../../../model/tipoAsiento.interface';
+import { ITipoasiento } from '../../../model/tipoasiento.interface';
 import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TipoAsientoAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oTipoAsiento: ITipoAsiento = {
+  oTipoAsiento: ITipoasiento = {
     id: 0,
     descripcion: ''
   };
@@ -23,7 +23,7 @@ export class TipoAsientoAdminViewRoutedComponent implements OnInit {
   }
   getOne() {
     this.oTipoAsientoService.getOne(this.id).subscribe({
-      next: (data: ITipoAsiento) => {
+      next: (data: ITipoasiento) => {
         this.oTipoAsiento = data;
       },
     });

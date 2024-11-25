@@ -17,16 +17,8 @@ import { CommonModule } from '@angular/common';
 export class AsientoAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oAsiento: IAsiento = {
-    id: 0,
-    descripcion: '',
-    comentarios: '',
-    inventariable: 0,
-    momentstamp: new Date(),
-    id_tipoasiento: 0,
-    id_usuario: 0,
-    id_periodo: 0,
-  };
+  oAsiento: IAsiento = {} as IAsiento;
+    
   constructor(private oActivatedRoute: ActivatedRoute, private oAsientoService: AsientoService) { }
 
   ngOnInit() {

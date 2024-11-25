@@ -104,9 +104,9 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
     this.oAsientoForm?.controls['comentarios'].setValue(this.oAsiento?.comentarios);
     this.oAsientoForm?.controls['inventariable'].setValue(this.oAsiento?.inventariable);
     this.oAsientoForm?.controls['momentstamp'].setValue(new Date(this.oAsiento?.momentstamp));
-    this.oAsientoForm?.controls['id_tipoasiento'].setValue(this.oAsiento?.id_tipoasiento);
-    this.oAsientoForm?.controls['id_usuario'].setValue(this.oAsiento?.id_usuario);
-    this.oAsientoForm?.controls['id_periodo'].setValue(this.oAsiento?.id_periodo);
+    this.oAsientoForm?.controls['id_tipoasiento'].setValue(this.oAsiento?.tipoasiento);
+    this.oAsientoForm?.controls['id_usuario'].setValue(this.oAsiento?.usuario);
+    this.oAsientoForm?.controls['id_periodo'].setValue(this.oAsiento?.periodo);
   }
 
   get() {
