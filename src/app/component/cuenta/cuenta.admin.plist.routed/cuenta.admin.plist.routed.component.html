@@ -109,26 +109,20 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('nombre')" class="bg-primary text-white">
-                Codigo @if (strField === 'nombre') { @if (strDir === 'desc') {
+              <th (click)="sort('codigo')" class="bg-primary text-white">
+                Codigo @if (strField === 'codigo') { @if (strDir === 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('apellido1')" class="bg-primary text-white">
-                Descripcion @if (strField === 'apellido1') { @if (strDir ===
+              <th (click)="sort('descripcion')" class="bg-primary text-white">
+                Descripcion @if (strField === 'descripcion') { @if (strDir ===
                 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('apellido2')" class="bg-primary text-white">
-                Tipo Cuenta @if (strField === 'apellido2') { @if (strDir ===
-                'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
+              <th class="bg-primary text-white">Tipo de cuenta</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -139,7 +133,9 @@
               <td class="text-center">{{ cuenta.id }}</td>
               <td class="text-center">{{ cuenta.codigo | trim : 10 }}</td>
               <td class="text-center">{{ cuenta.descripcion }}</td>
-              <td class="text-center">{{ cuenta.id_tipocuenta }}</td>
+              <td class="text-start">
+                {{ cuenta.tipocuenta.descripcion }} ({{ cuenta.tipocuenta.id }})
+              </td>
 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

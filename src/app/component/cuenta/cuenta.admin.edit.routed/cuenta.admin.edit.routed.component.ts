@@ -85,7 +85,7 @@ export class CuentaAdminEditRoutedComponent implements OnInit {
       this.oCuenta?.descripcion
     );
     this.oCuentaForm?.controls['id_tipocuenta'].setValue(
-      this.oCuenta?.id_tipocuenta
+      this.oCuenta?.tipocuenta
     );
   }
 
