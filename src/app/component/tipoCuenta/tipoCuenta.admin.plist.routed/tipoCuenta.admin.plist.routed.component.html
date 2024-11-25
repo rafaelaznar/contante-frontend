@@ -135,8 +135,8 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              
-
+              <th class="bg-primary text-white">Cuentas</th>
+              <th class="bg-primary text-white">Balances</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -149,6 +149,8 @@
               <td class="text-start">{{ tipoCuenta.creditoOdebito }}</td>
               <td class="text-start">{{ tipoCuenta.comentarios | trim : 10 }}</td>
               <td class="text-start">{{ tipoCuenta.realOnominal }}</td>
+              <td class="text-center">{{ tipoCuenta.cuentas }}</td>
+              <td class="text-center">{{ tipoCuenta.grupotipocuentas }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button

@@ -1,4 +1,4 @@
-import { ITipousuario } from './tipoUsuario.interface';
+import { ITipousuario } from './tipousuario.interface';
 
 export interface IUsuario {
   id: number;
@@ -7,4 +7,5 @@ export interface IUsuario {
   apellido2: string;
   email: string;
   tipousuario: ITipousuario;
+  asientos: number;
 }

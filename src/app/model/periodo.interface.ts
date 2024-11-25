@@ -4,4 +4,5 @@ export interface IPeriodo {
     descripcion: string;
     comentarios: string;
     cerrado: boolean;
+    asientos: number;
 }

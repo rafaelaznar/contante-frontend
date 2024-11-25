@@ -1,7 +1,7 @@
-export interface ITipoApunte {
+export interface ITipoapunte {
     id : number ;
     descripcion : string;
     comentarios : string
     apuntes: number;
-    grupoTipoCuentas: number
+    grupotipoapuntes: number
 }

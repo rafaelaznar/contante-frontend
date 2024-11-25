@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ITipoApunte } from '../../../model/tipoapunte.interface';
+import { ITipoapunte } from '../../../model/tipoapunte.interface';
 import { TipoApunteService } from '../../../service/tipoapunte.service';
 
 declare let bootstrap: any;
@@ -13,7 +13,7 @@ declare let bootstrap: any;
   styleUrls: ['./tipoapunte.admin.delete.routed.component.css']
 })
 export class TipoApunteAdminDeleteRoutedComponent implements OnInit {
-  oTipoApunte: ITipoApunte | null = null;
+  oTipoApunte: ITipoapunte | null = null;
   strMessage: string = '';
   myModal: any;
 
@@ -25,7 +25,7 @@ export class TipoApunteAdminDeleteRoutedComponent implements OnInit {
     ngOnInit(): void {
       let id = this.oActivatedRoute.snapshot.params['id'];
       this.oTipoApunteService.get(id).subscribe({
-        next: (oTipoApunte: ITipoApunte) => {
+        next: (oTipoApunte: ITipoapunte) => {
           this.oTipoApunte = oTipoApunte;
         },
         error: (err) => {

@@ -1,6 +1,10 @@
+import { ITipocuenta } from './tipocuenta.interface';
+
 export interface ICuenta {
   id: number;
   codigo: string;
   descripcion: string;
-  id_tipocuenta: number;
+  tipocuenta: ITipocuenta;
+  subcuentas: number;
+  grupocuentas: number;
 }

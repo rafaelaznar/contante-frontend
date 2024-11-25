@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
-import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
+import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import {
   FormControl,
   FormGroup,
@@ -29,7 +29,7 @@ declare let bootstrap: any;
 export class TipoCuentaAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oTipoCuentaForm: FormGroup | undefined = undefined;
-  oTipoCuenta: ITipoCuenta | null = null;
+  oTipoCuenta: ITipocuenta | null = null;
   message: string = '';
   myModal: any;
 
@@ -77,7 +77,7 @@ export class TipoCuentaAdminEditRoutedComponent implements OnInit {
 
   onReset() {
     this.oTipoCuentaService.get(this.id).subscribe({
-      next: (oTipoCuenta: ITipoCuenta) => {
+      next: (oTipoCuenta: ITipocuenta) => {
         this.oTipoCuenta = oTipoCuenta;
         this.updateForm();
       },
@@ -98,7 +98,7 @@ export class TipoCuentaAdminEditRoutedComponent implements OnInit {
 
   get() {
     this.oTipoCuentaService.get(this.id).subscribe({
-      next: (oTipoCuenta: ITipoCuenta
+      next: (oTipoCuenta: ITipocuenta
       ) => {
         this.oTipoCuenta = oTipoCuenta;
         this.updateForm();
@@ -128,7 +128,7 @@ export class TipoCuentaAdminEditRoutedComponent implements OnInit {
       return;
     } else {
       this.oTipoCuentaService.update(this.oTipoCuentaForm?.value).subscribe({
-        next: (oTipoCuenta: ITipoCuenta) => {
+        next: (oTipoCuenta: ITipocuenta) => {
           this.oTipoCuenta = oTipoCuenta;
           this.updateForm();
           this.showModal('TipoCuenta ' + this.oTipoCuenta.id + ' actualizado');

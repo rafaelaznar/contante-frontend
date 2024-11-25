@@ -6,7 +6,7 @@ import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, Subject } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
-import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
+import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 @Component({
@@ -17,7 +17,7 @@ import { TipoCuentaService } from '../../../service/tipoCuenta.service';
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
 export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
-  oPage: IPage<ITipoCuenta> | null = null;
+  oPage: IPage<ITipocuenta> | null = null;
   //
   nPage: number = 0; // 0-based server count
   nRpp: number = 10;
@@ -55,7 +55,7 @@ export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
         this.strFiltro
       )
       .subscribe({
-        next: (oPageFromServer: IPage<ITipoCuenta>) => {
+        next: (oPageFromServer: IPage<ITipocuenta>) => {
           this.oPage = oPageFromServer;
           this.arrBotonera = this.oBotoneraService.getBotonera(
             this.nPage,
@@ -68,17 +68,17 @@ export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
       });
   }
 
-  edit(oTipoCuenta: ITipoCuenta) {
+  edit(oTipoCuenta: ITipocuenta) {
     //navegar a la página de edición
     this.oRouter.navigate(['admin/tipoCuenta/edit', oTipoCuenta.id]);
   }
 
-  view(oTipoCuenta: ITipoCuenta) {
+  view(oTipoCuenta: ITipocuenta) {
     //navegar a la página de edición
     this.oRouter.navigate(['admin/tipoCuenta/view', oTipoCuenta.id]);
   }
 
-  remove(oTipoCuenta: ITipoCuenta) {
+  remove(oTipoCuenta: ITipocuenta) {
     this.oRouter.navigate(['admin/tipoCuenta/delete/', oTipoCuenta.id]);
   }
 

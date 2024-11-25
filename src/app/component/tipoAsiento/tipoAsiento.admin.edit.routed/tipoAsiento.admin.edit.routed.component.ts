@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ITipoAsiento } from '../../../model/tipoAsiento.interface';
+import { ITipoasiento } from '../../../model/tipoasiento.interface';
 import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 
 
@@ -24,7 +24,7 @@ declare let bootstrap: any;
 export class TipoAsientoAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oTipoAsientoForm: FormGroup | undefined = undefined;
-  oTipoAsiento: ITipoAsiento | null = null;
+  oTipoAsiento: ITipoasiento | null = null;
   message: string = '';
   myModal: any;
 
@@ -57,7 +57,7 @@ export class TipoAsientoAdminEditRoutedComponent implements OnInit {
   }
   onReset() {
     this.oTipoAsientoService.get(this.id).subscribe({
-      next: (oTipoAsiento: ITipoAsiento) => {
+      next: (oTipoAsiento: ITipoasiento) => {
         this.oTipoAsiento = oTipoAsiento;
         this.updateForm();
       },
@@ -76,7 +76,7 @@ export class TipoAsientoAdminEditRoutedComponent implements OnInit {
 
   get() {
     this.oTipoAsientoService.get(this.id).subscribe({
-      next: (oTipoAsiento: ITipoAsiento) => {
+      next: (oTipoAsiento: ITipoasiento) => {
         this.oTipoAsiento = oTipoAsiento;
         this.updateForm();
       },
@@ -105,7 +105,7 @@ export class TipoAsientoAdminEditRoutedComponent implements OnInit {
       return;
     } else {
       this.oTipoAsientoService.update(this.oTipoAsientoForm?.value).subscribe({
-        next: (oTipoAsiento: ITipoAsiento) => {
+        next: (oTipoAsiento: ITipoasiento) => {
           this.oTipoAsiento = oTipoAsiento;
           this.updateForm();
           this.showModal('Tipo de Asiento ' + this.oTipoAsiento.id + ' actualizado');

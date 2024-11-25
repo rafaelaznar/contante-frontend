@@ -127,7 +127,7 @@ export class ApunteAdminEditRoutedComponent implements OnInit {
     this.oApunteForm?.controls['orden'].setValue(this.oApunte?.orden);
     this.oApunteForm?.controls['id_asiento'].setValue(this.oApunte?.asiento);
     this.oApunteForm?.controls['id_subcuenta'].setValue(this.oApunte?.subcuenta);
-    this.oApunteForm?.controls['id_tipoapunte'].setValue(this.oApunte?.tipoApunte);
+    this.oApunteForm?.controls['id_tipoapunte'].setValue(this.oApunte?.tipoapunte);
   }
 
   get() {

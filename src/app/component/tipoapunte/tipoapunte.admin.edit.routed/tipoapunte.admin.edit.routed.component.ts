@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TipoApunteService } from '../../../service/tipoapunte.service';
-import { ITipoApunte } from '../../../model/tipoapunte.interface';
+import { ITipoapunte } from '../../../model/tipoapunte.interface';
 import {
   FormControl,
   FormGroup,
@@ -30,7 +30,7 @@ declare let bootstrap: any;
 export class TipoApunteAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oTipoApunteForm: FormGroup | undefined = undefined;
-  oTipoApunte: ITipoApunte | null = null;
+  oTipoApunte: ITipoapunte | null = null;
   message: string = '';
   myModal: any;
 
@@ -71,7 +71,7 @@ export class TipoApunteAdminEditRoutedComponent implements OnInit {
 
   onReset() {
     this.oTipoApunteService.get(this.id).subscribe({
-      next: (oTipoApunte: ITipoApunte) => {
+      next: (oTipoApunte: ITipoapunte) => {
         this.oTipoApunte = oTipoApunte;
         this.updateForm();
       },
@@ -93,7 +93,7 @@ export class TipoApunteAdminEditRoutedComponent implements OnInit {
 
   get() {
     this.oTipoApunteService.get(this.id).subscribe({
-      next: (oTipoApunte: ITipoApunte
+      next: (oTipoApunte: ITipoapunte
       ) => {
         this.oTipoApunte = oTipoApunte;
         this.updateForm();
@@ -125,7 +125,7 @@ export class TipoApunteAdminEditRoutedComponent implements OnInit {
       return;
     } else {
       this.oTipoApunteService.update(this.oTipoApunteForm?.value).subscribe({
-        next: (oTipoApunte: ITipoApunte) => {
+        next: (oTipoApunte: ITipoapunte) => {
           this.oTipoApunte = oTipoApunte;
           this.updateForm();
           this.showModal('Tipo de Apunte ' + this.oTipoApunte.id + ' actualizado');

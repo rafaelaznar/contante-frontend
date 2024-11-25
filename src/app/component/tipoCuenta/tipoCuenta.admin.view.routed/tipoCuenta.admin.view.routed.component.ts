@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
+import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 @Component({
@@ -11,13 +11,8 @@ import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 export class TipoCuentaAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oTipoCuenta: ITipoCuenta = {
-    id: 0,
-    descripcion: '',
-    creditoOdebito: 0,
-    comentarios: '',
-    realOnominal: 0,
-  };
+  oTipoCuenta: ITipocuenta = {} as ITipocuenta;
+  
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oTipoCuentaService: TipoCuentaService
@@ -29,7 +24,7 @@ export class TipoCuentaAdminViewRoutedComponent implements OnInit {
   }
 getOne() {
     this.oTipoCuentaService.getOne(this.id).subscribe({
-      next: (data: ITipoCuenta) => {
+      next: (data: ITipocuenta) => {
         this.oTipoCuenta = data;
       },
     });
