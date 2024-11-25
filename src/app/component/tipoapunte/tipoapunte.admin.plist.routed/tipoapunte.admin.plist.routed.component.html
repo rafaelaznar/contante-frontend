@@ -123,7 +123,9 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              
+
+              <th class="bg-primary text-white">Apuntes</th>
+              <th class="bg-primary text-white">Grupo Tipo Apuntes</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -134,6 +136,8 @@
               <td class="text-center">{{ tipoapunte.id }}</td>
               <td class="text-start">{{ tipoapunte.descripcion | trim : 10 }}</td>
               <td class="text-start">{{ tipoapunte.comentarios | trim : 10 }}</td>
+              <td class="text-center">{{ tipoapunte.apuntes }}</td>
+              <td class="text-center">{{ tipoapunte.grupotipoapuntes }}</td>
 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
