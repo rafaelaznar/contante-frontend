@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
 import { IPage } from '../model/model.interface';
 import { httpOptions, serverURL } from '../environment/environment';
-import { ITipoAsiento } from '../model/tipoAsiento.interface';
+import { ITipoasiento } from '../model/tipoasiento.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ export class TipoAsientoService {
     field: string,
     dir: string,
     filtro: string
-  ): Observable<IPage<ITipoAsiento>> {
+  ): Observable<IPage<ITipoasiento>> {
     let URL: string = '';
     URL += this.serverURL;
     if (!page) {
@@ -42,34 +42,34 @@ export class TipoAsientoService {
     if (filtro) {
       URL += '&filter=' + filtro;
     }
-    return this.oHttp.get<IPage<ITipoAsiento>>(URL, httpOptions);
+    return this.oHttp.get<IPage<ITipoasiento>>(URL, httpOptions);
   }
 
-  get(id: number): Observable<ITipoAsiento> {
+  get(id: number): Observable<ITipoasiento> {
     let URL: string = '';
     URL += this.serverURL;
     URL += '/' + id;
-    return this.oHttp.get<ITipoAsiento>(URL);
+    return this.oHttp.get<ITipoasiento>(URL);
   }
 
-  create(oTipoAsiento: ITipoAsiento): Observable<ITipoAsiento> {
+  create(oTipoAsiento: ITipoasiento): Observable<ITipoasiento> {
     let URL: string = '';
     URL += this.serverURL;
-    return this.oHttp.put<ITipoAsiento>(URL, oTipoAsiento);
+    return this.oHttp.put<ITipoasiento>(URL, oTipoAsiento);
   }
 
-  update(oTipoAsiento: ITipoAsiento): Observable<ITipoAsiento> {
+  update(oTipoAsiento: ITipoasiento): Observable<ITipoasiento> {
     let URL: string = '';
     URL += this.serverURL;
-    return this.oHttp.put<ITipoAsiento>(URL, oTipoAsiento);
+    return this.oHttp.put<ITipoasiento>(URL, oTipoAsiento);
   }
 
-  getOne(id: number): Observable<ITipoAsiento> {
+  getOne(id: number): Observable<ITipoasiento> {
     let URL: string = '';
     URL += 'http://localhost:8085';
     URL += '/tipoasiento';
     URL += '/' + id;
-    return this.oHttp.get<ITipoAsiento>(URL);
+    return this.oHttp.get<ITipoasiento>(URL);
   }
 
   delete(id: number) {

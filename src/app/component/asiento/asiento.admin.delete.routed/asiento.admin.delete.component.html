@@ -37,21 +37,21 @@
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Id Tipo de Asiento
+            Tipo de Asiento
           </th>
-          <td class="text-start ps-5">{{ oAsiento!.id_tipoasiento }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.tipoasiento.descripcion }} ({{oAsiento!.tipoasiento.id}})</td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Id de Usuario
+            Usuario
           </th>
-          <td class="text-start ps-5">{{ oAsiento!.id_usuario }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.usuario.nombre }} {{ oAsiento!.usuario.apellido1 }} ({{oAsiento!.usuario.id}})</td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Id de Periodo 	
+            Periodo 	
           </th>
-          <td class="text-start ps-5">{{ oAsiento!.id_periodo }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.periodo.anyo }} ({{oAsiento!.periodo.id}})</td>
         </tr>
       </tbody>
     </table>

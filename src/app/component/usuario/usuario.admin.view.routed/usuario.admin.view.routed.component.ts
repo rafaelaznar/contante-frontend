@@ -10,16 +10,11 @@ import { IUsuario } from '../../../model/usuario.interface';
   styleUrls: ['./usuario.admin.view.routed.component.css']
 })
 export class UsuarioAdminViewRoutedComponent implements OnInit {
+  //
   id: number = 0;
   route: string = '';
-  oUsuario: IUsuario = {
-    id: 0,
-    nombre: '',
-    apellido1: '',
-    apellido2: '',
-    email: '',
-    id_tipousuario: 0,
-  };
+  oUsuario: IUsuario = {} as IUsuario;  
+  //
   constructor(private oActivatedRoute: ActivatedRoute, private oUsuarioService: UsuarioService) { }
 
   ngOnInit() {

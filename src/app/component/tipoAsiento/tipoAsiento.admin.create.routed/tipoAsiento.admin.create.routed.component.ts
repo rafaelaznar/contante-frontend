@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router, RouterModule } from '@angular/router';
-import { ITipoAsiento } from '../../../model/tipoAsiento.interface';
+import { ITipoasiento } from '../../../model/tipoasiento.interface';
 import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 
 declare let bootstrap: any;
@@ -26,7 +26,7 @@ export class TipoAsientoAdminCreateRoutedComponent implements OnInit {
   
   id: number = 0;
   oTipoAsientoForm: FormGroup | undefined = undefined;
-  oTipoAsiento: ITipoAsiento | null = null;
+  oTipoAsiento: ITipoasiento | null = null;
   strMessage: string = '';
 
   myModal: any;
@@ -79,7 +79,7 @@ export class TipoAsientoAdminCreateRoutedComponent implements OnInit {
       return;
     } else {      
       this.oTipoAsientoService.create(this.oTipoAsientoForm?.value).subscribe({
-        next: (oTipoAsiento: ITipoAsiento) => {
+        next: (oTipoAsiento: ITipoasiento) => {
           this.oTipoAsiento = oTipoAsiento;
           this.showModal('Tipo de Asiento creado con el id: ' + this.oTipoAsiento.id);
         },

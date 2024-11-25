@@ -139,21 +139,21 @@
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
               <th (click)="sort('id_tipoasiento')" class="bg-primary text-white">
-                Id Tipo de Asiento @if (strField === 'id_tipoasiento') { @if (strDir ===
+                Tipo de Asiento @if (strField === 'id_tipoasiento') { @if (strDir ===
                 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
               <th (click)="sort('id_usuario')" class="bg-primary text-white">
-                Id de Usuario @if (strField === 'id_usuario') { @if (strDir ===
+                Usuario @if (strField === 'id_usuario') { @if (strDir ===
                 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
               <th (click)="sort('id_periodo')" class="bg-primary text-white">
-                Id de Periodo @if (strField === 'id_periodo') { @if (strDir ===
+                Periodo @if (strField === 'id_periodo') { @if (strDir ===
                 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
@@ -177,9 +177,9 @@
                 }
               </td>
               <td class="text-center">{{asiento.momentstamp| date: "dd/MM/yyyy ..." }}</td>
-              <td class="text-center">{{ asiento.id_tipoasiento }}</td>
-              <td class="text-center">{{ asiento.id_usuario }}</td>
-              <td class="text-center">{{ asiento.id_periodo }}</td>
+              <td class="text-center">{{ asiento.tipoasiento.descripcion }} ({{asiento.tipoasiento.id}})</td>
+              <td class="text-center">{{ asiento.usuario.nombre }} {{asiento.usuario.apellido1}} ({{asiento.usuario.id}})</td>
+              <td class="text-center">{{ asiento.periodo.anyo}} ({{asiento.periodo.id}})</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button
