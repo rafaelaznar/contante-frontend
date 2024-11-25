@@ -9,6 +9,7 @@ import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
 import { PeriodoService } from '../../../service/periodo.service';
 
+
 @Component({
   standalone: true,
   selector: 'app-periodo.admin.plist.routed',
