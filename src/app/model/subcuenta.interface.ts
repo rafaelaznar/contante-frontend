@@ -6,4 +6,6 @@ export interface ISubcuenta{
     descripcion : string;
     cuenta : ICuenta;
     momentstamp : Date;
+    apuntes: number;
+    gruposubcuentas: number;
 }

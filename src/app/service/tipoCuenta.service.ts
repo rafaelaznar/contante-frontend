@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { httpOptions, serverURL } from '../environment/environment';
 import { HttpClient } from '@angular/common/http';
-import { ITipoCuenta } from '../model/tipoCuenta.interface';
+import { ITipocuenta } from '../model/tipocuenta.interface';
 import { IPage } from '../model/model.interface';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -20,7 +20,7 @@ serverURL: string = serverURL + '/tipoCuenta';
     field: string,
     dir: string,
     filtro: string
-  ): Observable<IPage<ITipoCuenta>> {
+  ): Observable<IPage<ITipocuenta>> {
     let URL: string = '';
     URL += this.serverURL;
     if (!page) {
@@ -42,34 +42,34 @@ serverURL: string = serverURL + '/tipoCuenta';
     if (filtro) {
       URL += '&filter=' + filtro;
     }
-    return this.oHttp.get<IPage<ITipoCuenta>>(URL, httpOptions);
+    return this.oHttp.get<IPage<ITipocuenta>>(URL, httpOptions);
   }
 
-  get(id: number): Observable<ITipoCuenta> {
+  get(id: number): Observable<ITipocuenta> {
     let URL: string = '';
     URL += this.serverURL;
     URL += '/' + id;
-    return this.oHttp.get<ITipoCuenta>(URL);
+    return this.oHttp.get<ITipocuenta>(URL);
   }
 
-  create(oTipoCuenta: ITipoCuenta): Observable<ITipoCuenta> {
+  create(oTipoCuenta: ITipocuenta): Observable<ITipocuenta> {
     let URL: string = '';
     URL += this.serverURL;
-    return this.oHttp.put<ITipoCuenta>(URL, oTipoCuenta);
+    return this.oHttp.put<ITipocuenta>(URL, oTipoCuenta);
   }
 
-  update(oTipoCuenta: ITipoCuenta): Observable<ITipoCuenta> {
+  update(oTipoCuenta: ITipocuenta): Observable<ITipocuenta> {
     let URL: string = '';
     URL += this.serverURL;
-    return this.oHttp.put<ITipoCuenta>(URL, oTipoCuenta);
+    return this.oHttp.put<ITipocuenta>(URL, oTipoCuenta);
   }
 
-  getOne(id: number): Observable<ITipoCuenta> {
+  getOne(id: number): Observable<ITipocuenta> {
     let URL: string = '';
     URL += 'http://localhost:8085';
     URL += '/tipoCuenta';
     URL += '/' + id;
-    return this.oHttp.get<ITipoCuenta>(URL);
+    return this.oHttp.get<ITipocuenta>(URL);
   }
 
   delete(id: number) {

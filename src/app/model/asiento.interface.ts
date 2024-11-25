@@ -11,6 +11,7 @@ export interface IAsiento {
   tipoasiento: ITipoasiento;
   usuario: IUsuario;
   periodo: IPeriodo;
+  apuntes: number;
 }
 
 

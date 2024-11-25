@@ -1,8 +1,10 @@
-import { ITipoCuenta } from './tipoCuenta.interface';
+import { ITipocuenta } from './tipocuenta.interface';
 
 export interface ICuenta {
   id: number;
   codigo: string;
   descripcion: string;
-  tipocuenta: ITipoCuenta;
+  tipocuenta: ITipocuenta;
+  subcuentas: number;
+  grupocuentas: number;
 }

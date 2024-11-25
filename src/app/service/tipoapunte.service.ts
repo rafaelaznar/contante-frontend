@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { httpOptions, serverURL } from '../environment/environment';
 import { HttpClient } from '@angular/common/http';
-import { ITipoApunte } from '../model/tipoapunte.interface';
+import { ITipoapunte } from '../model/tipoapunte.interface';
 import { IPage } from '../model/model.interface';
 import { Observable } from 'rxjs/internal/Observable';
 
@@ -20,7 +20,7 @@ getPage(
   field: string,
   dir: string,
   filtro: string
-): Observable<IPage<ITipoApunte>> {
+): Observable<IPage<ITipoapunte>> {
   let URL: string = '';
   URL += this.serverURL;
   if (!page) {
@@ -42,34 +42,34 @@ getPage(
   if (filtro) {
     URL += '&filter=' + filtro;
   }
-  return this.oHttp.get<IPage<ITipoApunte>>(URL, httpOptions);
+  return this.oHttp.get<IPage<ITipoapunte>>(URL, httpOptions);
 }
 
-get(id: number): Observable<ITipoApunte> {
+get(id: number): Observable<ITipoapunte> {
   let URL: string = '';
   URL += this.serverURL;
   URL += '/' + id;
-  return this.oHttp.get<ITipoApunte>(URL);
+  return this.oHttp.get<ITipoapunte>(URL);
 }
 
-create(oTipoApunte: ITipoApunte): Observable<ITipoApunte> {
+create(oTipoApunte: ITipoapunte): Observable<ITipoapunte> {
   let URL: string = '';
   URL += this.serverURL;
-  return this.oHttp.put<ITipoApunte>(URL, oTipoApunte);
+  return this.oHttp.put<ITipoapunte>(URL, oTipoApunte);
 }
 
-update(oTipoApunte: ITipoApunte): Observable<ITipoApunte> {
+update(oTipoApunte: ITipoapunte): Observable<ITipoapunte> {
   let URL: string = '';
   URL += this.serverURL;
-  return this.oHttp.put<ITipoApunte>(URL, oTipoApunte);
+  return this.oHttp.put<ITipoapunte>(URL, oTipoApunte);
 }
 
-getOne(id: number): Observable<ITipoApunte> {
+getOne(id: number): Observable<ITipoapunte> {
   let URL: string = '';
   URL += 'http://localhost:8085';
   URL += '/tipoapunte';
   URL += '/' + id;
-  return this.oHttp.get<ITipoApunte>(URL);
+  return this.oHttp.get<ITipoapunte>(URL);
 }
 
 delete(id: number) {

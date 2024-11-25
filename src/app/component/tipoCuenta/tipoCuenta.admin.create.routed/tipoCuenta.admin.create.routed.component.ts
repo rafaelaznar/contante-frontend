@@ -9,7 +9,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
+import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 declare let bootstrap: any;
@@ -30,7 +30,7 @@ declare let bootstrap: any;
 export class TipoCuentaAdminCreateRoutedComponent implements OnInit {
   id: number = 0;
   oTipoCuentaForm: FormGroup | undefined = undefined;
-  oTipoCuenta: ITipoCuenta | null = null;
+  oTipoCuenta: ITipocuenta | null = null;
   strMessage: string = '';
   
 
@@ -98,7 +98,7 @@ export class TipoCuentaAdminCreateRoutedComponent implements OnInit {
       return;
     } else {
       this.oTipoCuentaService.create(this.oTipoCuentaForm?.value).subscribe({
-        next: (oTipoCuenta: ITipoCuenta) => {
+        next: (oTipoCuenta: ITipocuenta) => {
           this.oTipoCuenta = oTipoCuenta;
           this.showModal('TipoCuenta creado con el id: ' + this.oTipoCuenta.id);
         },

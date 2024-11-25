@@ -9,7 +9,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ITipoApunte } from '../../../model/tipoapunte.interface';
+import { ITipoapunte } from '../../../model/tipoapunte.interface';
 import { TipoApunteService } from '../../../service/tipoapunte.service';
 
 declare let bootstrap: any;
@@ -30,7 +30,7 @@ declare let bootstrap: any;
 export class TipoApunteAdminCreateRoutedComponent implements OnInit {
   id: number = 0;
   oTipoApunteForm: FormGroup | undefined = undefined;
-  oTipoApunte: ITipoApunte | null = null;
+  oTipoApunte: ITipoapunte | null = null;
   strMessage: string = '';
 
   myModal: any;
@@ -88,7 +88,7 @@ export class TipoApunteAdminCreateRoutedComponent implements OnInit {
       return;
     } else {
       this.oTipoApunteService.create(this.oTipoApunteForm?.value).subscribe({
-        next: (oTipoApunte: ITipoApunte) => {
+        next: (oTipoApunte: ITipoapunte) => {
           this.oTipoApunte = oTipoApunte;
           this.showModal('Tipo de apunte creado con el id: ' + this.oTipoApunte.id);
         },

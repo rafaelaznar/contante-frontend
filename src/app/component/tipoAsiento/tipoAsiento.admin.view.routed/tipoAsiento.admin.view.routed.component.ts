@@ -11,10 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class TipoAsientoAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oTipoAsiento: ITipoasiento = {
-    id: 0,
-    descripcion: ''
-  };
+  oTipoAsiento: ITipoasiento = {} as ITipoasiento;
+  
   constructor(private oActivatedRoute: ActivatedRoute, private oTipoAsientoService: TipoAsientoService) { }
 
   ngOnInit() {

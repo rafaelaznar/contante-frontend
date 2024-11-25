@@ -12,11 +12,8 @@ export class BalanceAdminViewRoutedComponent implements OnInit {
 
   id: number = 0;
   route: string = '';
-  oBalance: IBalance = {
-    id: 0,
-    titulo: '',
-    descripcion: '',
-  };
+  oBalance: IBalance = {} as IBalance;
+
   constructor(private oActivatedRoute: ActivatedRoute, private oBalanceService: BalanceService) { }
 
   ngOnInit() {

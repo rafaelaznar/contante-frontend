@@ -123,7 +123,8 @@
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
               <th (click)="sort('id_cuenta')" class="bg-primary text-white">
-                id_cuenta @if (strField === 'id_cuenta') { @if (strDir === 'desc') {
+                id_cuenta @if (strField === 'id_cuenta') { @if (strDir ===
+                'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
@@ -135,7 +136,7 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-            
+
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -145,9 +146,16 @@
             <tr>
               <td class="text-center">{{ subcuenta.id }}</td>
               <td class="text-start">{{ subcuenta.codigo }}</td>
-              <td class="text-start">{{ subcuenta.descripcion | trim : 20 }}</td>
-              <td class="text-start">{{ subcuenta.cuenta.id }}</td>
-              <td class="text-start">{{ subcuenta.momentstamp | date : "dd/MM/yyyy ..." }}</td>
+              <td class="text-start">
+                {{ subcuenta.descripcion | trim : 20 }}
+              </td>
+              <td class="text-start">
+                {{ subcuenta.cuenta.codigo }} - 
+                {{ subcuenta.cuenta.descripcion | trim : 30 }}
+              </td>
+              <td class="text-start">
+                {{ subcuenta.momentstamp | date : "dd/MM/yyyy ..." }}
+              </td>
 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -180,7 +188,6 @@
               <td colspan="6">No hay subcuentas</td>
             </tr>
             }
-
           </tbody>
         </table>
       </div>

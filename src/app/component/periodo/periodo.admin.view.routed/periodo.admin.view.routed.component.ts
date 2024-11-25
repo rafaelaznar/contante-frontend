@@ -12,13 +12,7 @@ import { IPeriodo } from '../../../model/periodo.interface';
 export class PeriodoAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oPeriodo: IPeriodo = {
-    id: 0,
-    anyo: 0,
-    descripcion: '',
-    comentarios: '',
-    cerrado: false,
-  };
+  oPeriodo: IPeriodo = {} as IPeriodo;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,

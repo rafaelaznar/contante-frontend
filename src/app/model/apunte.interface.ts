@@ -1,6 +1,6 @@
 import { IAsiento } from "./asiento.interface";
 import { ISubcuenta } from "./subcuenta.interface";
-import { ITipoApunte } from "./tipoapunte.interface";
+import { ITipoapunte } from "./tipoapunte.interface";
 
 export interface IApunte {
      id : number ;
@@ -12,5 +12,5 @@ export interface IApunte {
      orden:  number ;
      asiento : IAsiento ;
      subcuenta : ISubcuenta ;
-     tipoApunte : ITipoApunte ; 
+     tipoapunte : ITipoapunte ; 
 }

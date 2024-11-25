@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ITipoCuenta } from '../../../model/tipoCuenta.interface';
+import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 declare let bootstrap: any;
@@ -13,7 +13,7 @@ declare let bootstrap: any;
   styleUrl: './tipoCuenta.admin.delete.component.css',
 })
 export class TipoCuentaAdminDeleteRoutedComponent implements OnInit {
-  oTipoCuenta: ITipoCuenta
+  oTipoCuenta: ITipocuenta
   strMessage: string = '';
   myModal: any;
 
@@ -22,13 +22,13 @@ export class TipoCuentaAdminDeleteRoutedComponent implements OnInit {
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router
   ) {
-    this.oTipoCuenta = {} as ITipoCuenta;
+    this.oTipoCuenta = {} as ITipocuenta;
   }
 
   ngOnInit(): void {
     let id = this.oActivatedRoute.snapshot.params['id'];
     this.oTipoCuentaService.get(id).subscribe({
-      next: (oTipoCuenta: ITipoCuenta) => {
+      next: (oTipoCuenta: ITipocuenta) => {
         this.oTipoCuenta = oTipoCuenta;
       },
       error: (err) => {
