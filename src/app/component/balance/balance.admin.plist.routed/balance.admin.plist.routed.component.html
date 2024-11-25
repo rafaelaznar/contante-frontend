@@ -125,6 +125,11 @@
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
              
+              <th class="bg-warning text-black">Grupo Tipo Asiento</th>
+              <th class="bg-warning text-black">Grupo Subcuenta</th>
+              <th class="bg-warning text-black">Grupo Tipo Cuenta</th>
+              <th class="bg-warning text-black">Grupo Cuenta</th>
+              <th class="bg-warning text-black">Grupo Tipo Apunte</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -135,6 +140,21 @@
               <td class="text-center">{{ balance.id }}</td>
               <td class="text-start">{{ balance.titulo | trim : 30 }}</td>
               <td class="text-start">{{ balance.descripcion | trim : 40}}</td>
+              <td class="text-start">
+                {{ balance.grupotipoasientos }}
+              <td>
+              <td class="text-start">
+                {{ balance.gruposubcuentas }}
+              <td>
+              <td class="text-start">
+                {{ balance.grupotipocuentas }}
+              <td>
+              <td class="text-start">
+                {{ balance.grupocuentas }}
+              <td>
+              <td class="text-start">
+                {{ balance.grupotipoapuntes }}
+              <td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button
