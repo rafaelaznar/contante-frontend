@@ -140,6 +140,7 @@
               <th class="bg-primary text-white">Tipo de Asiento</th>
               <th class="bg-primary text-white">Usuario</th>
               <th class="bg-primary text-white">Periodo</th>
+              <th class="bg-primary text-white">Apuntes</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -172,6 +173,9 @@
               </td>
               <td class="text-center">
                 {{ asiento.periodo.anyo }} ({{ asiento.periodo.id }})
+              </td>
+              <td class="text-center">
+                {{ asiento.apuntes }} 
               </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

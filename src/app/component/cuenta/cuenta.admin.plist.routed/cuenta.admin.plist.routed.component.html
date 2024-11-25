@@ -123,6 +123,8 @@
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
               <th class="bg-primary text-white">Tipo de cuenta</th>
+              <th class="bg-primary text-white">Subcuentas</th>
+              <th class="bg-primary text-white">Balances</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -136,7 +138,8 @@
               <td class="text-start">
                 {{ cuenta.tipocuenta.descripcion }} ({{ cuenta.tipocuenta.id }})
               </td>
-
+              <td class="text-center">{{ cuenta.subcuentas }}</td>
+              <td class="text-center">{{ cuenta.grupocuentas }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button
