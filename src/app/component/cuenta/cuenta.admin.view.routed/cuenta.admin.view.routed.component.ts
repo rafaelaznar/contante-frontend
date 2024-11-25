@@ -9,14 +9,11 @@ import { ICuenta } from '../../../model/cuenta.interface';
   styleUrls: ['./cuenta.admin.view.routed.component.css'],
 })
 export class CuentaAdminViewRoutedComponent implements OnInit {
+  //
   id: number = 0;
   route: string = '';
-  oCuenta: ICuenta = {
-    id: 0,
-    codigo: '',
-    descripcion: '',
-    id_tipocuenta: 0,
-  };
+  oCuenta: ICuenta = {} as ICuenta;
+  //
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oCuentaService: CuentaService

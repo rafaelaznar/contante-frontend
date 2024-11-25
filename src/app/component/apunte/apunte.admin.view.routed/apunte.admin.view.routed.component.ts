@@ -14,18 +14,7 @@ import { CommonModule } from '@angular/common';
 export class ApunteAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oApunte: IApunte = {
-    id: 0,
-    debe: 0,
-    haber: 0,
-    descripcion: '',
-    comentarios: '',
-    momentstamp: new Date(),
-    orden: 0,
-    id_asiento: 0,
-    id_subcuenta: 0,
-    id_tipoapunte: 0,
-  };
+  oApunte : IApunte = {} as IApunte;
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oApunteService: ApunteService

@@ -6,7 +6,7 @@ import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, Subject } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
-import { ITipoAsiento } from '../../../model/tipoAsiento.interface';
+import { ITipoasiento } from '../../../model/tipoasiento.interface';
 import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 
 @Component({
@@ -18,7 +18,7 @@ import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 })
 export class TipoAsientoAdminPlistRoutedComponent implements OnInit {
 
-  oPage: IPage<ITipoAsiento> | null = null;
+  oPage: IPage<ITipoasiento> | null = null;
   //
   nPage: number = 0; // 0-based server count
   nRpp: number = 10;
@@ -51,7 +51,7 @@ export class TipoAsientoAdminPlistRoutedComponent implements OnInit {
     this.oTipoAsientoService
       .getPage(this.nPage, this.nRpp, this.strField, this.strDir, this.strFiltro)
       .subscribe({
-        next: (oPageFromServer: IPage<ITipoAsiento>) => {
+        next: (oPageFromServer: IPage<ITipoasiento>) => {
           this.oPage = oPageFromServer;
           this.arrBotonera = this.oBotoneraService.getBotonera(
             this.nPage,
@@ -64,17 +64,17 @@ export class TipoAsientoAdminPlistRoutedComponent implements OnInit {
       });
   }
 
-  edit(oTipoAsiento: ITipoAsiento) {
+  edit(oTipoAsiento: ITipoasiento) {
     //navegar a la página de edición
     this.oRouter.navigate(['admin/tipoAsiento/edit', oTipoAsiento.id]);
   }
 
-  view(oTipoAsiento: ITipoAsiento) {
+  view(oTipoAsiento: ITipoasiento) {
     //navegar a la página de edición
     this.oRouter.navigate(['admin/tipoAsiento/view', oTipoAsiento.id]);
   }
 
-  remove(oTipoAsiento: ITipoAsiento) {
+  remove(oTipoAsiento: ITipoasiento) {
     this.oRouter.navigate(['admin/tipoAsiento/delete/', oTipoAsiento.id]);
   }
 

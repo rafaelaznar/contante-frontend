@@ -1,12 +1,16 @@
+import { IPeriodo } from "./periodo.interface";
+import { ITipoasiento } from "./tipoasiento.interface";
+import { IUsuario } from "./usuario.interface";
+
 export interface IAsiento {
   id: number;
   descripcion: string;
   comentarios: string;
   inventariable: number;
   momentstamp: Date;
-  id_tipoasiento: number;
-  id_usuario: number;
-  id_periodo: number;
+  tipoasiento: ITipoasiento;
+  usuario: IUsuario;
+  periodo: IPeriodo;
 }
 
 

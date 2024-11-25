@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { IPeriodo } from '../../../model/periodo.interface';
 import { PeriodoService } from '../../../service/periodo.service';
+import { CommonModule } from '@angular/common';
 
 declare let bootstrap: any;
 
@@ -24,6 +25,7 @@ declare let bootstrap: any;
     MatCheckboxModule,
     ReactiveFormsModule,
     RouterModule,
+    CommonModule
   ],
   styleUrls: ['./periodo.admin.create.routed.component.css'],
 })
