@@ -29,7 +29,7 @@ declare let bootstrap: any;
 })
 export class PeriodoAdminCreateRoutedComponent implements OnInit {
   id: number = 0;
-  oPeriodoForm!: FormGroup; // Usamos el operador ! para asegurar que no sea undefined
+  oPeriodoForm: FormGroup | undefined = undefined;
   oPeriodo: IPeriodo | null = null;
   strMessage: string = '';
 
@@ -39,7 +39,7 @@ export class PeriodoAdminCreateRoutedComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.oPeriodoForm.markAllAsTouched();
+    this.oPeriodoForm?.markAllAsTouched();
   }
 
   createForm() {
@@ -65,10 +65,10 @@ export class PeriodoAdminCreateRoutedComponent implements OnInit {
   }
 
   updateForm() {
-    this.oPeriodoForm.controls['anyo'].setValue('');
-    this.oPeriodoForm.controls['descripcion'].setValue('');
-    this.oPeriodoForm.controls['comentarios'].setValue('');
-    this.oPeriodoForm.controls['cerrado'].setValue(false);
+    this.oPeriodoForm?.controls['anyo'].setValue('');
+    this.oPeriodoForm?.controls['descripcion'].setValue('');
+    this.oPeriodoForm?.controls['comentarios'].setValue('');
+    this.oPeriodoForm?.controls['cerrado'].setValue(false);
     console.log(this.oPeriodo);
   }
 
@@ -91,11 +91,11 @@ export class PeriodoAdminCreateRoutedComponent implements OnInit {
   };
 
   onSubmit() {
-    if (this.oPeriodoForm.invalid) {
+    if (this.oPeriodoForm?.invalid) {
       this.showModal('Formulario inválido');
       return;
     } else {
-      this.oPeriodoService.create(this.oPeriodoForm.value).subscribe({
+      this.oPeriodoService.create(this.oPeriodoForm?.value).subscribe({
         next: (oPeriodo: IPeriodo) => {
           this.oPeriodo = oPeriodo;
           this.showModal('Periodo creado con el id: ' + this.oPeriodo.id);

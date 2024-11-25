@@ -21,8 +21,13 @@
             <mat-label>Año</mat-label>
             <input matInput formControlName="anyo" placeholder="Año" />
             <mat-hint align="end">Debe ser un número entero</mat-hint>
-            <mat-error *ngIf="oPeriodoForm?.get('anyo')?.hasError('required')">El campo año es obligatorio</mat-error>
-            <mat-error *ngIf="oPeriodoForm?.get('anyo')?.hasError('pattern')">Debe ser un número entero</mat-error>
+            @if (oPeriodoForm?.get('anyo')?.hasError('required')) {
+              <mat-error>El campo año es obligatorio</mat-error>
+            }
+           @if (oPeriodoForm?.get('anyo')?.hasError('pattern')) {
+            <mat-error>Debe ser un número entero</mat-error>
+           }
+           
           </mat-form-field>
         </div>
 
@@ -31,9 +36,16 @@
             <mat-label>Descripción</mat-label>
             <input matInput formControlName="descripcion" placeholder="Descripción" />
             <mat-hint align="end">De 3 a 255 caracteres</mat-hint>
-            <mat-error *ngIf="oPeriodoForm?.get('descripcion')?.hasError('required')">El campo descripción es obligatorio</mat-error>
-            <mat-error *ngIf="oPeriodoForm?.get('descripcion')?.hasError('minlength')">La descripción debe ser más larga</mat-error>
-            <mat-error *ngIf="oPeriodoForm?.get('descripcion')?.hasError('maxlength')">La descripción debe ser más corta</mat-error>
+            @if (oPeriodoForm?.get('descripcion')?.hasError('required')) {
+              <mat-error>El campo descripción es obligatorio</mat-error>
+            }
+            @if (oPeriodoForm?.get('descripcion')?.hasError('minlength')) {
+              <mat-error>La descripción debe ser más larga</mat-error>
+            }
+           @if (oPeriodoForm?.get('descripcion')?.hasError('maxlength')) {
+            <mat-error>La descripción debe ser más corta</mat-error>
+           }
+           
           </mat-form-field>
         </div>
 
@@ -42,9 +54,16 @@
             <mat-label>Comentarios</mat-label>
             <input matInput formControlName="comentarios" placeholder="Comentarios" />
             <mat-hint align="end">De 3 a 255 caracteres</mat-hint>
-            <mat-error *ngIf="oPeriodoForm?.get('comentarios')?.hasError('required')">El campo comentarios es obligatorio</mat-error>
-            <mat-error *ngIf="oPeriodoForm?.get('comentarios')?.hasError('minlength')">El comentario debe ser más largo</mat-error>
-            <mat-error *ngIf="oPeriodoForm?.get('comentarios')?.hasError('maxlength')">El comentario debe ser más corto</mat-error>
+            @if (oPeriodoForm?.get('comentarios')?.hasError('required')) {
+              <mat-error>El campo comentarios es obligatorio</mat-error>
+            }
+           @if (oPeriodoForm?.get('comentarios')?.hasError('minlength')) {
+            <mat-error>El comentario debe ser más largo</mat-error>
+           }
+          @if (oPeriodoForm?.get('comentarios')?.hasError('maxlength')) {
+            <mat-error>El comentario debe ser más corto</mat-error>
+          }
+            
           </mat-form-field>
         </div>
 
@@ -69,7 +88,7 @@
           <button
             class="btn btn-primary mt-4 mx-1"
             type="submit"
-            [disabled]="!oPeriodoForm.valid"
+            [disabled]="!oPeriodoForm?.valid"
           >
             <i class="bi bi-save"></i>
             Guardar

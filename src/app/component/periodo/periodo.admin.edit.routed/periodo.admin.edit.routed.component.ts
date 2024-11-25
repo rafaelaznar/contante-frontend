@@ -29,7 +29,7 @@ declare let bootstrap: any;
 })
 export class PeriodoAdminEditRoutedComponent implements OnInit {
   id: number = 0;
-  oPeriodoForm!: FormGroup; 
+  oPeriodoForm: FormGroup | undefined = undefined; 
   oPeriodo: IPeriodo | null = null;
   message: string = '';
 
@@ -48,7 +48,7 @@ export class PeriodoAdminEditRoutedComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.get();
-    this.oPeriodoForm.markAllAsTouched();
+    this.oPeriodoForm?.markAllAsTouched();
   }
 
   createForm() {
@@ -86,11 +86,11 @@ export class PeriodoAdminEditRoutedComponent implements OnInit {
   }
 
   updateForm() {
-    this.oPeriodoForm.controls['id'].setValue(this.oPeriodo?.id);
-    this.oPeriodoForm.controls['anyo'].setValue(this.oPeriodo?.anyo);
-    this.oPeriodoForm.controls['descripcion'].setValue(this.oPeriodo?.descripcion);
-    this.oPeriodoForm.controls['comentarios'].setValue(this.oPeriodo?.comentarios);
-    this.oPeriodoForm.controls['cerrado'].setValue(this.oPeriodo?.cerrado);
+    this.oPeriodoForm?.controls['id'].setValue(this.oPeriodo?.id);
+    this.oPeriodoForm?.controls['anyo'].setValue(this.oPeriodo?.anyo);
+    this.oPeriodoForm?.controls['descripcion'].setValue(this.oPeriodo?.descripcion);
+    this.oPeriodoForm?.controls['comentarios'].setValue(this.oPeriodo?.comentarios);
+    this.oPeriodoForm?.controls['cerrado'].setValue(this.oPeriodo?.cerrado);
   }
 
   get() {
@@ -119,7 +119,7 @@ export class PeriodoAdminEditRoutedComponent implements OnInit {
   };
 
   onSubmit() {
-    if (!this.oPeriodoForm.valid) {
+    if (!this.oPeriodoForm?.valid) {
       this.showModal('Formulario no válido');
       return;
     } else {
