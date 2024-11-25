@@ -11,11 +11,7 @@ import { TipoApunteService } from '../../../service/tipoapunte.service';
 export class TipoApunteAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oTipoApunte: ITipoApunte = {
-    id: 0,
-    descripcion: '',
-    comentarios: '',
-  };
+  oTipoApunte: ITipoApunte = {} as ITipoApunte;
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oTipoApunteService: TipoApunteService

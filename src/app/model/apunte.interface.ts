@@ -1,3 +1,6 @@
+import { IAsiento } from "./asiento.interface";
+import { ISubcuenta } from "./subcuenta.interface";
+import { ITipoApunte } from "./tipoapunte.interface";
 
 export interface IApunte {
      id : number ;
@@ -7,7 +10,7 @@ export interface IApunte {
      comentarios : string; 
      momentstamp:   Date;
      orden:  number ;
-     id_asiento : number ;
-     id_subcuenta : number ;
-     id_tipoapunte : number 
+     asiento : IAsiento ;
+     subcuenta : ISubcuenta ;
+     tipoApunte : ITipoApunte ; 
 }

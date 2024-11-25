@@ -184,9 +184,9 @@
               <td class="text-start ">{{ apunte.comentarios | trim : 10 }}</td>
               <td class="text-start">{{ apunte.momentstamp | date: "dd/MM/yyyy ..."  }}</td>
               <td class="text-start">{{ apunte.orden }}</td>
-              <td class="text-start">{{ apunte.id_asiento }}</td>
-              <td class="text-start">{{ apunte.id_subcuenta }}</td>
-              <td class="text-start">{{ apunte.id_tipoapunte }}</td>
+              <td class="text-start">{{ apunte.asiento.descripcion }}({{apunte.asiento.id}})</td>
+              <td class="text-start">{{ apunte.subcuenta.descripcion }}({{apunte.subcuenta.id}})</td>
+              <td class="text-start">{{apunte.tipoApunte.descripcion}}({{apunte.tipoApunte.id}})</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button
