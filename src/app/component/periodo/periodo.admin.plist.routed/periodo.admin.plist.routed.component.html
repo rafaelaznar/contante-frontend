@@ -139,6 +139,7 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
+              <th class="bg-primary text-white">Asiento</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -151,7 +152,7 @@
               <td class="text-start">{{ periodo.descripcion }}</td>
               <td class="text-start">{{ periodo.comentarios }}</td>  
               <td class="text-start">{{ periodo.cerrado }}</td>                          
-            
+              <td class="text-center">{{ periodo.asientos }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button
