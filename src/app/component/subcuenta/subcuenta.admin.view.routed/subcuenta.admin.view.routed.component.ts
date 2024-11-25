@@ -14,14 +14,7 @@ import { CommonModule } from '@angular/common';
 export class SubcuentaAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oSubcuenta: ISubcuenta = {
-    id: 0,
-    codigo: 0,
-    descripcion: '',
-    id_cuenta: 0,
-    momentstamp: new Date(),
-    
-  };
+  oSubcuenta: ISubcuenta = {} as ISubcuenta; 
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oSubcuentaService: SubcuentaService
