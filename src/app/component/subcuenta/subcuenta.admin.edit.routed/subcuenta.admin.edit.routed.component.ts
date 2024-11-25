@@ -95,7 +95,7 @@ export class SubcuentaAdminEditRoutedComponent implements OnInit {
     this.oSubcuentaForm?.controls['id'].setValue(this.oSubcuenta?.id);
     this.oSubcuentaForm?.controls['codigo'].setValue(this.oSubcuenta?.codigo);
     this.oSubcuentaForm?.controls['descripcion'].setValue(this.oSubcuenta?.descripcion);
-    this.oSubcuentaForm?.controls['id_cuenta'].setValue(this.oSubcuenta?.id_cuenta);
+    this.oSubcuentaForm?.controls['id_cuenta'].setValue(this.oSubcuenta?.cuenta.id);
     this.oSubcuentaForm?.controls['momentstamp'].setValue(new Date(this.oSubcuenta?.momentstamp));
   }
 
