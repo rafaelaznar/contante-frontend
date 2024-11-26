@@ -45,6 +45,38 @@ serverURL: string = serverURL + '/apunte';
     return this.oHttp.get<IPage<IApunte>>(URL, httpOptions);
   }
 
+  getPageXAsiento(
+    page: number,
+    size: number,
+    field: string,
+    dir: string,
+    filtro: string,
+    id_asiento: number
+  ): Observable<IPage<IApunte>> {
+    let URL: string = '';
+    URL += this.serverURL + '/xasiento/' + id_asiento;
+    if (!page) {
+      page = 0;
+    }
+    URL += '?page=' + page;
+    if (!size) {
+      size = 10;
+    }
+    URL += '&size=' + size;
+    if (field) {
+      URL += '&sort=' + field;
+      if (dir === 'asc') {
+        URL += ',asc';
+      } else {
+        URL += ',desc';
+      }
+    }
+    if (filtro) {
+      URL += '&filter=' + filtro;
+    }
+    return this.oHttp.get<IPage<IApunte>>(URL, httpOptions);
+  }
+
   get(id: number): Observable<IApunte> {
     let URL: string = '';
     URL += this.serverURL;

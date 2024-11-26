@@ -61,8 +61,10 @@ import { PeriodoAdminDeleteRoutedComponent } from './component/periodo/periodo.a
 import { PeriodoAdminEditRoutedComponent } from './component/periodo/periodo.admin.edit.routed/periodo.admin.edit.routed.component';
 import { PeriodoAdminPlistRoutedComponent } from './component/periodo/periodo.admin.plist.routed/periodo.admin.plist.routed.component';
 import { PeriodoAdminViewRoutedComponent } from './component/periodo/periodo.admin.view.routed/periodo.admin.view.routed.component';
+
 import { AsientoXUsuarioAdminPlistRoutedComponent } from './component/asiento/asiento.xusuario.admin.plist.routed/asiento.xusuario.admin.plist.routed.component';
 import { CuentaXTipoCuentaAdminPlistRoutedComponent } from './component/cuenta/cuenta.xtipocuenta.admin.plist.routed/cuenta.xtipocuenta.admin.plist.routed.component';
+import { ApunteXAsientoAdminPlistRoutedComponent } from './component/apunte/apunte.xasiento.admin.plist.routed/apunte.xasiento.admin.plist.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -100,6 +102,7 @@ export const routes: Routes = [
   { path: 'admin/asiento/delete/:id', component: AsientoAdminDeleteRoutedComponent },
   
   { path: 'admin/apunte/plist', component: ApunteAdminPlistRoutedComponent },
+  { path: 'admin/apunte/plist/xasiento/:id', component: ApunteXAsientoAdminPlistRoutedComponent },
   { path: 'admin/apunte/edit/:id', component: ApunteAdminEditRoutedComponent },
   { path: 'admin/apunte/view/:id', component: ApunteAdminViewRoutedComponent },
   { path: 'admin/apunte/create', component: ApunteAdminCreateRoutedComponent, pathMatch: 'full' },
