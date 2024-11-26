@@ -62,6 +62,7 @@ import { PeriodoAdminEditRoutedComponent } from './component/periodo/periodo.adm
 import { PeriodoAdminPlistRoutedComponent } from './component/periodo/periodo.admin.plist.routed/periodo.admin.plist.routed.component';
 import { PeriodoAdminViewRoutedComponent } from './component/periodo/periodo.admin.view.routed/periodo.admin.view.routed.component';
 import { AsientoXUsuarioAdminPlistRoutedComponent } from './component/asiento/asiento.xusuario.admin.plist.routed/asiento.xusuario.admin.plist.routed.component';
+import { AsientoXTipoasientoAdminPlistRoutedComponent } from './component/asiento/asiento.xtipoasiento.admin.plist.routed/asiento.xtipoasiento.admin.plist.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -92,6 +93,7 @@ export const routes: Routes = [
 
   { path: 'admin/asiento/plist', component: AsientoAdminPlistRoutedComponent },
   { path: 'admin/asiento/plist/xusuario/:id', component: AsientoXUsuarioAdminPlistRoutedComponent }, //pte de desarrollo
+  { path: 'admin/asiento/plist/xtipoasiento/:id', component: AsientoXTipoasientoAdminPlistRoutedComponent }, //pte de desarrollo
   { path: 'admin/asiento/edit/:id', component: AsientoAdminEditRoutedComponent },
   { path: 'admin/asiento/view/:id', component: AsientoAdminViewRoutedComponent },
   { path: 'admin/asiento/create', component: AsientoAdminCreateRoutedComponent, pathMatch: 'full' },
