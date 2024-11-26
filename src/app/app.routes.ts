@@ -100,7 +100,6 @@ export const routes: Routes = [
   { path: 'admin/asiento/plist', component: AsientoAdminPlistRoutedComponent },
   { path: 'admin/asiento/plist/xusuario/:id', component: AsientoXUsuarioAdminPlistRoutedComponent }, //pte de desarrollo
   { path: 'admin/asiento/plist/xtipoasiento/:id', component: AsientoXTipoasientoAdminPlistRoutedComponent }, //pte de desarrollo
-  { path: 'admin/asiento/plist/xperiodo/:id', component: AsientoXPeriodoAdminPlistRoutedComponent },
   { path: 'admin/asiento/edit/:id', component: AsientoAdminEditRoutedComponent },
   { path: 'admin/asiento/view/:id', component: AsientoAdminViewRoutedComponent },
   { path: 'admin/asiento/create', component: AsientoAdminCreateRoutedComponent, pathMatch: 'full' },
@@ -144,7 +143,5 @@ export const routes: Routes = [
   { path: 'admin/tipoCuenta/edit/:id', component: TipoCuentaAdminEditRoutedComponent },
   { path: 'admin/tipoCuenta/plist', component: TipoCuentaAdminPlistRoutedComponent },
   { path: 'admin/tipoCuenta/view/:id', component: TipoCuentaAdminViewRoutedComponent },
-  
-
   
 ];
