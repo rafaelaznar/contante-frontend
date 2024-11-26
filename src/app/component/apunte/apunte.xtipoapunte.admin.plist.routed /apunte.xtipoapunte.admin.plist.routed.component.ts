@@ -63,7 +63,7 @@ export class ApunteXTipoapunteAdminPlistRoutedComponent implements OnInit {
 
   getPage() {
     this.oApunteService
-      .getPageXApunte(
+      .getPageXTipoApunte(
         this.nPage,
         this.nRpp,
         this.strField,
