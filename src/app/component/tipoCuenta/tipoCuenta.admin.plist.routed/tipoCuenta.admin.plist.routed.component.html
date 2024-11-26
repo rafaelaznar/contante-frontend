@@ -153,7 +153,7 @@
               <td class="text-start">
                 {{ tipoCuenta.descripcion | trim : 10 }}
               </td>
-              <td class="text-center">                
+              <td class="text-center">
                 @if(tipoCuenta.creditoOdebito === 0){
                 <span class="badge text-bg-danger">CREDITO</span>
                 } @else {
@@ -170,7 +170,13 @@
                 <span class="badge text-bg-info">NOMINAL</span>
                 }
               </td>
-              <td class="text-center">{{ tipoCuenta.cuentas }}</td>
+              <td class="text-center">
+                <a
+                  href="admin/cuenta/plist/xtipocuenta/{{ tipoCuenta.id }}"
+                  class="btn btn-primary"
+                  >{{ tipoCuenta.cuentas }}</a
+                >
+              </td>
               <td class="text-center">{{ tipoCuenta.grupotipocuentas }}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
