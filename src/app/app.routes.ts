@@ -63,7 +63,6 @@ import { PeriodoAdminPlistRoutedComponent } from './component/periodo/periodo.ad
 import { PeriodoAdminViewRoutedComponent } from './component/periodo/periodo.admin.view.routed/periodo.admin.view.routed.component';
 
 import { AsientoXUsuarioAdminPlistRoutedComponent } from './component/asiento/asiento.xusuario.admin.plist.routed/asiento.xusuario.admin.plist.routed.component';
-import { AsientoXPeriodoAdminPlistRoutedComponent } from './component/asiento/asiento.xperiodo.admin.plist.routed/asiento.xperiodo.admin.plist.routed.component';
 import { ApunteXSubcuentaAdminPlistRoutedComponent } from './component/apunte/apunte.xsubcuenta.admin.plist.routed/apunte.xsubcuenta.admin.plist.routed.component';
 import { ApunteXTipoapunteAdminPlistRoutedComponent } from './component/apunte/apunte.xtipoapunte.admin.plist.routed/apunte.xtipoapunte.admin.plist.routed.component';
 import { CuentaXTipoCuentaAdminPlistRoutedComponent } from './component/cuenta/cuenta.xtipocuenta.admin.plist.routed/cuenta.xtipocuenta.admin.plist.routed.component';
