@@ -1,0 +1,170 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-5">
+        <i class="bi bi-pencil"></i>
+        Edición de Asiento
+        <i class="bi bi-journal-text"></i>      </h2>
+
+      <form [formGroup]="oAsientoForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput formControlName="id" placeholder="Id" readonly />
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Descripcion</mat-label>
+            <input matInput formControlName="descripcion" placeholder="Descripcion" />
+            <mat-hint align="end">De 5 a 255 caracteres</mat-hint>
+            @if (oAsientoForm?.get('descripcion')?.hasError('required')) {
+            <mat-error>Debes introducir una descripcion</mat-error>
+            } @if (oAsientoForm?.get('descripcion')?.hasError('minlength')) {
+            <mat-error>Debes introducir una descripcion más larga</mat-error>
+            } @if (oAsientoForm?.get('descripcion')?.hasError('maxlength')) {
+            <mat-error>Debes introducir una descripcion más corta</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Comentarios</mat-label>
+            <input
+              matInput
+              formControlName="comentarios"
+              placeholder="Comentarios"
+            />
+            <mat-hint align="end">De 0 a 255 caracteres</mat-hint>
+            @if (oAsientoForm?.get('comentarios')?.hasError('required')) {
+            <mat-error>Debes introducir un comentario</mat-error>
+            } @if (oAsientoForm?.get('comentarios')?.hasError('minlength')) {
+            <mat-error>Debes introducir un comentario más largo</mat-error>
+            } @if (oAsientoForm?.get('comentarios')?.hasError('maxlength')) {
+            <mat-error>Debes introducir un comentario más corto</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-checkbox formControlName="inventariable" [(ngModel)]="checkboxValue" (change)="onCheckboxChange($event)">
+            Inventariable
+          </mat-checkbox>
+        </div>
+        <br>
+        <div class="row mb-4">
+          <div class="col-12">
+            <p-calendar class=" d-block"
+              formControlName="momentstamp"    
+              placeholder="Momentstamp"          
+              inputId="spanish"
+              [showIcon]="true"
+              [showTime]="true"
+              [showSeconds]="true"
+              [showButtonBar]="true"
+            ></p-calendar>
+            @if (oAsientoForm?.get('momentstamp')?.hasError('required')) {
+              <mat-error  >El campo debe es obligatorio</mat-error> 
+              } 
+          </div>
+                 </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id Tipo de Asiento</mat-label>
+            <input matInput formControlName="id_tipoasiento" placeholder="Id Tipo de Asiento" readonly/>
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+            @if (oAsientoForm?.get('id_tipoasiento')?.hasError('required')) {
+            <mat-error>Debes introducir el id del tipo de asiento</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id de Usuario</mat-label>
+            <input matInput formControlName="id_usuario" placeholder="Id de Usuario" readonly/>
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+            @if (oAsientoForm?.get('id_usuario')?.hasError('required')) {
+            <mat-error>Debes introducir el id de usuario</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id de Periodo</mat-label>
+            <input matInput formControlName="id_periodo" placeholder="Id de Periodo" readonly/>
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+            @if (oAsientoForm?.get('id_periodo')?.hasError('required')) {
+            <mat-error>Debes introducir el id del periodo</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="mt-4">
+          <button
+            class="btn btn-warning mt-4 mx-1"
+            [routerLink]="['/admin', 'asiento', 'plist']"
+          >
+            <i class="bi bi-list"></i>
+            Ir a listado de asientos
+          </button>
+
+          <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+            <i class="bi bi-x-lg"></i>
+            Reset
+          </button>
+
+          <button
+            class="btn btn-primary mt-4 mx-1"
+            type="submit"
+            [disabled]="!oAsientoForm?.valid"
+          >
+            <i class="bi bi-save"></i>
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

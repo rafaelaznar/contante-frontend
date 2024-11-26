@@ -1,0 +1,140 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-2">
+        <i class="bi bi-plus-square"></i>
+        Creación de subcuenta
+        <i class="bi bi-newspaper"></i>
+      </h2>
+      <form [formGroup]="osubcuentaForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Codigo</mat-label>
+            <input
+              matInput
+              formControlName="codigo"
+              placeholder="Codigo"
+            />
+            <mat-hint align="start">Debe ser un numero entero</mat-hint>
+            @if (osubcuentaForm?.get('codigo')?.hasError('required')){
+            <mat-error> El campo codigo es obligatorio </mat-error>
+            } @if (osubcuentaForm?.get('codigo')?.hasError('pattern')){
+            <mat-error> El codigo ha de ser un numero entero </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Descripción</mat-label>
+            <input
+              matInput
+              formControlName="descripcion"
+              placeholder="Escribe una descripción"
+            />
+            <mat-hint align="start">De 3 caracteres a 255 caracteres</mat-hint>
+            @if (osubcuentaForm?.get('descripcion')?.hasError('required')){
+            <mat-error> El campo nombre es obligatorio </mat-error>
+            } @if (osubcuentaForm?.get('descripcion')?.hasError('minlength')){
+            <mat-error> El nombre debe ser mas largo </mat-error>
+            } @if (osubcuentaForm?.get('descripcion')?.hasError('maxlength')){
+            <mat-error> El nombre debe ser mas corto </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>id_cuenta</mat-label>
+            <input
+              matInput
+              formControlName="id_cuenta"
+              placeholder="Escribe id_cuenta"
+            />
+            <mat-hint align="start">Debe ser un numero entero</mat-hint>
+            @if (osubcuentaForm?.get('id_cuenta')?.hasError('required')){
+            <mat-error> El campo nombre es obligatorio </mat-error>
+            } @if (osubcuentaForm?.get('id_cuenta')?.hasError('minlength')){
+            <mat-error> El nombre debe ser mas largo </mat-error>
+            } @if (osubcuentaForm?.get('id_cuenta')?.hasError('maxlength')){
+            <mat-error> El nombre debe ser mas corto </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mb-4">
+          <label for="momentstamp" class="form-label">Momentstamp</label>
+          <div class="col">
+            <p-calendar
+            formControlName="momentstamp"
+            inputId="spanish"
+            [showIcon]="true"
+            [showTime]="true"
+            [showSeconds]="true"
+            [showButtonBar]="true"
+          ></p-calendar>
+          @if (osubcuentaForm?.get('momentstamp')?.hasError('required')) {
+            <mat-error  >El campo fecha es obligatorio</mat-error> 
+            }
+        </div>
+        </div>
+      
+        <br />
+        <button
+          class="btn btn-warning mt-4 mx-1"
+          [routerLink]="['/admin', 'subcuenta', 'plist']"
+        >
+          <i class="bi bi-list"></i>
+          Ir a listado de subcuentas
+        </button>
+
+        <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+          <i class="bi bi-x-lg"></i>
+          Reset
+        </button>
+
+        <button
+          class="btn btn-primary mt-4 mx-1"
+          type="submit"
+          [disabled]="!osubcuentaForm?.valid"
+        >
+        <i class="bi bi-floppy"></i>
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ strMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

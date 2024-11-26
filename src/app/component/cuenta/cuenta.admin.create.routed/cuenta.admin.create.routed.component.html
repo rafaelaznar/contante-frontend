@@ -1,0 +1,109 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-2">
+        <i class="bi bi-plus-square"></i>
+        Creación de Cuenta
+        <i class="bi bi-person-vcard-fill"></i>
+      </h2>
+      <form [formGroup]="oCuentaForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Codigo</mat-label>
+            <input matInput formControlName="codigo" placeholder="Codigo" />
+            <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
+            @if (oCuentaForm?.get('codigo')?.hasError('required')){
+            <mat-error> El campo codigo es obligatorio </mat-error>
+            } @if (oCuentaForm?.get('codigo')?.hasError('minlength')){
+            <mat-error> El codigo debe ser mas largo </mat-error>
+            } @if (oCuentaForm?.get('codigo')?.hasError('maxlength')){
+            <mat-error> El codigo debe ser mas corto </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Descripcion</mat-label>
+            <input
+              matInput
+              formControlName="descripcion"
+              placeholder="Descripcion"
+            />
+            <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
+            @if (oCuentaForm?.get('nombre')?.hasError('maxlength')) {
+            <mat-error>Debes introducir una descripcion mas corta</mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Tipo Cuenta</mat-label>
+            <input
+              matInput
+              formControlName="id_tipocuenta"
+              placeholder="Tipo Cuenta"
+            />
+          </mat-form-field>
+        </div>
+        <br />
+        <button
+          class="btn btn-warning mt-4 mx-1"
+          [routerLink]="['/admin', 'cuenta', 'plist']"
+        >
+          <i class="bi bi-list"></i>
+          Ir a listado de Cuentas
+        </button>
+
+        <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+          <i class="bi bi-x-lg"></i>
+          Reset
+        </button>
+
+        <button
+          class="btn btn-primary mt-4 mx-1"
+          type="submit"
+          [disabled]="!oCuentaForm?.valid"
+        >
+          <i class="bi bi-floppy"></i>
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ strMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
