@@ -39,25 +39,42 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Tipo de Asiento
           </th>
-          <td class="text-start ps-5">{{ oAsiento!.tipoasiento.descripcion }} ({{oAsiento!.tipoasiento.id}})</td>
+          <td class="text-start ps-5">
+            <a [routerLink]="['/admin/tipoAsiento/view', oAsiento.tipoasiento.id]">
+              {{ oAsiento!.tipoasiento.descripcion }} ({{oAsiento!.tipoasiento.id}})
+            </a>
+          </td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Usuario
           </th>
-          <td class="text-start ps-5">{{ oAsiento!.usuario.nombre }} {{ oAsiento!.usuario.apellido1 }} ({{oAsiento!.usuario.id}})</td>
+          <td class="text-start ps-5">
+            <a [routerLink]="['/admin/usuario/view', oAsiento.usuario.id]">
+              {{ oAsiento!.usuario.nombre }} {{ oAsiento!.usuario.apellido1 }} ({{oAsiento!.usuario.id}})
+            </a>
+            
+          </td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Periodo 	
           </th>
-          <td class="text-start ps-5">{{ oAsiento!.periodo.anyo }} ({{oAsiento!.periodo.id}})</td>
+          <td class="text-start ps-5">
+            <a [routerLink]="['/admin/periodo/view', oAsiento.periodo.id]">
+              {{ oAsiento.periodo.descripcion}}({{oAsiento!.periodo.id}})
+            </a>
+          </td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Apuntes 	
           </th>
-          <td class="text-start ps-5">{{ oAsiento!.apuntes }}</td>
+          <td class="text-start ps-5">
+            <a href="admin/apunte/plist/xasiento/{{ oAsiento.id }}" class="btn btn-primary">
+              {{ oAsiento!.apuntes }}
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
