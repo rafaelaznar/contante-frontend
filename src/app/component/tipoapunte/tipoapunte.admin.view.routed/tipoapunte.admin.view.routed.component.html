@@ -12,7 +12,7 @@
           <th scope="row" class="bg-danger text-white text-end pe-5">Id</th>
           <td class="text-start ps-5">{{ oTipoApunte.id }}</td>
         </tr>
-       
+
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Descripcion
@@ -31,12 +31,14 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Apuntes
           </th>
-          <td class="text-start ps-5">{{ oTipoApunte.apuntes }}</td>
+          <td class="text-start ps-5"> <a href="admin/apunte/plist/xtipoapunte/{{ oTipoApunte.id }}"
+              class="btn btn-primary">{{
+              oTipoApunte.apuntes }}</a></td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Grupo Tipo Apuntes
+            Balances
           </th>
           <td class="text-start ps-5">{{ oTipoApunte.grupotipoapuntes }}</td>
         </tr>
@@ -50,20 +52,13 @@
       <i class="bi bi-list"></i>
       Ir a listado de Tipo de Apuntes
     </a>
-    <a
-      class="btn btn-primary mt-4 mx-1"
-      href="admin/tipoapunte/edit/{{ oTipoApunte.id }}"
-    >
+    <a class="btn btn-primary mt-4 mx-1" href="admin/tipoapunte/edit/{{ oTipoApunte.id }}">
       <i class="bi bi-pencil"></i>
       Editar
     </a>
-    <a
-      class="btn btn-danger mt-4 mx-1"
-      href="admin/tipoapunte/delete/{{ oTipoApunte.id }}"
-    >
+    <a class="btn btn-danger mt-4 mx-1" href="admin/tipoapunte/delete/{{ oTipoApunte.id }}">
       <i class="bi bi-trash"></i>
       Borrar
     </a>
   </div>
 </div>
-
