@@ -40,7 +40,11 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Asientos
           </th>
-          <td class="text-start ps-5">{{ oPeriodo.asientos }}</td>
+          <td class="text-start ps-5">
+            <a href="admin/asiento/plist/xusuario/{{ oPeriodo.id }}" class="btn btn-primary">
+              {{ oPeriodo.asientos }}
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
