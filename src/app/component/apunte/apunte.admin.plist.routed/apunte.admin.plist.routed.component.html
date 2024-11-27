@@ -168,14 +168,20 @@
                 {{ apunte.momentstamp | date : "dd/MM/yyyy ..." }}
               </td>
               <td class="text-center">{{ apunte.orden }}</td>
-              <td class="text-start">
-                {{ apunte.asiento.descripcion | trim :10 }}({{ apunte.asiento.id }})
+              <td class="text-start"> 
+                <a [routerLink]="['/admin/asiento/view', apunte.asiento.id]">
+                  {{ apunte.asiento.descripcion | trim :10 }}({{ apunte.asiento.id }})
+                </a> 
               </td>
               <td class="text-start">
-                {{ apunte.subcuenta.descripcion | trim :10 }}({{ apunte.subcuenta.id }})
+                <a [routerLink]="['/admin/subcuenta/view', apunte.subcuenta.id]">
+                  {{ apunte.subcuenta.descripcion | trim :10 }}({{ apunte.subcuenta.id }})
+                </a>
               </td>
               <td class="text-start">
-                {{ apunte.tipoapunte.descripcion }}({{ apunte.tipoapunte.id }})
+                <a [routerLink]="['/admin/tipoapunte/view', apunte.tipoapunte.id]">
+                  {{ apunte.tipoapunte.descripcion }}({{ apunte.tipoapunte.id }})
+                </a>
               </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
