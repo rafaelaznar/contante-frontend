@@ -22,7 +22,13 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Credito o debito
           </th>
-          <td class="text-start ps-5">{{ oTipoCuenta!.creditoodebito }}</td>
+          <td class="text-start ps-5">
+            @if(oTipoCuenta.creditoodebito === 0){
+            <span class="badge text-bg-danger">CREDITO</span>
+            } @else {
+            <span class="badge text-bg-success">DEBITO</span>
+            }
+          </td>
         </tr>
 
         <tr class="text-center">
@@ -36,8 +42,32 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Real o nominal
           </th>
-          <td class="text-start ps-5">{{ oTipoCuenta!.realonominal }}</td>
+          <td class="text-start ps-5">
+            @if(oTipoCuenta.realonominal === 0){
+            <span class="badge text-bg-warning">REAL</span>
+            } @else {
+            <span class="badge text-bg-info">NOMINAL</span>
+            }
+          </td>
         </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Cuentas
+          </th>
+          <td class="text-start ps-5">
+            <a href="admin/cuenta/plist/xtipocuenta/{{ oTipoCuenta.id }}" class="btn btn-primary">{{
+              oTipoCuenta.cuentas }}</a>
+          </td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Balances
+          </th>
+          <td class="text-start ps-5">{{ oTipoCuenta!.grupotipocuentas }}</td>
+        </tr>
+
       </tbody>
     </table>
   </div>
