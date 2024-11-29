@@ -13,7 +13,7 @@ declare let bootstrap: any;
   styleUrl: './asiento.admin.delete.component.css',
 })
 export class AsientoAdminDeleteRoutedComponent implements OnInit {
-  oAsiento: IAsiento | null = null;
+  oAsiento: IAsiento = {} as IAsiento;
   strMessage: string = '';
   myModal: any;
 
