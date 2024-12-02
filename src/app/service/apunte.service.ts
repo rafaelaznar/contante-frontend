@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { IApunte } from '../model/apunte.interface';
 import { IPage } from '../model/model.interface';
 import { Observable } from 'rxjs/internal/Observable';
+import { ISumas } from '../model/sumas.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -139,6 +140,12 @@ export class ApunteService {
       URL += '&filter=' + filtro;
     }
     return this.oHttp.get<IPage<IApunte>>(URL, httpOptions);
+  }
+
+  getTotalAsiento(id : number):Observable<ISumas>{
+    let URL: string = '';
+    URL += this.serverURL + '/asiento/total/' + id;
+    return this.oHttp.get<ISumas>(URL);
   }
 
   get(id: number): Observable<IApunte> {

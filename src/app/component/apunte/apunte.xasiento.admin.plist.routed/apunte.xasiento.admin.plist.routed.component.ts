@@ -11,6 +11,7 @@ import { ApunteService } from '../../../service/apunte.service';
 import { AsientoService } from '../../../service/asiento.service';
 import { IAsiento } from '../../../model/asiento.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ISumas } from '../../../model/sumas.interface';
 
 @Component({
   selector: 'app-apunte.xasiento.admin.routed',
@@ -35,6 +36,7 @@ export class ApunteXAsientoAdminPlistRoutedComponent implements OnInit {
   private debounceSubject = new Subject<string>();
 
   oAsiento: IAsiento = {} as IAsiento;
+  oTotal: ISumas = {} as ISumas;
 
   constructor(
     private oApunteService: ApunteService,
@@ -52,11 +54,25 @@ export class ApunteXAsientoAdminPlistRoutedComponent implements OnInit {
         next: (oAsiento: IAsiento) => {
           this.oAsiento = oAsiento;
           this.getPage();
+
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
         },
       });
+
+      this.oActivatedRoute.params.subscribe((params) => {
+        this.oApunteService.getTotalAsiento(params['id']).subscribe({
+          next: (oSuma: ISumas) => {
+            this.oTotal = oSuma;
+            console.log(this.oTotal);
+            this.getPage();
+          },
+          error: (err: HttpErrorResponse) => {
+            console.log(err);
+          },
+        });
+      })
     });
   }
 
