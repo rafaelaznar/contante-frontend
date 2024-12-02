@@ -19,6 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
+
 export class BalanceXTipoapunteAdminPlistRoutedComponent implements OnInit {
   oPage: IPage<IBalance> | null = null;
   //
@@ -35,6 +36,8 @@ export class BalanceXTipoapunteAdminPlistRoutedComponent implements OnInit {
   private debounceSubject = new Subject<string>();
   //
   oTipoapunte: ITipoapunte = {} as ITipoapunte;
+  //
+  id_tipoapunte: number = 0;
 
   constructor(
     private oBalanceService: BalanceService,
@@ -48,17 +51,15 @@ export class BalanceXTipoapunteAdminPlistRoutedComponent implements OnInit {
     });
 
     // recollir el paràmetre de la URL tipoapunte
-
-    this.oActivatedRoute.params.subscribe((params) => {
-      this.oTipoapunteService.get(params['id']).subscribe({
-        next: (oTipoapunte: ITipoapunte) => {
-          this.oTipoapunte = oTipoapunte;
-          this.getPage();
-        },
-        error: (err: HttpErrorResponse) => {
-          console.log(err);
-        },
-      });
+    this.id_tipoapunte = this.oActivatedRoute.snapshot.params['id'];
+    this.oTipoapunteService.get(this.id_tipoapunte).subscribe({
+      next: (oTipoapunte: ITipoapunte) => {
+        this.oTipoapunte = oTipoapunte;
+        this.getPage();
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+      },
     });
 
   }
@@ -69,7 +70,7 @@ export class BalanceXTipoapunteAdminPlistRoutedComponent implements OnInit {
 
   getPage() {
     this.oBalanceService
-      .getPageXTipoapunte(this.nPage, this.nRpp, this.strField, this.strDir, this.strFiltro, this.oTipoapunte.id)
+      .getPageXTipoapunte(this.nPage, this.nRpp, this.strField, this.strDir, this.strFiltro, this.id_tipoapunte)
       .subscribe({
         next: (oPageFromServer: IPage<IBalance>) => {
           this.oPage = oPageFromServer;

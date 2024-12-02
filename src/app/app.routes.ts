@@ -89,7 +89,7 @@ export const routes: Routes = [
   { path: 'admin/cuenta/delete/:id', component: CuentaAdminDeleteRoutedComponent },
  
   { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent},
-  { path: 'admin/balance/xtipoapunte/:id', component: BalanceXTipoapunteAdminPlistRoutedComponent},
+  { path: 'admin/balance/plist/xtipoapunte/:id', component: BalanceXTipoapunteAdminPlistRoutedComponent},
   { path: 'admin/balance/edit/:id', component: BalanceAdminEditRoutedComponent },
   { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },  
   { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent },  
