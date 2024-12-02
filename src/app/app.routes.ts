@@ -69,6 +69,7 @@ import { CuentaXTipoCuentaAdminPlistRoutedComponent } from './component/cuenta/c
 import { ApunteXAsientoAdminPlistRoutedComponent } from './component/apunte/apunte.xasiento.admin.plist.routed/apunte.xasiento.admin.plist.routed.component';
 import { AsientoXTipoasientoAdminPlistRoutedComponent } from './component/asiento/asiento.xtipoasiento.admin.plist.routed/asiento.xtipoasiento.admin.plist.routed.component';
 import { AsientoXPeriodoAdminPlistRoutedComponent } from './component/asiento/asiento.xperiodo.admin.plist.routed/asiento.xperiodo.admin.plist.routed.component';
+import { BalanceXTipoapunteAdminPlistRoutedComponent } from './component/balance/balance.xtipoapunte.admin.plist.routed/balance.xtipoapunte.admin.plist.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -88,10 +89,12 @@ export const routes: Routes = [
   { path: 'admin/cuenta/delete/:id', component: CuentaAdminDeleteRoutedComponent },
  
   { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent},
+  { path: 'admin/balance/xtipoapunte/:id', component: BalanceXTipoapunteAdminPlistRoutedComponent},
   { path: 'admin/balance/edit/:id', component: BalanceAdminEditRoutedComponent },
   { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },  
   { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent },  
   { path: 'admin/balance/delete/:id', component: BalanceAdminDeleteRoutedComponent },
+
     
   { path: 'admin/usuario/edit/:id', component: UsuarioAdminEditRoutedComponent },
   { path: 'admin/usuario/view/:id', component: UsuarioAdminViewRoutedComponent },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CuentaService } from '../../../service/cuenta.service';
 import { ICuenta } from '../../../model/cuenta.interface';
 
@@ -7,6 +7,8 @@ import { ICuenta } from '../../../model/cuenta.interface';
   selector: 'app-cuenta.admin.view.routed',
   templateUrl: './cuenta.admin.view.routed.component.html',
   styleUrls: ['./cuenta.admin.view.routed.component.css'],
+  standalone: true,
+  imports: [RouterLink],
 })
 export class CuentaAdminViewRoutedComponent implements OnInit {
   //
