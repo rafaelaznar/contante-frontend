@@ -42,7 +42,11 @@
           >
             Tipo Cuenta
           </th>
-          <td class="text-center">{{ oCuenta.tipocuenta }}</td>
+          <td class="text-center">
+            <a [routerLink]="['/admin/tipocuenta/view', oCuenta.tipocuenta.id]">
+              {{ oCuenta.tipocuenta.descripcion }} ({{ oCuenta.tipocuenta.id }})
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>

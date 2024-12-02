@@ -139,7 +139,7 @@
               </th>
               <th class="bg-primary text-white">Tipo de Asiento</th>
               <th class="bg-primary text-white">Usuario</th>
-              
+              <th class="bg-primary text-white">Periodo</th>
               <th class="bg-primary text-white">Apuntes</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
@@ -161,6 +161,7 @@
               <td class="text-center">
                 {{ asiento.momentstamp | date : "dd/MM/yyyy ..." }}
               </td>
+              <!-- 
               <td class="text-center">
                 {{ asiento.tipoasiento.descripcion }} ({{
                   asiento.tipoasiento.id
@@ -172,7 +173,31 @@
                 }})
               </td>
               <td class="text-center">
-                {{ asiento.apuntes }} 
+                {{ asiento.periodo.anyo }} ({{ asiento.periodo.id }})
+              </td>
+               -->
+              <td class="text-start ps-5">
+                <a [routerLink]="['/admin/tipoAsiento/view', asiento.tipoasiento.id]">
+                  {{ asiento!.tipoasiento.descripcion }}
+                </a>
+              </td>
+              <td class="text-start ps-5">
+                <a [routerLink]="['/admin/usuario/view', asiento.usuario.id]">
+                  {{ asiento!.usuario.nombre }}  
+                </a>
+                
+              </td>
+              <td class="text-start ps-5">
+                <a [routerLink]="['/admin/periodo/view', asiento.periodo.id]">
+                  {{ asiento.periodo.descripcion}}
+                </a>
+              </td>
+              <td class="text-center">
+                <a
+                  href="admin/apunte/plist/xasiento/{{ asiento.id }}"
+                  class="btn btn-primary">
+                  {{ asiento.apuntes }} 
+                </a>
               </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

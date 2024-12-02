@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { IApunte } from '../../../model/apunte.interface';
 import { ApunteService } from '../../../service/apunte.service';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './apunte.admin.view.routed.component.html',
   styleUrls: ['./apunte.admin.view.routed.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, RouterModule]
 })
 export class ApunteAdminViewRoutedComponent implements OnInit {
   id: number = 0;

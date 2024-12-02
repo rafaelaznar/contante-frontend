@@ -13,7 +13,7 @@ declare let bootstrap: any;
   styleUrls: ['./periodo.admin.delete.routed.component.css'],
 })
 export class PeriodoAdminDeleteRoutedComponent implements OnInit {
-  oPeriodo: IPeriodo | null = null;
+  oPeriodo: IPeriodo = {} as IPeriodo;
   strMessage: string = '';
   myModal: any;
 
