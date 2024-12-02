@@ -44,6 +44,38 @@ export class BalanceService {
     return this.oHttp.get<IPage<IBalance>>(URL, httpOptions);
   }
 
+  getPageXTipoapunte(
+    page: number,
+    size: number,
+    field: string,
+    dir: string,
+    filtro: string,
+    id_tipoapunte: number
+  ): Observable<IPage<IBalance>> {
+    let URL: string = '';
+    URL += this.serverURL + '/xtipoapunte/' + id_tipoapunte;
+    if (!page) {
+      page = 0;
+    }
+    URL += '?page=' + page;
+    if (!size) {
+      size = 10;
+    }
+    URL += '&size=' + size;
+    if (field) {
+      URL += '&sort=' + field;
+      if (dir === 'asc') {
+        URL += ',asc';
+      } else {
+        URL += ',desc';
+      }
+    }
+    if (filtro) {
+      URL += '&filter=' + filtro;
+    }
+    return this.oHttp.get<IPage<IBalance>>(URL, httpOptions);
+  }
+
   get(id: number): Observable<IBalance> {
     let URL: string = '';
     URL += this.serverURL;

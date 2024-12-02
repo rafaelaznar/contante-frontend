@@ -25,7 +25,9 @@
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">Cuenta</th>
           <td class="text-start ps-5">
+            <a [routerLink]="['/admin/cuenta/view', oSubcuenta.cuenta.id]">
             {{ oSubcuenta.cuenta.descripcion }} ({{ oSubcuenta.cuenta.id }})
+            </a>
           </td>
         </tr>
         <tr class="text-center">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ISubcuenta } from '../../../model/subcuenta.interface';
 import { SubcuentaService } from '../../../service/subcuenta.service';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './subcuenta.admin.view.routed.component.html',
   styleUrls: ['./subcuenta.admin.view.routed.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, RouterLink]
 })
 export class SubcuentaAdminViewRoutedComponent implements OnInit {
   id: number = 0;

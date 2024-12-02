@@ -57,21 +57,33 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Asiento
           </th>
-          <td class="text-start ps-5">{{ oApunte!.asiento.descripcion }} ({{oApunte!.asiento.id}})</td>
+          <td class="text-start ps-5">
+            <a [routerLink]="['/admin/asiento/view', oApunte!.asiento.id]">
+              {{ oApunte!.asiento.descripcion }} ({{oApunte!.asiento.id}})
+            </a>
+          </td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Id Subcuenta
           </th>
-          <td class="text-start ps-5">{{ oApunte!.subcuenta.descripcion }} ({{oApunte!.subcuenta.id}})</td>
+          <td class="text-start ps-5">
+            <a [routerLink]="['/admin/subcuenta/view', oApunte!.subcuenta.id]">
+              {{ oApunte!.subcuenta.descripcion }} ({{oApunte!.subcuenta.id}})
+            </a>
+          </td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Id Tipo Apunte
           </th>
-          <td class="text-start ps-5">{{ oApunte!.tipoapunte.descripcion }} ({{oApunte!.tipoapunte.id}})</td>
+          <td class="text-start ps-5">
+            <a [routerLink]="['/admin/tipoapunte/view', oApunte!.tipoapunte.id]">
+              {{ oApunte!.tipoapunte.descripcion }} ({{oApunte!.tipoapunte.id}})
+            </a>
+          </td>
       </tbody>
     </table>
   </div>

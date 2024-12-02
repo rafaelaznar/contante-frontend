@@ -10,21 +10,37 @@
       <tbody>
         <tr class="text-center">
           <th scope="row" class="bg-danger text-white text-end pe-5">Id</th>
-          <td class="text-start ps-5">{{ oTipoApunte!.id }}</td>
+          <td class="text-start ps-5">{{ oTipoApunte?.id }}</td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Descripcion
           </th>
-          <td class="text-start ps-5">{{ oTipoApunte!.descripcion }}</td>
+          <td class="text-start ps-5">{{ oTipoApunte?.descripcion }}</td>
         </tr>
 
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Comentarios
           </th>
-          <td class="text-start ps-5">{{ oTipoApunte!.comentarios }}</td>
+          <td class="text-start ps-5">{{ oTipoApunte?.comentarios }}</td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Apuntes
+          </th>
+          <td class="text-start ps-5"> <a href="admin/apunte/plist/xtipoapunte/{{ oTipoApunte?.id }}"
+              class="btn btn-primary">{{
+              oTipoApunte?.apuntes }}</a></td>
+        </tr>
+
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Balances
+          </th>
+          <td class="text-start ps-5">{{ oTipoApunte?.grupotipoapuntes }}</td>
         </tr>
 
       </tbody>
@@ -36,10 +52,7 @@
   </div>
 
   <div class="d-flex justify-content-center mt-4">
-    <button
-      class="btn btn-warning mt-4 mx-1"
-      [routerLink]="['/admin', 'tipoapunte', 'plist']"
-    >
+    <button class="btn btn-warning mt-4 mx-1" [routerLink]="['/admin', 'tipoapunte', 'plist']">
       <i class="bi bi-list"></i>
       Ir a listado de Tipos de Apunte
     </button>
@@ -50,39 +63,22 @@
   </div>
 </div>
 
-<div
-  class="modal fade"
-  [id]="'mimodal'"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" [id]="'mimodal'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-          (click)="hideModal()"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="hideModal()"></button>
       </div>
       <div class="modal-body">
         <p>{{ strMessage }}</p>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-primary"
-          data-bs-dismiss="modal"
-          (click)="hideModal()"
-        >
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="hideModal()">
           Cerrar
         </button>
       </div>
     </div>
   </div>
 </div>
-
