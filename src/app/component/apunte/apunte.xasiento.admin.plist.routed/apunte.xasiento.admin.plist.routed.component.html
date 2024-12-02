@@ -3,8 +3,15 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-list"></i>
-        Lista de Apuntes del Asiento con id {{oAsiento.id}} ({{oAsiento.descripcion| trim : 10}})
+        Lista de Apuntes por Asiento 
         <i class="bi bi-newspaper"></i>
+        <div class="alert alert-primary my-3 text-start" role="alert">
+          {{oAsiento.id}} -
+          {{oAsiento.descripcion}} ({{oAsiento.periodo.anyo}})
+          
+        </div>
+
+        
       </h2>
       <a href="admin/apunte/create"><button class="btn btn-primary my-2 mx-2">
           <i class="bi bi-plus-square"></i>
