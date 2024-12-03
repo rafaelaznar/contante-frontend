@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,6 +14,10 @@ import { ApunteService } from '../../../service/apunte.service';
 import { CalendarModule } from 'primeng/calendar';
 import { CALENDAR_ES } from '../../../environment/environment';
 import { PrimeNGConfig } from 'primeng/api';
+import { ISubcuenta } from '../../../model/subcuenta.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { SubcuentaService } from '../../../service/subcuenta.service';
+import { SubcuentaAdminSelectorUnroutedComponent } from '../../subcuenta/subcuenta.admin.selector.unrouted/subcuenta.admin.selector.unrouted.component';
 
 declare let bootstrap: any;
 
@@ -38,13 +42,35 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
   strMessage: string = '';
 
   myModal: any;
+  readonly dialog = inject(MatDialog);
+  oSubcuenta: ISubcuenta = {} as ISubcuenta;
 
-  constructor(private oApunteService: ApunteService, private oRouter: Router,private oPrimeconfig: PrimeNGConfig) {}
+  constructor(private oApunteService: ApunteService,private oSubcuentaService: SubcuentaService, private oRouter: Router,private oPrimeconfig: PrimeNGConfig) {}
 
   ngOnInit() {
     this.createForm();
     this.oApunteForm?.markAllAsTouched();
     this.oPrimeconfig.setTranslation(CALENDAR_ES);
+    this.oApunteForm?.controls['id_subcuenta'].valueChanges.subscribe(change => {
+      if (change) {
+        // obtener el objeto subcuenta del servidor
+        this.oSubcuentaService.get(change).subscribe({
+          next: (oSubcuenta: ISubcuenta) => {
+            this.oSubcuenta = oSubcuenta;
+          },
+          error: (err) => {
+            console.log(err);
+            this.oSubcuenta = {} as ISubcuenta;
+            // marcar el campo como inválido
+            this.oApunteForm?.controls['id_subcuenta'].setErrors({
+              invalid: true,
+            });
+          }
+        });
+      } else {
+        this.oSubcuenta = {} as ISubcuenta;
+      }
+    });
   }
 
   createForm() {
@@ -82,7 +108,7 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
         Validators.required,
         Validators.pattern('^\\d+$'),
       ]),
-      id_tipoapunte: new FormControl('', [
+      id_subapunte: new FormControl('', [
         Validators.required,
         Validators.pattern('^\\d+$'),
       ]),
@@ -98,7 +124,7 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
     this.oApunteForm?.controls['orden'].setValue('');
     this.oApunteForm?.controls['id_asiento'].setValue('');
     this.oApunteForm?.controls['id_subcuenta'].setValue('');
-    this.oApunteForm?.controls['id_tipoapunte'].setValue('');
+    this.oApunteForm?.controls['id_subapunte'].setValue('');
     console.log(this.oApunte);
   }
 
@@ -138,4 +164,28 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
       });
     }
   }
+
+  showSubcuentaSelectorModal() {
+    const dialogRef = this.dialog.open(SubcuentaAdminSelectorUnroutedComponent, {
+      height: '800px',
+      maxHeight: '1200px',
+      width: '80%',
+      maxWidth: '90%',
+
+    });
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        console.log(result);
+        this.oApunteForm?.controls['id_subcuenta'].setValue(result.id);
+        this.oSubcuenta = result;
+        //this.animal.set(result);
+      }
+    });
+
+    return false;
+  }
+
 }
