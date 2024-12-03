@@ -176,7 +176,7 @@ export class ApunteService {
   update(oApunte: IApunte): Observable<IApunte> {
     let URL: string = '';
     URL += this.serverURL;
-    return this.oHttp.put<IApunte>(URL, oApunte);
+    return this.oHttp.post<IApunte>(URL, oApunte);
   }
 
   getOne(id: number): Observable<IApunte> {

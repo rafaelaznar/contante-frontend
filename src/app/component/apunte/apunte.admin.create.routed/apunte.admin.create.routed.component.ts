@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -14,6 +14,10 @@ import { ApunteService } from '../../../service/apunte.service';
 import { CalendarModule } from 'primeng/calendar';
 import { CALENDAR_ES } from '../../../environment/environment';
 import { PrimeNGConfig } from 'primeng/api';
+import { IAsiento } from '../../../model/asiento.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { AsientoService } from '../../../service/asiento.service';
+import { AsientoAdminSelectorUnroutedComponent } from '../../asiento/asiento.admin.selector.unrouted/asiento.admin.selector.unrouted.component';
 
 declare let bootstrap: any;
 
@@ -39,12 +43,40 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
 
   myModal: any;
 
-  constructor(private oApunteService: ApunteService, private oRouter: Router,private oPrimeconfig: PrimeNGConfig) {}
+  readonly dialog = inject(MatDialog);
+  oAsiento: IAsiento = {} as IAsiento;
+  constructor(
+    private oApunteService: ApunteService,
+    private oRouter: Router,
+    private oAsientoService: AsientoService,
+    private oPrimeconfig: PrimeNGConfig
+  ) { }
 
   ngOnInit() {
     this.createForm();
     this.oApunteForm?.markAllAsTouched();
     this.oPrimeconfig.setTranslation(CALENDAR_ES);
+
+    this.oApunteForm?.controls['id_asiento'].valueChanges.subscribe(change => {
+      if (change) {
+        // obtener el objeto asiento del servidor
+        this.oAsientoService.get(change).subscribe({
+          next: (oAsiento: IAsiento) => {
+            this.oAsiento = oAsiento;
+          },
+          error: (err) => {
+            console.log(err);
+            this.oAsiento = {} as IAsiento;
+            // marcar el campo como inválido
+            this.oApunteForm?.controls['id_tipocuenta'].setErrors({
+              invalid: true,
+            });
+          }
+        });
+      } else {
+        this.oAsiento = {} as IAsiento;
+      }
+    });
   }
 
   createForm() {
@@ -137,5 +169,24 @@ export class ApunteAdminCreateRoutedComponent implements OnInit {
         },
       });
     }
+  }
+
+  showTipocuentaSelectorModal() {
+    const dialogRef = this.dialog.open(AsientoAdminSelectorUnroutedComponent, {
+      height: '800px',
+      maxHeight: '1200px',
+      width: '80%',
+      maxWidth: '90%',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        console.log(result);
+        this.oApunteForm?.controls['id_asiento'].setValue(result.id);
+        this.oAsiento = result;
+        //this.animal.set(result);
+      }
+    });
+    return false;
   }
 }
