@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,9 +12,13 @@ import {
 import { IAsiento } from '../../../model/asiento.interface';
 import { AsientoService } from '../../../service/asiento.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialog } from '@angular/material/dialog';
 import { CalendarModule } from 'primeng/calendar';
 import { CALENDAR_ES } from '../../../environment/environment';
 import { PrimeNGConfig } from 'primeng/api';
+import { ITipoasiento } from '../../../model/tipoasiento.interface';
+import { TipoAsientoService } from '../../../service/tipoAsiento.service';
+import { TipoasientoAdminSelectorUnroutedComponent } from '../../tipoasiento/tipoasiento.admin.selector.unrouted/tipoasiento.admin.selector.unrouted.component';
 
 declare let bootstrap: any;
 
@@ -45,16 +49,41 @@ export class AsientoAdminCreateRoutedComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
 
+  readonly dialog = inject(MatDialog);
+  oTipoasiento: ITipoasiento = {} as ITipoasiento;
+
   constructor(
     private oAsientoService: AsientoService,
     private oRouter: Router,
-    private oPrimeconfig: PrimeNGConfig
+    private oPrimeconfig: PrimeNGConfig,
+    private oTipoasientoService: TipoAsientoService
   ) {}
 
   ngOnInit() {
     this.createForm();
     this.oAsientoForm?.markAllAsTouched();
     this.oPrimeconfig.setTranslation(CALENDAR_ES);
+
+    this.oAsientoForm?.controls['id_tipoasiento'].valueChanges.subscribe(change => {
+      if (change) {
+        // obtener el objeto tipocuenta del servidor
+        this.oTipoasientoService.get(change).subscribe({
+          next: (oTipoasiento: ITipoasiento) => {
+            this.oTipoasiento = oTipoasiento;
+          },
+          error: (err) => {
+            console.log(err);
+            this.oTipoasiento = {} as ITipoasiento;
+            // marcar el campo como inválido
+            this.oAsientoForm?.controls['id_tipoasiento'].setErrors({
+              invalid: true,
+            });
+          }
+        });
+      } else {
+        this.oTipoasiento = {} as ITipoasiento;
+      }
+    });
   }
 
   createForm() {
@@ -129,6 +158,26 @@ export class AsientoAdminCreateRoutedComponent implements OnInit {
     }
   }
 
+  showTipoasientoSelectorModal() {
+    const dialogRef = this.dialog.open(TipoasientoAdminSelectorUnroutedComponent, {
+      height: '800px',
+      maxHeight: '1200px',
+      width: '80%',
+      maxWidth: '90%',
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        console.log(result);
+        this.oAsientoForm?.controls['id_tipoasiento'].setValue(result.id);
+        this.oTipoasiento = result;
+      }
+    });
+
+    return false;
+  }
 
 
 }
