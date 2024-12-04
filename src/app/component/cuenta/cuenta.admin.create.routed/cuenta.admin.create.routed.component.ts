@@ -52,24 +52,26 @@ export class CuentaAdminCreateRoutedComponent implements OnInit {
     this.createForm();
     this.oCuentaForm?.markAllAsTouched();
 
-    this.oCuentaForm?.controls['id_tipocuenta'].valueChanges.subscribe(change => {
+    this.oCuentaForm?.controls['tipocuenta'].valueChanges.subscribe(change => {
       if (change) {
-        // obtener el objeto tipocuenta del servidor
-        this.oTipocuentaService.get(change).subscribe({
-          next: (oTipocuenta: ITipocuenta) => {
-            this.oTipocuenta = oTipocuenta;
-          },
-          error: (err) => {
-            console.log(err);
-            this.oTipocuenta = {} as ITipocuenta;
-            // marcar el campo como inválido
-            this.oCuentaForm?.controls['id_tipocuenta'].setErrors({
-              invalid: true,
-            });
-          }
-        });
-      } else {
-        this.oTipocuenta = {} as ITipocuenta;
+        if (change.id) {
+          // obtener el objeto tipocuenta del servidor
+          this.oTipocuentaService.get(change.id).subscribe({
+            next: (oTipocuenta: ITipocuenta) => {
+              this.oTipocuenta = oTipocuenta;
+            },
+            error: (err) => {
+              console.log(err);
+              this.oTipocuenta = {} as ITipocuenta;
+              // marcar el campo como inválido
+              this.oCuentaForm?.controls['tipocuenta'].setErrors({
+                invalid: true,
+              });
+            }
+          });
+        } else {
+          this.oTipocuenta = {} as ITipocuenta;
+        }
       }
     });
 
@@ -85,14 +87,30 @@ export class CuentaAdminCreateRoutedComponent implements OnInit {
       descripcion: new FormControl('', [
         Validators.maxLength(50),
       ]),
-      id_tipocuenta: new FormControl(''),
+      tipocuenta: new FormGroup({
+        id: new FormControl('', Validators.required), // ID de tipocuenta
+        descripcion: new FormControl(''), // Descripción de tipocuenta
+        creditoodebito: new FormControl(''), // Crédito o débito de tipocuenta
+        comentarios: new FormControl(''), // Comentarios de tipocuenta
+        realonominal: new FormControl(''), // Real o nominal de tipocuenta
+        cuentas: new FormControl([]), // Cuentas de tipocuenta
+        grupotipocuentas: new FormControl([]), // Grupo de tipocuentas de tipocuenta
+      }),
     });
   }
 
   updateForm() {
     this.oCuentaForm?.controls['codigo'].setValue('');
     this.oCuentaForm?.controls['descripcion'].setValue('');
-    this.oCuentaForm?.controls['id_tipocuenta'].setValue('');
+    this.oCuentaForm?.controls['tipocuenta'].setValue({
+      id: null,
+      descripcion: null,
+      creditoodebito: null,
+      comentarios: null,
+      realonominal: null,
+      cuentas: null,
+      grupotipocuentas: null
+    });
   }
 
   showModal(mensaje: string) {
@@ -110,7 +128,9 @@ export class CuentaAdminCreateRoutedComponent implements OnInit {
 
   hideModal = () => {
     this.myModal.hide();
-    this.oRouter.navigate(['/admin/cuenta/view/' + this.oCuenta?.id]);
+    if (this.oCuenta?.id) {
+      this.oRouter.navigate(['/admin/cuenta/view/' + this.oCuenta.id]);
+    }
   };
 
   onSubmit() {
@@ -140,20 +160,15 @@ export class CuentaAdminCreateRoutedComponent implements OnInit {
 
     });
 
-
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result !== undefined) {
         console.log(result);
-        this.oCuentaForm?.controls['id_tipocuenta'].setValue(result.id);
+        this.oCuentaForm?.controls['tipocuenta'].setValue(result);
         this.oTipocuenta = result;
         //this.animal.set(result);
       }
     });
-
-
-
-
     return false;
   }
 
