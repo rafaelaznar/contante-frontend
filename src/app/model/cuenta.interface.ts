@@ -5,6 +5,6 @@ export interface ICuenta {
   codigo: string;
   descripcion: string;
   tipocuenta: ITipocuenta;
-  subcuentas: number;
-  grupocuentas: number;
+  subcuentas?: number;
+  grupocuentas?: number;
 }
