@@ -156,6 +156,9 @@
                 <a [routerLink]="['/admin/tipoapunte/view', apunte.tipoapunte.id]">
                   {{ apunte.tipoapunte.descripcion }}({{ apunte.tipoapunte.id }})
                 </a>
+
+                <i class="bi bi-arrow-up-circle" (click)="showTipocuentaSelectorModal()"></i>
+
               </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

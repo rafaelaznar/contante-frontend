@@ -3,13 +3,10 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-list"></i>
-        Lista de Cuentas
-        <i class="bi bi-person-vcard-fill"></i>
+        Selección de Tipo de Apuntes
+        <i class="bi bi-file-text"></i>
       </h2>
-      <a href="admin/cuenta/create"><button class="btn btn-primary my-2 mx-2">
-          <i class="bi bi-plus-square"></i>
-          Crear nueva cuenta
-        </button></a>
+
 
       <div class="d-inline-flex mx-2">
         <input type="text" class="form-control" placeholder="Buscar" (keyup)="filter($event)" [(ngModel)]="strFiltro" />
@@ -83,61 +80,61 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('codigo')" class="bg-primary text-white">
-                Codigo @if (strField === 'codigo') { @if (strDir === 'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
               <th (click)="sort('descripcion')" class="bg-primary text-white">
-                Descripcion @if (strField === 'descripcion') { @if (strDir ===
+                Descripción @if (strField === 'descripcion') { @if (strDir ===
                 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th class="bg-primary text-white">Tipo de cuenta</th>
-              <th class="bg-primary text-white">Subcuentas</th>
+              <th (click)="sort('comentarios')" class="bg-primary text-white">
+                Comentarios @if (strField === 'comentarios') { @if (strDir ===
+                'desc') {
+                <i class="bi bi-caret-down-fill"></i>
+                } @else {
+                <i class="bi bi-caret-up-fill"></i>} }
+              </th>
+
+              <th class="bg-primary text-white">Apuntes</th>
               <th class="bg-primary text-white">Balances</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            @for (cuenta of oPage?.content; track cuenta.id) {
+            @for (tipoapunte of oPage?.content; track tipoapunte.id) {
             <tr>
-              <td class="text-center">{{ cuenta.id }}</td>
-              <td class="text-center">{{ cuenta.codigo | trim : 10 }}</td>
-              <td class="text-start">{{ cuenta.descripcion }}</td>
+              <td class="text-center">{{ tipoapunte.id }}</td>
               <td class="text-start">
-                <a href="admin/tipoCuenta/view/{{ cuenta.tipocuenta.id }}">
-                  {{ cuenta.tipocuenta.descripcion }} ({{ cuenta.tipocuenta.id }})
-                </a>
-                <a href="admin/cuenta/plist/xtipocuenta/{{ cuenta.tipocuenta.id }}">
-                  <i class="bi bi-filter-circle"></i>
-                </a>
+                {{ tipoapunte.descripcion | trim : 30 }}
+              </td>
+              <td class="text-start">
+                {{ tipoapunte.comentarios | trim : 10 }}
               </td>
               <td class="text-center">
-                {{ cuenta.subcuentas }}
+                
+                  {{ tipoapunte.apuntes }}
+                
               </td>
-              <td class="text-center">{{ cuenta.grupocuentas }}</td>
+
+
+
+              <td class="text-center">
+                
+                  {{ tipoapunte.grupotipoapuntes }}
+                
+              </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-success" (click)="view(cuenta)">
-                    <i class="bi bi-eye icon-15"></i>
-                  </button>
-                  <button type="button" class="btn btn-warning icon-15" (click)="edit(cuenta)">
-                    <i class="bi bi-pen"></i>
-                  </button>
-                  <button type="button" class="btn btn-danger icon-15" (click)="remove(cuenta)">
-                    <i class="bi bi-trash"></i>
+                  <button type="button" class="btn btn-success" (click)="select(tipoapunte)">
+                    <i class="bi bi-eyedropper"></i>
                   </button>
                 </div>
               </td>
             </tr>
             } @empty {
             <tr>
-              <td colspan="5">No hay cuentas</td>
+              <td>No hay tipos de apunte</td>
             </tr>
             }
           </tbody>
