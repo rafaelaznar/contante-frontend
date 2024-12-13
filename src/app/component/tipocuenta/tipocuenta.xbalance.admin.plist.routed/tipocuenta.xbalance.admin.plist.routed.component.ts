@@ -9,6 +9,9 @@ import { TrimPipe } from '../../../pipe/trim.pipe';
 import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { BalanceService } from '../../../service/balance.service';
+import { IBalance } from '../../../model/balance.interface';
+import { GrupoTipoCuentaService } from '../../../service/grupotipocuenta.service';
 
 @Component({
   selector: 'app-tipocuenta-admin-routed',
@@ -18,22 +21,24 @@ import { HttpErrorResponse } from '@angular/common/http';
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
 
-export class TipocuentaAdminPlistRoutedComponent implements OnInit {
+export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
   oPage: IPage<ITipocuenta> | null = null;
   //
   nPage: number = 0; // 0-based server count
   nRpp: number = 10;
-
   //
   arrBotonera: string[] = [];
   //
-  idBalance: number = 0;
+  oBalance: IBalance = {} as IBalance;
+  //
 
   constructor(
     private oTipoCuentaService: TipoCuentaService,
+    private oBalanceService: BalanceService,
     private oBotoneraService: BotoneraService,
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
+    private oGrupoTipoCuentaService: GrupoTipoCuentaService,
 
   ) {
 
@@ -42,9 +47,19 @@ export class TipocuentaAdminPlistRoutedComponent implements OnInit {
   ngOnInit() {
 
     this.oActivatedRoute.params.subscribe((params) => {
-      this.idBalance = params['id'];
+      this.oBalanceService.get(params['id']).subscribe({
+        next: (oBalance: IBalance) => {
+          this.oBalance = oBalance;
+          this.getPage();
 
-      this.getPage();
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+        },
+        
+      })
+
+
 
     });
   }
@@ -54,9 +69,13 @@ export class TipocuentaAdminPlistRoutedComponent implements OnInit {
 
       this.oTipoCuentaService.getPageXBalance(this.nPage,
         this.nRpp,
-        this.idBalance).subscribe({
+        this.oBalance.id).subscribe({
           next: (oPage: IPage<ITipocuenta>) => {
             this.oPage = oPage;
+            this.arrBotonera = this.oBotoneraService.getBotonera(
+              this.nPage,
+              oPage.totalPages
+            );
           },
           error: (err: HttpErrorResponse) => {
             console.log(err);
@@ -95,6 +114,19 @@ export class TipocuentaAdminPlistRoutedComponent implements OnInit {
     this.nPage--;
     this.getPage();
     return false;
+  }
+
+
+  delete(tipoCuenta: ITipocuenta) {
+    this.oGrupoTipoCuentaService.delete(this.oBalance.id,tipoCuenta.id).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.getPage();
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    })
   }
 
 
