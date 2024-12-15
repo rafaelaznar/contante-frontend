@@ -14,6 +14,7 @@ import { IBalance } from '../../../model/balance.interface';
 import { GrupoTipoCuentaService } from '../../../service/grupotipocuenta.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TipocuentaAdminSelectorUnroutedComponent } from '../tipocuenta.admin.selector.unrouted/tipocuenta.admin.selector.unrouted.component';
+import { IGrupotipocuenta } from '../../../model/grupotipocuenta.interface';
 
 @Component({
   selector: 'app-tipocuenta-admin-routed',
@@ -33,6 +34,8 @@ export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
   oBalance: IBalance = {} as IBalance;
   //
   oTipocuenta: ITipocuenta = {} as ITipocuenta;
+  //
+  oGrupotipocuenta: IGrupotipocuenta = {} as IGrupotipocuenta;
   //
   readonly dialog = inject(MatDialog);
 
@@ -133,6 +136,23 @@ export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
       if (result !== undefined) {
         console.log(result);
         this.oTipocuenta = result;
+        this.oGrupotipocuenta = {
+          id: null as unknown as number,
+          titulo: "aaa",
+          descripcion: "aaa",
+          orden: 0,
+          tipocuenta: this.oTipocuenta,
+          balance: this.oBalance
+        };
+        this.oGrupoTipoCuentaService.create(this.oGrupotipocuenta).subscribe({
+          next: (data) => {
+            console.log(data);
+            this.getPage();
+          },
+          error: (error) => {
+            console.log(error);
+          },
+        });
       }
     });
     return false;
