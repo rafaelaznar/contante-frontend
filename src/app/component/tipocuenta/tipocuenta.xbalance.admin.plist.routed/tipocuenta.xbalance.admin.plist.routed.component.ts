@@ -18,7 +18,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
 
-export class TipocuentaAdminPlistRoutedComponent implements OnInit {
+export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
   oPage: IPage<ITipocuenta> | null = null;
   //
   nPage: number = 0; // 0-based server count

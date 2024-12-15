@@ -15,7 +15,7 @@ import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
 import { ApunteXAsientoAdminPlistRoutedComponent } from './component/apunte/apunte.xasiento.admin.plist.routed/apunte.xasiento.admin.plist.routed.component';
 import { ApunteXSubcuentaAdminPlistRoutedComponent } from './component/apunte/apunte.xsubcuenta.admin.plist.routed/apunte.xsubcuenta.admin.plist.routed.component';
-import { ApunteXTipoapunteAdminPlistRoutedComponent } from './component/apunte/apunte.xtipoapunte.admin.plist.routed /apunte.xtipoapunte.admin.plist.routed.component';
+import { ApunteXTipoapunteAdminPlistRoutedComponent } from './component/apunte/apunte.xtipoapunte.admin.plist.routed/apunte.xtipoapunte.admin.plist.routed.component';
 
 import { TipocuentaAdminEditRoutedComponent } from './component/tipocuenta/tipocuenta.admin.edit.routed/tipocuenta.admin.edit.routed.component';
 import { TipoCuentaAdminViewRoutedComponent } from './component/tipocuenta/tipocuenta.admin.view.routed/tipoCuenta.admin.view.routed.component';
@@ -56,7 +56,7 @@ import { BalanceAdminViewRoutedComponent } from './component/balance/balance.adm
 import { BalanceAdminEditRoutedComponent } from './component/balance/balance.admin.edit.routed/balance.admin.edit.routed.component';
 import { BalanceAdminPlistRoutedComponent } from './component/balance/balance.admin.plist.routed/balance.admin.plist.routed.component';
 import { BalanceXTipoapunteAdminPlistRoutedComponent } from './component/balance/balance.xtipoapunte.admin.plist.routed/balance.xtipoapunte.admin.plist.routed.component';
-import { BalanceXSubcuentaAdminPlistRoutedComponent } from './component/balance/balance.xsubcuenta.admin.plist.routed /balance.xsubcuenta.admin.plist.routed.component';
+import { BalanceXSubcuentaAdminPlistRoutedComponent } from './component/balance/balance.xsubcuenta.admin.plist.routed/balance.xsubcuenta.admin.plist.routed.component';
 import { BalanceXTipocuentaAdminPlistRoutedComponent } from './component/balance/balance.xtipocuenta.admin.plist.routed/balance.xtipocuenta.admin.plist.routed.component';
 import { BalanceXTipoasientoAdminPlistRoutedComponent } from './component/balance/balance.xtipoasiento.admin.plist.routed/balance.xtipoasiento.admin.plist.routed.component';
 
