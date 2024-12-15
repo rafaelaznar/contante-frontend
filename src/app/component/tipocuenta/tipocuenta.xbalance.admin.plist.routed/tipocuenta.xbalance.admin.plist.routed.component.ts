@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IPage } from '../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { BalanceService } from '../../../service/balance.service';
 import { IBalance } from '../../../model/balance.interface';
 import { GrupoTipoCuentaService } from '../../../service/grupotipocuenta.service';
+import { MatDialog } from '@angular/material/dialog';
+import { TipocuentaAdminSelectorUnroutedComponent } from '../tipocuenta.admin.selector.unrouted/tipocuenta.admin.selector.unrouted.component';
 
 @Component({
   selector: 'app-tipocuenta-admin-routed',
@@ -20,7 +22,6 @@ import { GrupoTipoCuentaService } from '../../../service/grupotipocuenta.service
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
-
 export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
   oPage: IPage<ITipocuenta> | null = null;
   //
@@ -31,6 +32,9 @@ export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
   //
   oBalance: IBalance = {} as IBalance;
   //
+  oTipocuenta: ITipocuenta = {} as ITipocuenta;
+  //
+  readonly dialog = inject(MatDialog);
 
   constructor(
     private oTipoCuentaService: TipoCuentaService,
@@ -38,57 +42,39 @@ export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
     private oBotoneraService: BotoneraService,
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute,
-    private oGrupoTipoCuentaService: GrupoTipoCuentaService,
-
-  ) {
-
-  }
+    private oGrupoTipoCuentaService: GrupoTipoCuentaService
+  ) {}
 
   ngOnInit() {
-
     this.oActivatedRoute.params.subscribe((params) => {
       this.oBalanceService.get(params['id']).subscribe({
         next: (oBalance: IBalance) => {
           this.oBalance = oBalance;
           this.getPage();
-
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
         },
-        
-      })
-
-
-
+      });
     });
   }
 
   getPage() {
-    
-
-      this.oTipoCuentaService.getPageXBalance(this.nPage,
-        this.nRpp,
-        this.oBalance.id).subscribe({
-          next: (oPage: IPage<ITipocuenta>) => {
-            this.oPage = oPage;
-            this.arrBotonera = this.oBotoneraService.getBotonera(
-              this.nPage,
-              oPage.totalPages
-            );
-          },
-          error: (err: HttpErrorResponse) => {
-            console.log(err);
-          },
-      
-
-    });
-    
+    this.oTipoCuentaService
+      .getPageXBalance(this.nPage, this.nRpp, this.oBalance.id)
+      .subscribe({
+        next: (oPage: IPage<ITipocuenta>) => {
+          this.oPage = oPage;
+          this.arrBotonera = this.oBotoneraService.getBotonera(
+            this.nPage,
+            oPage.totalPages
+          );
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+        },
+      });
   }
-
-
-
-
 
   goToPage(p: number) {
     if (p) {
@@ -116,18 +102,39 @@ export class TipocuentaXBalanceAdminPlistRoutedComponent implements OnInit {
     return false;
   }
 
-
   delete(tipoCuenta: ITipocuenta) {
-    this.oGrupoTipoCuentaService.delete(this.oBalance.id,tipoCuenta.id).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.getPage();
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    })
+    this.oGrupoTipoCuentaService
+      .delete(this.oBalance.id, tipoCuenta.id)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.getPage();
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
   }
 
+  showTipocuentaSelectorModal() {
+    const dialogRef = this.dialog.open(
+      TipocuentaAdminSelectorUnroutedComponent,
+      {
+        height: '800px',
+        maxHeight: '1200px',
+        width: '80%',
+        maxWidth: '90%',
+        data: { origen: 'xbalance', idBalance: this.oBalance.id },
+      }
+    );
 
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        console.log(result);
+        this.oTipocuenta = result;
+      }
+    });
+    return false;
+  }
 }

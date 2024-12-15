@@ -104,4 +104,24 @@ serverURL: string = serverURL + '/tipoCuenta';
     
     return this.oHttp.get<IPage<ITipocuenta>>(URL, httpOptions);
   }
+
+  getPageXBalanceNoTiene(
+    page: number,
+    size: number,
+    id: number
+  ): Observable<IPage<ITipocuenta>> {
+    let URL: string = '';
+    URL += this.serverURL;
+    URL += '/xbalancenotiene/' + id;
+    if (!page) {
+      page = 0;
+    }
+    URL += '?page=' + page;
+    if (!size) {
+      size = 10;
+    }
+    URL += '&size=' + size;
+    
+    return this.oHttp.get<IPage<ITipocuenta>>(URL, httpOptions);
+  }
 }
