@@ -4,11 +4,7 @@ import { IPage } from '../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
 import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, Subject } from 'rxjs';
-<<<<<<< HEAD
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-=======
-import { Router, RouterModule } from '@angular/router';
->>>>>>> 9b0e8d21fb2177e3e12167e8f73b4051fd6f0e72
 import { TrimPipe } from '../../../pipe/trim.pipe';
 import { ITipoasiento } from '../../../model/tipoasiento.interface';
 import { TipoAsientoService } from '../../../service/tipoAsiento.service';
@@ -44,19 +40,12 @@ export class TipoasientoAdminSelectorUnroutedComponent implements OnInit {
   constructor(
     private oTipoAsientoService: TipoAsientoService,
     private oBotoneraService: BotoneraService,
-<<<<<<< HEAD
     private oRouter: Router,
     private oActivatedRoute: ActivatedRoute
   ) {
     this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
       this.getPage();
       console.log(this.oActivatedRoute.snapshot.params['id'] as number);
-=======
-    private oRouter: Router
-  ) {
-    this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
-      this.getPage();
->>>>>>> 9b0e8d21fb2177e3e12167e8f73b4051fd6f0e72
     });
   }
 
@@ -65,7 +54,6 @@ export class TipoasientoAdminSelectorUnroutedComponent implements OnInit {
   }
 
   getPage() {
-<<<<<<< HEAD
     if (this.data.origen == 'xbalance') {
       this.oTipoAsientoService
         .getPageWhereIdIsNot(
@@ -110,28 +98,6 @@ export class TipoasientoAdminSelectorUnroutedComponent implements OnInit {
           },
         });
     }
-=======
-    this.oTipoAsientoService
-      .getPage(
-        this.nPage,
-        this.nRpp,
-        this.strField,
-        this.strDir,
-        this.strFiltro
-      )
-      .subscribe({
-        next: (oPageFromServer: IPage<ITipoasiento>) => {
-          this.oPage = oPageFromServer;
-          this.arrBotonera = this.oBotoneraService.getBotonera(
-            this.nPage,
-            oPageFromServer.totalPages
-          );
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
->>>>>>> 9b0e8d21fb2177e3e12167e8f73b4051fd6f0e72
   }
 
   select(oTipoAsiento: ITipoasiento) {

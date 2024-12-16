@@ -169,10 +169,7 @@ export class TipoasientoXbalanceAdminPlistRoutedComponent implements OnInit {
         maxHeight: '1200px',
         width: '80%',
         maxWidth: '90%',
-<<<<<<< HEAD
         data: { origen: 'xbalance', idBalance: this.oBalance.id },
-=======
->>>>>>> 9b0e8d21fb2177e3e12167e8f73b4051fd6f0e72
       }
     );
 
