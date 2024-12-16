@@ -73,6 +73,7 @@ import { PeriodoAdminEditRoutedComponent } from './component/periodo/periodo.adm
 import { PeriodoAdminPlistRoutedComponent } from './component/periodo/periodo.admin.plist.routed/periodo.admin.plist.routed.component';
 import { PeriodoAdminViewRoutedComponent } from './component/periodo/periodo.admin.view.routed/periodo.admin.view.routed.component';
 import { TipocuentaXBalanceAdminPlistRoutedComponent } from './component/tipocuenta/tipocuenta.xbalance.admin.plist.routed/tipocuenta.xbalance.admin.plist.routed.component';
+import { CuentaXBalanceAdminPlistRoutedComponent } from './component/cuenta/cuenta.xbalance.admin.plist.routed/cuenta.xbalance.admin.plist.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -90,6 +91,7 @@ export const routes: Routes = [
   { path: 'admin/cuenta/view/:id', component: CuentaAdminViewRoutedComponent },
   { path: 'admin/cuenta/edit/:id', component: CuentaAdminEditRoutedComponent },
   { path: 'admin/cuenta/delete/:id', component: CuentaAdminDeleteRoutedComponent },
+  { path: 'admin/cuenta/plist/xbalance/:id', component: CuentaXBalanceAdminPlistRoutedComponent },
 
   { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent },
   { path: 'admin/balance/plist/xtipoapunte/:id', component: BalanceXTipoapunteAdminPlistRoutedComponent },
