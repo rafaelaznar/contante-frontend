@@ -78,6 +78,7 @@ export class TipoAsientoService {
     return this.oHttp.get<IPage<ITipoasiento>>(URL, httpOptions);
   }
 
+<<<<<<< HEAD
   getPageWhereIdIsNot(
     page: number,
     size: number,
@@ -110,6 +111,8 @@ export class TipoAsientoService {
     return this.oHttp.get<IPage<ITipoasiento>>(URL, httpOptions);
   }
 
+=======
+>>>>>>> 9b0e8d21fb2177e3e12167e8f73b4051fd6f0e72
   get(id: number): Observable<ITipoasiento> {
     let URL: string = '';
     URL += this.serverURL;
