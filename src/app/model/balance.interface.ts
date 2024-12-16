@@ -1,3 +1,5 @@
+import { ITipobalance } from "./tipobalance.interface";
+
 export interface IBalance {
   id: number;
   titulo: string;
@@ -7,4 +9,5 @@ export interface IBalance {
   grupotipocuentas?: any;
   grupocuentas?: any;
   grupotipoapuntes?: any;
+  tipobalance: ITipobalance;
 }

@@ -3,13 +3,14 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-list"></i>
-        Lista de Balances
-        <i class="bi bi-journal-check"></i>
+        Lista de Tipos de Asientos del Balance {{ oBalance.id }}
+        <i class="bi bi-clipboard2-pulse"></i>
       </h2>
-      <a href="admin/balance/create"><button class="btn btn-primary my-2 mx-2">
-          <i class="bi bi-plus-square"></i>
-          Crear nuevo balance
-        </button></a>
+
+      <button class="btn btn-success my-2 mx-2" (click)="showTipoasientoSelectorModal()">
+        <i class="bi bi-plus-square"></i>
+        Agregar tipo de asiento a balance {{ oBalance.id }}
+      </button>
 
       <div class="d-inline-flex mx-2">
         <input type="text" class="form-control" placeholder="Buscar" (keyup)="filter($event)" [(ngModel)]="strFiltro" />
@@ -44,7 +45,7 @@
             @if(pag==='...'){
             <a class="page-link">{{ pag }}</a>
             } @else {
-            <a class="page-link" href="#" (click)="goToPage(-(-pag))" [class.active]="nPage - -1 === -(-pag)" usuarios>
+            <a class="page-link" href="#" (click)="goToPage(-(-pag))" [class.active]="nPage - -1 === -(-pag)">
               {{ pag }}
             </a>
             }
@@ -67,8 +68,8 @@
         <h5 class="text-muted">Sin filtrar</h5>
         }
         <h5 class="text-muted">
-          Mostrando {{ oPage?.numberOfElements | number : "1.0-0" }} de
-          {{ oPage?.totalElements | number : "1.0-0" }}
+          Mostrando {{ oPage?.numberOfElements | number : "1.0-0" }} de {{
+          oPage?.totalElements | number : "1.0-0" }}
         </h5>
       </div>
 
@@ -83,12 +84,6 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('titulo')" class="bg-primary text-white">
-                Título @if (strField === 'titulo') { @if (strDir === 'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
               <th (click)="sort('descripcion')" class="bg-primary text-white">
                 Descripción @if (strField === 'descripcion') { @if (strDir ===
                 'desc') {
@@ -96,58 +91,28 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th class="bg-primary text-white">Tipo de Asiento</th>
-              <th class="bg-primary text-white">Subcuenta</th>
-              <th class="bg-primary text-white">Tipo de Cuenta</th>
-              <th class="bg-primary text-white">Cuenta</th>
-              <th class="bg-primary text-white">Tipo de Apunte</th>
-              <th class="bg-primary text-white">Tipo de Balance</th>
+              <th class="bg-primary text-white">Balances</th>
+              <th class="bg-primary text-white">Asientos</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            @for (balance of oPage?.content; track balance.id) {
+            @for (tipoAsiento of oPage?.content; track tipoAsiento.id) {
             <tr>
-              <td class="text-center">{{ balance.id }}</td>
-              <td class="text-start">{{ balance.titulo | trim : 30 }}</td>
-              <td class="text-start">{{ balance.descripcion | trim : 40 }}</td>
-              <td class="text-center">
-                <a
-                  class="btn btn-primary"
-                  href="admin/tipoAsiento/plist/xbalance/{{ balance.id }}"
-                  >{{ balance.grupotipoasientos }}</a
-                >
-              </td>
-              <td class="text-center ">
-                {{ balance.gruposubcuentas }}
+              <td class="text-center">{{ tipoAsiento.id }}</td>
+              <td class="text-start">
+                {{ tipoAsiento.descripcion | trim : 50 }}
               </td>
               <td class="text-center">
-                <a href="/admin/tipoCuenta/plist/xbalance/{{ balance.id }}" class="btn btn-primary">{{ balance.grupotipocuentas }}</a>
-                
-              </td>
-              <td class="text-center">
-                {{ balance.grupocuentas }}
-              </td>
-              <td class="text-center">
-                {{ balance.grupotipoapuntes }}
+                {{ tipoAsiento.grupotipoasientos }}
               </td>
               <td>
-                @if (balance.tipobalance) {
-                {{ balance.tipobalance.descripcion }}
-                } @else {
-                ???
-                }
+                {{tipoAsiento.asientos}}
               </td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-success" (click)="view(balance)">
-                    <i class="bi bi-eye icon-15"></i>
-                  </button>
-                  <button type="button" class="btn btn-warning icon-15" (click)="edit(balance)">
-                    <i class="bi bi-pen"></i>
-                  </button>
-                  <button type="button" class="btn btn-danger icon-15" (click)="remove(balance)">
+                  <button type="button" class="btn btn-danger icon-15" (click)="quitar(tipoAsiento, oBalance)">
                     <i class="bi bi-trash"></i>
                   </button>
                 </div>
@@ -155,7 +120,7 @@
             </tr>
             } @empty {
             <tr>
-              <td colspan="6">No hay balances</td>
+              <td colspan="3">No hay tipos de Asientos</td>
             </tr>
             }
           </tbody>

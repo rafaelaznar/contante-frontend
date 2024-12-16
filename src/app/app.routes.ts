@@ -135,6 +135,7 @@ export const routes: Routes = [
   { path: 'admin/tipoAsiento/view/:id', component: TipoasientoAdminViewRoutedComponent },
   { path: 'admin/tipoAsiento/create', component: TipoasientoAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/tipoAsiento/delete/:id', component: TipoasientoAdminDeleteRoutedComponent },
+  { path: 'admin/tipoAsiento/plist/xbalance/:id', component: TipoasientoXbalanceAdminPlistRoutedComponent},
 
   { path: 'admin/tipoapunte/plist', component: TipoApunteAdminPlistRoutedComponent },
   { path: 'admin/tipoapunte/edit/:id', component: TipoApunteAdminEditRoutedComponent },
