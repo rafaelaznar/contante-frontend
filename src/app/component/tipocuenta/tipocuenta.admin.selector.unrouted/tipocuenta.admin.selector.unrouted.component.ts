@@ -51,6 +51,24 @@ export class TipocuentaAdminSelectorUnroutedComponent implements OnInit {
   }
 
   getPage() {
+    if (this.data.origen == "xbalance"){
+      this.oTipoCuentaService.getPageXBalanceNoTiene(
+        this.nPage,
+        this.nRpp,
+        this.data.idBalance
+      ).subscribe({
+        next: (oPageFromServer: IPage<ITipocuenta>) => {
+          this.oPage = oPageFromServer;
+          this.arrBotonera = this.oBotoneraService.getBotonera(
+            this.nPage,
+            oPageFromServer.totalPages
+          );
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      })
+    } else {
     this.oTipoCuentaService
       .getPage(
         this.nPage,
@@ -71,6 +89,7 @@ export class TipocuentaAdminSelectorUnroutedComponent implements OnInit {
           console.log(err);
         },
       });
+    }
   }
 
  
