@@ -72,7 +72,7 @@ import { PeriodoAdminDeleteRoutedComponent } from './component/periodo/periodo.a
 import { PeriodoAdminEditRoutedComponent } from './component/periodo/periodo.admin.edit.routed/periodo.admin.edit.routed.component';
 import { PeriodoAdminPlistRoutedComponent } from './component/periodo/periodo.admin.plist.routed/periodo.admin.plist.routed.component';
 import { PeriodoAdminViewRoutedComponent } from './component/periodo/periodo.admin.view.routed/periodo.admin.view.routed.component';
-import { TipoasientoXbalanceAdminPlistRoutedComponent } from './component/tipoasiento/tipoasiento.xbalance.admin.plist.routed/tipoasiento.xbalance.admin.plist.routed';
+import { TipocuentaXBalanceAdminPlistRoutedComponent } from './component/tipocuenta/tipocuenta.xbalance.admin.plist.routed/tipocuenta.xbalance.admin.plist.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -154,6 +154,8 @@ export const routes: Routes = [
   { path: 'admin/tipoCuenta/edit/:id', component: TipocuentaAdminEditRoutedComponent },
   { path: 'admin/tipoCuenta/plist', component: TipocuentaAdminPlistRoutedComponent },
   { path: 'admin/tipoCuenta/view/:id', component: TipoCuentaAdminViewRoutedComponent },
+  { path: 'admin/tipoCuenta/plist/xbalance/:id', component: TipocuentaXBalanceAdminPlistRoutedComponent },
+
 
 
 

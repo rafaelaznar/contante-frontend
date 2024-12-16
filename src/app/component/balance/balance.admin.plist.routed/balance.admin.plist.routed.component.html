@@ -119,11 +119,12 @@
                   >{{ balance.grupotipoasientos }}</a
                 >
               </td>
-              <td class="text-center">
+              <td class="text-center ">
                 {{ balance.gruposubcuentas }}
               </td>
               <td class="text-center">
-                {{ balance.grupotipocuentas }}
+                <a href="/admin/tipoCuenta/plist/xbalance/{{ balance.id }}" class="btn btn-primary">{{ balance.grupotipocuentas }}</a>
+                
               </td>
               <td class="text-center">
                 {{ balance.grupocuentas }}

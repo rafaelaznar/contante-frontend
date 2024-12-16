@@ -4,10 +4,10 @@ export interface IBalance {
   id: number;
   titulo: string;
   descripcion: string;
-  grupotipoasientos: number;
-  gruposubcuentas: number;
-  grupotipocuentas: number;
-  grupocuentas: number;
-  grupotipoapuntes: number;
+  grupotipoasientos?: any;
+  gruposubcuentas?: any;
+  grupotipocuentas?: any;
+  grupocuentas?: any;
+  grupotipoapuntes?: any;
   tipobalance: ITipobalance;
 }
