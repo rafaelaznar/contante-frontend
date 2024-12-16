@@ -6,21 +6,13 @@
         Lista de Balances
         <i class="bi bi-journal-check"></i>
       </h2>
-      <a href="admin/balance/create"
-        ><button class="btn btn-primary my-2 mx-2">
+      <a href="admin/balance/create"><button class="btn btn-primary my-2 mx-2">
           <i class="bi bi-plus-square"></i>
           Crear nuevo balance
-        </button></a
-      >
+        </button></a>
 
       <div class="d-inline-flex mx-2">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Buscar"
-          (keyup)="filter($event)"
-          [(ngModel)]="strFiltro"
-        />
+        <input type="text" class="form-control" placeholder="Buscar" (keyup)="filter($event)" [(ngModel)]="strFiltro" />
       </div>
 
       <div class="d-inline-flex mx-2">
@@ -42,12 +34,7 @@
       <nav class="my-2">
         <ul class="pagination justify-content-center">
           <li class="page-item">
-            <a
-              class="page-link"
-              [class.disabled]="nPage - -1 === 1"
-              (click)="goToPrev()"
-              href="#"
-            >
+            <a class="page-link" [class.disabled]="nPage - -1 === 1" (click)="goToPrev()" href="#">
               Anterior
               <i class="bi bi-caret-left-square-fill"></i>
             </a>
@@ -57,28 +44,16 @@
             @if(pag==='...'){
             <a class="page-link">{{ pag }}</a>
             } @else {
-            <a
-              class="page-link"
-              href="#"
-              (click)="goToPage(-(-pag))"
-              [class.active]="nPage - -1 === -(-pag)"
-              usuarios
-            >
+            <a class="page-link" href="#" (click)="goToPage(-(-pag))" [class.active]="nPage - -1 === -(-pag)" usuarios>
               {{ pag }}
             </a>
             }
           </li>
 
           <li class="page-item">
-            <a
-              class="page-link"
-              [class.disabled]="nPage - -1 === oPage?.totalPages"
-              (click)="goToNext()"
-              href="#"
-            >
+            <a class="page-link" [class.disabled]="nPage - -1 === oPage?.totalPages" (click)="goToNext()" href="#">
               <i class="bi bi-caret-right-square-fill"></i>
-              Siguiente</a
-            >
+              Siguiente</a>
           </li>
         </ul>
       </nav>
@@ -98,10 +73,8 @@
       </div>
 
       <div class="d-flex flex-column">
-        <table
-          class="table table-striped table-bordered my-2"
-          style="table-layout: fixed; width: 100%; word-break: break-all"
-        >
+        <table class="table table-striped table-bordered my-2"
+          style="table-layout: fixed; width: 100%; word-break: break-all">
           <thead>
             <tr>
               <th (click)="sort('id')" class="bg-danger text-white">
@@ -128,6 +101,7 @@
               <th class="bg-primary text-white">Tipo de Cuenta</th>
               <th class="bg-primary text-white">Cuenta</th>
               <th class="bg-primary text-white">Tipo de Apunte</th>
+              <th class="bg-primary text-white">Tipo de Balance</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
@@ -158,26 +132,21 @@
                 {{ balance.grupotipoapuntes }}
               </td>
               <td>
+                @if (balance.tipobalance) {
+                {{ balance.tipobalance.descripcion }}
+                } @else {
+                ???
+                }
+              </td>
+              <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button
-                    type="button"
-                    class="btn btn-success"
-                    (click)="view(balance)"
-                  >
+                  <button type="button" class="btn btn-success" (click)="view(balance)">
                     <i class="bi bi-eye icon-15"></i>
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-warning icon-15"
-                    (click)="edit(balance)"
-                  >
+                  <button type="button" class="btn btn-warning icon-15" (click)="edit(balance)">
                     <i class="bi bi-pen"></i>
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-danger icon-15"
-                    (click)="remove(balance)"
-                  >
+                  <button type="button" class="btn btn-danger icon-15" (click)="remove(balance)">
                     <i class="bi bi-trash"></i>
                   </button>
                 </div>
