@@ -140,7 +140,13 @@
               <td class="text-center">{{ balance.id }}</td>
               <td class="text-start">{{ balance.titulo | trim : 30 }}</td>
               <td class="text-start">{{ balance.descripcion | trim : 40 }}</td>
+              <td class="text-start">{{ balance.descripcion | trim : 40 }}</td>
               <td class="text-center">
+                <a
+                  class="btn btn-primary"
+                  href="admin/tipoAsiento/plist/xbalance/{{ balance.id }}"
+                  >{{ balance.grupotipoasientos }}</a
+                >
                 <a
                   class="btn btn-primary"
                   href="admin/tipoAsiento/plist/xbalance/{{ balance.id }}"

@@ -140,6 +140,7 @@ export const routes: Routes = [
   { path: 'admin/tipoAsiento/create', component: TipoasientoAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/tipoAsiento/delete/:id', component: TipoasientoAdminDeleteRoutedComponent },
   { path: 'admin/tipoAsiento/plist/xbalance/:id', component: TipoasientoXbalanceAdminPlistRoutedComponent},
+  { path: 'admin/tipoAsiento/plist/xbalance/:id', component: TipoasientoXbalanceAdminPlistRoutedComponent},
 
   { path: 'admin/tipoapunte/plist', component: TipoApunteAdminPlistRoutedComponent },
   { path: 'admin/tipoapunte/edit/:id', component: TipoApunteAdminEditRoutedComponent },
@@ -167,3 +168,4 @@ export const routes: Routes = [
 
 >>>>>>> 9b0e8d21fb2177e3e12167e8f73b4051fd6f0e72
 ];
+
