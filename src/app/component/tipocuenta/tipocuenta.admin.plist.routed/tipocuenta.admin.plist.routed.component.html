@@ -113,12 +113,13 @@
               </th>
               <th class="bg-primary text-white">Cuentas</th>
               <th class="bg-primary text-white">Balances</th>
+              <th class="bg-primary text-white">Subcuentas</th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            @for (tipoCuenta of oPage?.content; track tipoCuenta.id) {
+            @for (tipoCuenta of oPage?.content; track tipoCuenta.id; let index = $index) {
             <tr>
               <td class="text-center">{{ tipoCuenta.id }}</td>
               <td class="text-start">
@@ -150,6 +151,10 @@
                 <a href="admin/balance/plist/xtipocuenta/{{ tipoCuenta.id }}" class="btn btn-primary">
                   {{ tipoCuenta.grupotipocuentas }}
                 </a>
+              </td>
+
+              <td class="text-center">
+                  {{arrNumSubcuentas[index]}}
               </td>
 
               <td>

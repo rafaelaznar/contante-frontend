@@ -66,14 +66,17 @@ serverURL: string = serverURL + '/tipoCuenta';
 
   getOne(id: number): Observable<ITipocuenta> {
     let URL: string = '';
-    URL += 'http://localhost:8085';
-    URL += '/tipoCuenta';
+    URL += this.serverURL;
     URL += '/' + id;
     return this.oHttp.get<ITipocuenta>(URL);
   }
 
   delete(id: number) {
-    return this.oHttp.delete('http://localhost:8085/tipoCuenta/' + id);
+    return this.oHttp.delete(this.serverURL + '/' + id);
+  }
+
+  getPageSubcuenta(id: number){
+    return this.oHttp.get<number>(this.serverURL + "/subcuenta/" + id);
   }
 
 
